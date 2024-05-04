@@ -1,1 +1,1 @@
-# hexa-play
+# hexy-horizon

@@ -760,36 +760,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91f5581a0134be892cff429e5a3aef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesRoot: {fileID: 335046273}
-  tilePrefabs:
-  - {fileID: 5779138320823061382, guid: f042f443ca2cf4798b88ad8251a9a8ef, type: 3}
-  - {fileID: 997323862630740335, guid: 7bf43b23c7f2e452d919185786ccf511, type: 3}
-  - {fileID: 6116226369548797748, guid: 91684f4eb9b5748ef952f5c90a760b39, type: 3}
-  - {fileID: 3115700457010560996, guid: 341e74b7435064a129084d3e460ca1bd, type: 3}
-  - {fileID: 3356145872054759881, guid: 13ecbfad51c7f471694f13c0a20085e2, type: 3}
-  - {fileID: 2669036875805048847, guid: 9386f057a8a084a3dad9a2b08f16b104, type: 3}
-  - {fileID: 710742410904087719, guid: 78ffe07efb87b42318f85d5a6be720be, type: 3}
-  - {fileID: 8345840523562764690, guid: e7ed0ee1e888b4887b06b70e71c4ec8e, type: 3}
-  - {fileID: 1589888730765166895, guid: 9dc79ebe6b7a84f54bfc3706252044ad, type: 3}
-  - {fileID: 2604141493525739496, guid: 9119d33581d0b4944a7fca437ff63a14, type: 3}
-  - {fileID: 8201077937998268927, guid: c2649e99810a84285bf7bd90df9942d2, type: 3}
-  - {fileID: 2553793311016555777, guid: e66b0236d677e4d259a89f98c5ad9678, type: 3}
-  - {fileID: 8073070611134587601, guid: 41bde0ac5ee424c2ca91648f639f1615, type: 3}
-  - {fileID: 5933413953476407542, guid: 112be16e1410743b39be6a7d416832ce, type: 3}
-  - {fileID: 307034395354441752, guid: 088a3e08defe643c2bc503bc6c52149b, type: 3}
-  - {fileID: 5119790571953007365, guid: 87840a93acd2849a29981a86780ac0a6, type: 3}
-  - {fileID: 4834306980712529883, guid: 5b5ef3fe50c7342969d7102e79dd9940, type: 3}
-  - {fileID: 3077970144917443225, guid: a84498122acce45a9b8469b94f3e1283, type: 3}
-  groundPrefab: {fileID: 1890231325702888045, guid: 8344f8fd333a54ad497f62aa7c691213,
+  emptyTilePrefab: {fileID: 8349000035386214327, guid: 4101feedf079f4594ae34d0b629d65a8,
     type: 3}
+  cellGroundTemplates: {fileID: 11400000, guid: bf6bce61cfed04539b28690e41ced7f0,
+    type: 2}
+  cellBuildingsTemplates: {fileID: 11400000, guid: 1767cd80d7ccc41f9a80cdb373f75776,
+    type: 2}
+  tilesRoot: {fileID: 335046273}
   width: 10
   height: 10
   rotationSpeed: 5000
-  camera: {fileID: 330585545}
-  zoomSpeed: 10
-  minFieldOfView: 35
-  maxFieldOfView: 100
-  dragSpeed: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

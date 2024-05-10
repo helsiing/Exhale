@@ -76,7 +76,9 @@ public class CameraController : MonoBehaviour
         {
             //inputs
             GetKeyboardMovement();
+            #if !UNITY_EDITOR
             CheckMouseAtScreenEdge();
+            #endif
             DragCamera();
 
             //move base and camera objects

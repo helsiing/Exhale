@@ -63,6 +63,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: building-watermill
       objectReference: {fileID: 0}
+    - target: {fileID: 2938204288329514981, guid: 2870322596dad471a85e49056b8b1593,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938204288329514981, guid: 2870322596dad471a85e49056b8b1593,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938204288329514981, guid: 2870322596dad471a85e49056b8b1593,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938204288329514981, guid: 2870322596dad471a85e49056b8b1593,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

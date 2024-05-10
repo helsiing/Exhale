@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adcd6447d19a4f27a5900558cfd7861, type: 3}
+  m_Name: Dirt
+  m_EditorClassIdentifier: 
+  guid:
+    value1: 5081028446201580077
+    value2: 9055129951305212863
+  collectionGUID:
+    value1: 5552505433624939942
+    value2: -4781374923284203365
+  element: {fileID: 11400000, guid: 4b2e534bac560463da6336efe1e2e9ad, type: 2}
+  boardPrefab: {fileID: 3650818943840691340, guid: efae30b99b34f43e9b6f2ad16c64a794,
+    type: 3}

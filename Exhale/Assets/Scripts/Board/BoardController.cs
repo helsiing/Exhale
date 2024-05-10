@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using Exhale.Scripts.Data;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -9,32 +9,60 @@ namespace Exhale.Scripts.Board
     public class BoardController : MonoBehaviour
     {
         [SerializeField] private GameObject emptyTilePrefab;
-        [SerializeField] private HexCellGroundTemplateCollection cellGroundTemplates;
-        [SerializeField] private HexCellBuildingCollection cellBuildingsTemplates;
+        [SerializeField] private CellGroundTemplateCollection cellGroundTemplates;
+        [SerializeField] private CellBuildingsCollection cellBuildingsTemplates;
         
-        [SerializeField] private Transform tilesRoot;
+        [SerializeField] private Transform gridRoot;
+        [SerializeField] private Transform groundRoot;
+        [SerializeField] private Transform buildingsRoot;
         [SerializeField] private int width = 10; 
         [SerializeField] private int height = 10; 
         [SerializeField] private float rotationSpeed = 100.0f;
+        private List<Cell> cells = new ();
 
         private void Awake()
         {
             Assert.IsNotNull(cellGroundTemplates, "cellGroundTemplates != null");
+            Assert.IsNotNull(cellBuildingsTemplates, "cellBuildingsTemplates != null");
         }
 
         void Start() {
+            
+            // grid
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     
-                    GameObject ground = Instantiate(emptyTilePrefab, FromCoordinatesToWorldPosition(x, y), Quaternion.identity);
-                    ground.transform.parent = tilesRoot;
+                    cells.Add(new Cell(x, y));
+                    GameObject gridTile = Instantiate(emptyTilePrefab, FromCoordinatesToWorldPosition(x, y), Quaternion.identity);
+                    gridTile.transform.parent = gridRoot;
+                    gridTile.name = $"Grid tile ({x}, {y})";
                 }
             }
             
+            // base ground
+            for (int x = 3; x < width; x++) {
+                for (int y = 3; y < height; y++) {
+                    
+                    cells.Add(new Cell(x, y));
+                    GameObject groundTile = Instantiate(cellGroundTemplates[Random.Range(0, cellGroundTemplates.Count)].BoardPrefab, FromCoordinatesToWorldPosition(x, y), Quaternion.identity);
+                    groundTile.transform.parent = gridRoot;
+                    groundTile.name = $"Ground tile ({x}, {y})";
+
+                }
+            }
+            
+            // buildings
             var centerCell = GetBoardCenter();
-            GameObject building = Instantiate(cellBuildingsTemplates[Random.Range(0, cellBuildingsTemplates.Count)].BoardPrefab, 
-                FromCoordinatesToWorldPosition((int)centerCell.x, (int)centerCell.y), Quaternion.identity);
-            building.transform.parent = tilesRoot;
+            PlaceBuilding(centerCell);
+
+        }
+
+        private void PlaceBuilding(Vector2 position)
+        {
+            GameObject buildingTile = Instantiate(cellBuildingsTemplates[Random.Range(0, cellBuildingsTemplates.Count)].BoardPrefab, 
+                FromCoordinatesToWorldPosition((int)position.x, (int)position.y), Quaternion.identity);
+            buildingTile.transform.parent = buildingsRoot;
+            buildingTile.name = $"Ground tile ({position.x}, {position.y})";
 
         }
         

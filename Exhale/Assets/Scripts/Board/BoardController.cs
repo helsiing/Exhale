@@ -1,69 +1,60 @@
 using System.Collections.Generic;
-using Exhale.Scripts.Data;
+using Exhale.Scripts.External.ServiceLocators;
 using UnityEngine;
-using UnityEngine.Assertions;
-using Random = UnityEngine.Random;
 
 namespace Exhale.Scripts.Board
 {
     public class BoardController : MonoBehaviour
     {
         [SerializeField] private GameObject emptyTilePrefab;
-        [SerializeField] private CellGroundTemplateCollection cellGroundTemplates;
-        [SerializeField] private CellBuildingsCollection cellBuildingsTemplates;
         
         [SerializeField] private Transform gridRoot;
         [SerializeField] private Transform groundRoot;
         [SerializeField] private Transform buildingsRoot;
-        [SerializeField] private int width = 10; 
-        [SerializeField] private int height = 10; 
-        [SerializeField] private float rotationSpeed = 100.0f;
+        [SerializeField] private int width = 11; 
+        [SerializeField] private int height = 11; 
         private List<Cell> cells = new ();
+        private ServiceReference<TileFactory> tileFactory = new();
 
-        private void Awake()
-        {
-            Assert.IsNotNull(cellGroundTemplates, "cellGroundTemplates != null");
-            Assert.IsNotNull(cellBuildingsTemplates, "cellBuildingsTemplates != null");
-        }
-
+        
         void Start() {
+            
+            var centerCell = GetBoardCenter();
+            Debug.Log(centerCell);
             
             // grid
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     
-                    cells.Add(new Cell(x, y));
                     GameObject gridTile = Instantiate(emptyTilePrefab, FromCoordinatesToWorldPosition(x, y), Quaternion.identity);
                     gridTile.transform.parent = gridRoot;
                     gridTile.name = $"Grid tile ({x}, {y})";
+                    cells.Add(new Cell(x, y, gridTile));
+
                 }
             }
             
             // base ground
-            for (int x = 3; x < width; x++) {
-                for (int y = 3; y < height; y++) {
-                    
-                    cells.Add(new Cell(x, y));
-                    GameObject groundTile = Instantiate(cellGroundTemplates[Random.Range(0, cellGroundTemplates.Count)].BoardPrefab, FromCoordinatesToWorldPosition(x, y), Quaternion.identity);
-                    groundTile.transform.parent = gridRoot;
-                    groundTile.name = $"Ground tile ({x}, {y})";
-
-                }
-            }
+            GameObject groundTile =
+                tileFactory.Reference.CreateGroundTile(centerCell);
+            groundTile.transform.parent = groundRoot;
+            groundTile.transform.position = FromCoordinatesToWorldPosition(centerCell);
+            groundTile.name = $"Ground tile ({centerCell.x}, {centerCell.y})";
+            cells.Add(new Cell((int)centerCell.x, (int)centerCell.y, groundTile));
             
             // buildings
-            var centerCell = GetBoardCenter();
-            PlaceBuilding(centerCell);
+            //var buildingCell = PlaceBuilding(centerCell);
+            //cells.Add(new Cell((int)centerCell.x, (int)centerCell.y, buildingCell));
 
         }
 
-        private void PlaceBuilding(Vector2 position)
+        private GameObject PlaceBuilding(Vector2 position)
         {
-            GameObject buildingTile = Instantiate(cellBuildingsTemplates[Random.Range(0, cellBuildingsTemplates.Count)].BoardPrefab, 
-                FromCoordinatesToWorldPosition((int)position.x, (int)position.y), Quaternion.identity);
+            GameObject buildingTile =
+                tileFactory.Reference.CreateBuildingTile(FromCoordinatesToWorldPosition((int)position.x, (int)position.y));
             buildingTile.transform.parent = buildingsRoot;
-            buildingTile.name = $"Ground tile ({position.x}, {position.y})";
-
+            buildingTile.name = $"Building tile ({position.x}, {position.y})";
+            return buildingTile;
         }
         
         private Vector2 GetBoardCenter() {
@@ -74,6 +65,11 @@ namespace Exhale.Scripts.Board
         {
             float xOffset = (y % 2 == 1) ? 0.5f : 0f;
             return new Vector3(x + xOffset, 0, y * 0.87f);
+        }
+        
+        private Vector3 FromCoordinatesToWorldPosition(Vector2 position)
+        {
+            return FromCoordinatesToWorldPosition((int)position.x, (int)position.y);
         }
     }
 }

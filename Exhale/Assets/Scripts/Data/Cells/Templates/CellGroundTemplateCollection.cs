@@ -8,5 +8,10 @@ namespace Exhale.Scripts.Data
     {
         [SerializeField] private CellGroundTemplate groundTemplate;
         public CellGroundTemplate GroundTemplate => groundTemplate;
+        
+        public GameObject GetRandom()
+        {
+            return Values[Random.Range(0, Values.Count)].BoardPrefab;
+        }
     }
 }

@@ -5,66 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Board/TileFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Board/TileFactory.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceObservable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceObservable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceRegistered.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceRegistered.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceUpdate.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceUpdate.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceLocator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceLocator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReference.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReference.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameplayServicesReporter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameplayServicesReporter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/TilePlacementService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/TilePlacementService.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Cells/Types.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/CellElementsCollection.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/CellElementsCollection.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Dirt.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Dirt.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Grass.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Grass.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/None.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/None.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Sand.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Sand.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Stone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Stone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Water.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Cells/Types/Items/Water.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-archery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-archery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-cabin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-cabin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-castle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-castle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-dock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-dock.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-farm.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-farm.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-house.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-house.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-market.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-market.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-mill.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-mill.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-mine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-mine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-port.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-port.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-sheep.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-sheep.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-smelter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-smelter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-tower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-tower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-village.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-village.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-walls.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-walls.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-watermill.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-watermill.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-wizard-tower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/building-wizard-tower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/dirt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/dirt.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/empty.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/empty.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/grass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/grass.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/sand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/sand.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/stone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/water.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/water.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Cell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/TileFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/TileFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/TileFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/TileFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuilding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuildingTemplate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuilding.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuildingTemplate.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuildingsCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuildingsTemplateCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuildingsCollection.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuildingsTemplateCollection.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Templates/CellGroundTemplateCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Cells/Templates/CellGroundTemplateCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameplayServicesReporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameplayServicesReporter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker2-prev.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler1.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler3.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler4.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temp/FSTimeGet-55a1afdd67ee14431bf3bb16895a6ee8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temp/FSTimeGet-77772b95ea34341c1983f785168e2af7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temp/FSTimeGet-e4184175a4dd04a7e87e7cb4050e42a8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temp/ProcessJobs/b8613a84801a46c691ba1681b66ddf56.layout" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temp/ProcessJobs/e9a6970f79cd12d8b075e7d72f1b07cb.bakert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temp/__Backupscenes/0.backup" beforeDir="false" afterPath="$PROJECT_DIR$/Temp/__Backupscenes/0.backup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/FSTimeGet-aa6ea291e1f4a4131b484d8a5f86a995" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/FSTimeGet-c2970b1aeddc941e39edc3fecf300169" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/FSTimeGet-ded7bf04890a14db9a04d1ace03e7b93" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityLockfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/__Backupscenes/0.backup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/workerlic" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +73,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ebb6124cf4f74334bb669c2d642dfaa2175200/34/53c19fbb/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/Cells/Buildings/CellBuilding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/Cells/Types/CellElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.brunomikoski.scriptableobjectcollection@2.3.2/Scripts/Runtime/Core/ScriptableObjectCollection.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -134,10 +130,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="75263">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="70540">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="75263" />
+      <option name="pid" value="70540" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -165,7 +161,12 @@
       <workItem from="1715807529444" duration="62000" />
       <workItem from="1715807623665" duration="500000" />
       <workItem from="1715808149072" duration="343000" />
-      <workItem from="1715808641067" duration="1399000" />
+      <workItem from="1715808641067" duration="6284000" />
+      <workItem from="1716242215452" duration="1289000" />
+      <workItem from="1716414935036" duration="1945000" />
+      <workItem from="1717538554070" duration="2927000" />
+      <workItem from="1717601274704" duration="8170000" />
+      <workItem from="1717681445670" duration="4397000" />
     </task>
     <servers />
   </component>
@@ -186,69 +187,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs</url>
-          <line>48</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs" containingFunctionPresentation="Method 'CacheServiceLocator'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Services/TilePlacementService.cs</url>
+          <line>91</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Services/TilePlacementService.cs" containingFunctionPresentation="Method 'PlaceTile'">
             <startOffsets>
-              <option value="1144" />
+              <option value="2963" />
             </startOffsets>
             <endOffsets>
-              <option value="1190" />
+              <option value="2997" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs</url>
-          <line>53</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs" containingFunctionPresentation="Method 'RegisterServices'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Services/TilePlacementService.cs</url>
+          <line>103</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Services/TilePlacementService.cs" containingFunctionPresentation="Method 'PlaceTile'">
             <startOffsets>
-              <option value="1244" />
+              <option value="3625" />
             </startOffsets>
             <endOffsets>
-              <option value="1266" />
+              <option value="3649" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Board/TileFactory.cs</url>
-          <line>14</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Board/TileFactory.cs" containingFunctionPresentation="Constructor 'TileFactory'">
-            <startOffsets>
-              <option value="457" />
-            </startOffsets>
-            <endOffsets>
-              <option value="496" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs</url>
-          <line>31</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs" containingFunctionPresentation="Method 'Awake'">
-            <startOffsets>
-              <option value="883" />
-            </startOffsets>
-            <endOffsets>
-              <option value="902" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs</url>
-          <line>30</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs" containingFunctionPresentation="Method 'Awake'">
-            <startOffsets>
-              <option value="839" />
-            </startOffsets>
-            <endOffsets>
-              <option value="878" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

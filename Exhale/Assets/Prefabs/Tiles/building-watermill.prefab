@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: building-watermill
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2870322596dad471a85e49056b8b1593,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2938204288329514981, guid: 2870322596dad471a85e49056b8b1593,
         type: 3}
       propertyPath: m_LocalRotation.w

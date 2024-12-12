@@ -90,7 +90,7 @@ namespace Exhale.Scripts.External.ServiceLocators
 			
 			instance = serviceLocator;
 
-			DontDestroyOnLoad(serviceLocator.gameObject);
+			//DontDestroyOnLoad(serviceLocator.gameObject);
 		}
 
 		private static void CacheInstance()

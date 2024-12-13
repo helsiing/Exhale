@@ -1,3 +1,4 @@
+using BrunoMikoski.ScriptableObjectCollections;
 using UnityEngine;
 
 namespace Exhale.Scripts.Board
@@ -5,6 +6,9 @@ namespace Exhale.Scripts.Board
     
     public class Cell
     {
+        private LongGuid cellElement;
+        public LongGuid CellElement => cellElement;
+        
         private Vector2 position;
         public Vector2 Position => position;
         

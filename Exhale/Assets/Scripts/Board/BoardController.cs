@@ -1,22 +1,20 @@
+using Exhale.Scripts.Data;
 using UnityEngine;
 
 namespace Exhale.Scripts.Board
 {
     public class BoardController : MonoBehaviour
     {
+        [SerializeField] private BoardConfig boardConfig;
         [SerializeField] private GameObject emptyTilePrefab;
         [SerializeField] private Transform gridRoot;
-        [SerializeField] private int width = 11; 
-        [SerializeField] private int height = 11;
-        [SerializeField] private int numBuildings = 5;
         
-
         private Board board = new();
         
         void Start() {
             
             InitBoard();
-            var centerCell = GetBoardCenter();
+            var centerCell = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
             
             // base ground
             //var groundCell = board.PlaceGround(centerCell);
@@ -27,15 +25,11 @@ namespace Exhale.Scripts.Board
             board.Add(new Cell((int)centerCell.x, (int)centerCell.y, buildingCell));
         }
         
-        private Vector2 GetBoardCenter() {
-            return new Vector2(width / 2, height / 2);
-        }
-
         private void InitBoard()
         {
             // grid
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
+            for (int x = 0; x < boardConfig.Width; x++) {
+                for (int y = 0; y < boardConfig.Height; y++) {
                     
                     GameObject gridTile = Instantiate(emptyTilePrefab, board.FromCoordinatesToWorldPosition(x, y), Quaternion.identity);
                     gridTile.transform.parent = gridRoot;

@@ -13,7 +13,6 @@ namespace Exhale.Scripts
         public override void RegisterServices()
         {
             base.RegisterServices();
-            RegisterServiceInstance(new TileFactory(CellGroundTemplateCollection.Values.ToList(), CellBuildingsTemplateCollection.Values.ToList()));
             RegisterServiceInstance(tilePlacementService);  
         }
     }

@@ -1,57 +1,52 @@
-using System.Collections.Generic;
-using System.Linq;
-using Exhale.Scripts.External.ServiceLocators;
+using System;
+using Exhale.Scripts.Data;
 using UnityEngine;
 
 namespace Exhale.Scripts.Board
 {
-    public class Board
+    public class Board : MonoBehaviour
     {
-        private ServiceReference<TileFactory> tileFactory = new();
-        private List<Cell> cells = new ();
-        public List<Cell> Cells => cells;
+        [SerializeField] private BoardConfig boardConfig;
+        [SerializeField] private GameObject emptyTilePrefab;
+        [SerializeField] private Transform gridRoot;
 
-        public void Add(Cell cell)
-        {
-            cells.Add(cell);
-        }
-
-        private Cell Get(Vector2 position)
-        {
-            return cells.FirstOrDefault(x => x.Position.Equals(position));
-        }
+        private BoardLogic boardLogic = new();
         
-        public GameObject PlaceGround(Vector2 position)
+        void Start() 
         {
-            GameObject groundTile =
-                tileFactory.Reference.GetRandomGroundTile(true);
-            var cell = Get(position);
-            groundTile.transform.parent = cell.CellObject.transform;
-            groundTile.transform.position = FromCoordinatesToWorldPosition(position);
-            groundTile.transform.rotation = Quaternion.identity;
-            return groundTile;
-        }
-        
-        public GameObject PlaceBuilding(Vector2 position)
-        {
-            GameObject buildingTile =
-                tileFactory.Reference.GetRandomBuildingTile(true);
-            buildingTile.transform.position = FromCoordinatesToWorldPosition(position);
-            var cell = Get(position);
-            buildingTile.transform.parent = cell.CellObject.transform;
-            buildingTile.transform.rotation = Quaternion.identity;
-            return buildingTile;
+            Vector2 centerCell = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
+         
+            boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
+            
+            boardLogic.PlaceTile((int)centerCell.x, (int)centerCell.y, TileType.Ground);
+            boardLogic.PlaceTile((int)centerCell.x + 1, (int)centerCell.y + 1, TileType.Building);
+            
+            DrawBoard();
         }
 
-        private Vector3 FromCoordinatesToWorldPosition(Vector2 position)
+        private void DrawBoard()
         {
-            return FromCoordinatesToWorldPosition((int)position.x, (int)position.y);
-        }
-        
-        public Vector3 FromCoordinatesToWorldPosition(int x, int y)
-        {
-            float xOffset = (y % 2 == 1) ? 0.5f : 0f;
-            return new Vector3(x + xOffset, 0, y * 0.87f);
+            Tile[,] tiles = boardLogic.Tiles;
+            
+            for (int row = 0; row < tiles.GetLength(0); row++)
+            {
+                for (int col = 0; col < tiles.GetLength(1); col++)
+                {
+                    GameObject tileGameObject = tiles[row, col].Type switch
+                    {
+                        TileType.Empty => Instantiate(emptyTilePrefab),
+                        TileType.Ground => TileFactory.GetRandomTile(true),
+                        TileType.Building => TileFactory.GetRandomTile(true),
+                        _ => throw new ArgumentOutOfRangeException()
+                    };
+
+                    if (tileGameObject != null)
+                    {
+                        tileGameObject.transform.SetParent(gridRoot);
+                        tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(row, col);
+                    }
+                }
+            }
         }
     }
 }

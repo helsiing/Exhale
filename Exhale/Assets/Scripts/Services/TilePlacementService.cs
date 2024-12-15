@@ -8,12 +8,11 @@ namespace Exhale.Scripts.Board
     {
         private GameObject selectedTilePrefab;
         private GameObject previewTile;
-        private readonly ServiceReference<TileFactory> tileFactoryService = new();
         private Camera mainCamera;
 
         void Start()
         {
-            selectedTilePrefab = tileFactoryService.Reference.GetRandomGroundTile(false);
+            selectedTilePrefab = TileFactory.GetRandomTile(false);
             mainCamera = Camera.main;
             Assert.IsNotNull(mainCamera);
         }
@@ -23,7 +22,7 @@ namespace Exhale.Scripts.Board
 
             if (Input.GetKeyUp(KeyCode.Tab))
             {
-                selectedTilePrefab = tileFactoryService.Reference.GetRandomGroundTile(false);
+                selectedTilePrefab =TileFactory.GetRandomTile(false);
                 ClearTilePreview();
             }
             

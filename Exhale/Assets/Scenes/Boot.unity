@@ -175,6 +175,13 @@ MonoBehaviour:
       m_IsLoaded: 1
       m_IsActive: 0
       m_IsSubScene: 0
+  - Name: Boot.unity
+    Path: Assets/Scenes/Boot.unity
+    Setup:
+      m_Path: Assets/Scenes/Boot.unity
+      m_IsLoaded: 1
+      m_IsActive: 1
+      m_IsSubScene: 0
 --- !u!4 &1199490606
 Transform:
   m_ObjectHideFlags: 0

@@ -526,6 +526,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2141700191}
   - component: {fileID: 2141700192}
+  - component: {fileID: 2141700193}
+  - component: {fileID: 2141700194}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -562,6 +564,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardConfig: {fileID: 11400000, guid: c133cef94bd363f4bbc6a8cb6113dc9e, type: 2}
+--- !u!114 &2141700193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141700187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f426a55e26c43269fe62ae13e16cbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2141700194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141700187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b90a628e0374e2b9b6dafeda98fc50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   emptyTilePrefab: {fileID: 8349000035386214327, guid: 4101feedf079f4594ae34d0b629d65a8,
     type: 3}
   gridRoot: {fileID: 45283613}

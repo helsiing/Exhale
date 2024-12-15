@@ -21,8 +21,16 @@ namespace Exhale.Scripts.Board
                 }
             }
         }
+        
+        public Tile PlaceTile(Vector2 position, TileType tileType)
+        {
+            int row = (int) position.x;
+            int col = (int) position.y;
 
-        public bool PlaceTile(int row, int col, TileType tileType)
+            return PlaceTile(row, col, tileType);
+        }
+
+        public Tile PlaceTile(int row, int col, TileType tileType)
         {
             if (row <= tiles.GetLength(0) && col <= tiles.GetLength(1))
             {
@@ -30,11 +38,11 @@ namespace Exhale.Scripts.Board
                 {
                     Tile tile = new Tile(new Vector2(row, col), tileType);
                     tiles[row, col] = tile;
-                    return true;
+                    return tile;
                 }
             }
             
-            return false;
+            return null;
         }
         
         

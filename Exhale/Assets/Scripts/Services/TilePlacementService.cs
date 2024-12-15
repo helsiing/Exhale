@@ -19,7 +19,6 @@ namespace Exhale.Scripts.Board
 
         void Update()
         {
-
             if (Input.GetKeyUp(KeyCode.Tab))
             {
                 selectedTilePrefab =TileFactory.GetRandomTile(false);

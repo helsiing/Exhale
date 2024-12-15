@@ -1,52 +1,51 @@
 using System;
 using Exhale.Scripts.Data;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Exhale.Scripts.Board
 {
+    [RequireComponent(typeof(BoardSimulation))]
+    [RequireComponent(typeof(BoardPresentation))]
     public class Board : MonoBehaviour
     {
         [SerializeField] private BoardConfig boardConfig;
-        [SerializeField] private GameObject emptyTilePrefab;
-        [SerializeField] private Transform gridRoot;
-
-        private BoardLogic boardLogic = new();
         
-        void Start() 
+        private BoardSimulation boardSimulation;
+        private BoardPresentation boardPresentation;
+        private readonly BoardLogic boardLogic = new();
+
+        private void Awake()
+        {
+            TryGetComponent(out boardSimulation);
+            TryGetComponent(out boardPresentation);
+            
+            boardSimulation.OnPlaceTileEvent += OnPlaceTile;
+        }
+
+        private void Start() 
         {
             Vector2 centerCell = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
          
             boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
             
-            boardLogic.PlaceTile((int)centerCell.x, (int)centerCell.y, TileType.Ground);
+            boardLogic.PlaceTile(centerCell, TileType.Ground);
             boardLogic.PlaceTile((int)centerCell.x + 1, (int)centerCell.y + 1, TileType.Building);
             
-            DrawBoard();
+            boardPresentation.DrawBoard(boardLogic.Tiles);
+        }
+        
+        void OnPlaceTile(Vector2 position)
+        {
+            var tile = boardLogic.PlaceTile(position, TileType.Building);
+            Assert.IsNotNull(tile, "tile != null");
+            
+            boardPresentation.DrawTile(tile);
         }
 
-        private void DrawBoard()
+        private void OnDestroy()
         {
-            Tile[,] tiles = boardLogic.Tiles;
-            
-            for (int row = 0; row < tiles.GetLength(0); row++)
-            {
-                for (int col = 0; col < tiles.GetLength(1); col++)
-                {
-                    GameObject tileGameObject = tiles[row, col].Type switch
-                    {
-                        TileType.Empty => Instantiate(emptyTilePrefab),
-                        TileType.Ground => TileFactory.GetRandomTile(true),
-                        TileType.Building => TileFactory.GetRandomTile(true),
-                        _ => throw new ArgumentOutOfRangeException()
-                    };
-
-                    if (tileGameObject != null)
-                    {
-                        tileGameObject.transform.SetParent(gridRoot);
-                        tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(row, col);
-                    }
-                }
-            }
+            boardSimulation.OnPlaceTileEvent -= OnPlaceTile;
         }
     }
 }

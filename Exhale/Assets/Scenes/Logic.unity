@@ -203,6 +203,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: _GameplayServices
       objectReference: {fileID: 0}
+    - target: {fileID: 7997260732021756279, guid: d2bfe7c28cea84047bc4de3855021859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8143979100908688233, guid: d2bfe7c28cea84047bc4de3855021859,
         type: 3}
       propertyPath: tilePlacementService

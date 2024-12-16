@@ -5,7 +5,6 @@ namespace Exhale.Scripts.Gameplay
 {
     public class BoardSimulation : MonoBehaviour
     {
-        //private GameObject selectedTilePrefab;
         private GameObject previewTile;
         private Camera mainCamera;
         
@@ -14,20 +13,12 @@ namespace Exhale.Scripts.Gameplay
         
         void Start()
         {
-            //selectedTilePrefab = TileFactory.GetRandomTile(false);
             mainCamera = Camera.main;
             Assert.IsNotNull(mainCamera);
         }
 
         void Update()
         {
-            /*if (Input.GetKeyUp(KeyCode.Tab))
-            {
-                selectedTilePrefab =TileFactory.GetRandomTile(false);
-                ClearTilePreview();
-            }*/
-            
-            //HandleTilePreview();
             if (Input.GetMouseButtonDown(0))
             {
                 PlaceTile();

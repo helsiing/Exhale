@@ -1,9 +1,12 @@
-using UnityEngine.InputSystem;
+#region
+using System;
+using TouchScript.Gestures.TransformGestures;
 using UnityEngine;
+#endregion
 
 public class CameraController : MonoBehaviour
 {
-        private CameraControlActions cameraActions;
+    /*private CameraControlActions cameraActions;
         private InputAction movement;
         private Transform cameraTransform;
 
@@ -212,5 +215,40 @@ public class CameraController : MonoBehaviour
             Vector3 right = cameraTransform.right;
             right.y = 0f;
             return right;
-        }
+        }*/
+
+    [SerializeField] private Transform pivot;
+    [SerializeField] private Camera camera;
+    [SerializeField] private ScreenTransformGesture twoFingerMoveGesture;
+    [SerializeField] private ScreenTransformGesture manipulationGesture;
+    [SerializeField] private float panSpeed = 200f;
+    [SerializeField] private float rotationSpeed = 200f;
+    [SerializeField] private float zoomSpeed = 10f;
+
+    private void OnEnable()
+    {
+        twoFingerMoveGesture.Transformed += OnTwoFingerMoveGesture;
+        manipulationGesture.Transformed += OnManipulationGesture;
+    }
+
+    private void OnDisable()
+    {
+        twoFingerMoveGesture.Transformed -= OnTwoFingerMoveGesture;
+        manipulationGesture.Transformed -= OnManipulationGesture;
+    }
+
+    private void OnManipulationGesture(object sender, EventArgs e)
+    {
+        var rotation = Quaternion.Euler(manipulationGesture.DeltaPosition.y / Screen.height * rotationSpeed,
+            -manipulationGesture.DeltaPosition.x / Screen.width * rotationSpeed,
+            manipulationGesture.DeltaRotation);
+        pivot.localRotation *= rotation;
+        
+        camera.transform.localPosition += Vector3.forward * (manipulationGesture.DeltaScale - 1f) * zoomSpeed;
+    }
+
+    private void OnTwoFingerMoveGesture(object sender, EventArgs e)
+    {
+        pivot.localPosition += pivot.rotation * twoFingerMoveGesture.DeltaPosition * panSpeed;
+    }
 }

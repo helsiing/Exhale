@@ -1,4 +1,3 @@
-using System;
 using Exhale.Scripts.Data;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -14,7 +13,7 @@ namespace Exhale.Scripts.Gameplay
         private BoardSimulation boardSimulation;
         private BoardPresentation boardPresentation;
         private readonly BoardLogic boardLogic = new();
-
+        
         private void Awake()
         {
             TryGetComponent(out boardSimulation);
@@ -30,20 +29,22 @@ namespace Exhale.Scripts.Gameplay
             boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
             boardPresentation.DrawBoard(boardLogic.Tiles);
             
-            var tile = PlaceTile(centerCell, TileType.Building);
-            
+            TileData tileData = new TileData(centerCell, TileType.Building);
+            Tile tile = PlaceTile(tileData);
+
         }
 
-        private Tile PlaceTile(Vector2 position, TileType type)
+        private Tile PlaceTile(TileData tileData)
         {
-            var tile = boardLogic.PlaceTile(position, type);
+            TileData tile = boardLogic.PlaceTile(tileData.Position, tileData.Type);
             Assert.IsNotNull(tile, "tile != null");
             return boardPresentation.DrawTile(tile);
         }
         
         void OnPlaceTile(Vector2 position)
         {
-            PlaceTile(position, TileType.Building);
+            TileData tileData = new TileData(position, TileType.Building);
+            Tile tile = PlaceTile(tileData);
         }
 
         private void OnDestroy()

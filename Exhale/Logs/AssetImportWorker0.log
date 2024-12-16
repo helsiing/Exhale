@@ -1380,3 +1380,4 @@ Unloading 10 unused Assets / (0.6 MB). Loaded Objects now: 6170.
 Memory consumption went from 297.6 MB to 297.0 MB.
 Total: 28.193208 ms (FindLiveObjects: 0.295209 ms CreateObjectMapping: 0.056083 ms MarkObjects: 27.534708 ms  DeleteObjects: 0.306542 ms)
 
+[usbmuxd] Attached: 51 00008101-0008241A2E03001E

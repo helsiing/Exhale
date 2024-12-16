@@ -1,38 +1,40 @@
-using Exhale.Scripts.External.ServiceLocators;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Exhale.Scripts.Board
+namespace Exhale.Scripts.Gameplay
 {
-    public class TilePlacementService : MonoBehaviour, IService
+    public class BoardSimulation : MonoBehaviour
     {
-        private GameObject selectedTilePrefab;
+        //private GameObject selectedTilePrefab;
         private GameObject previewTile;
         private Camera mainCamera;
-
+        
+        public delegate void OnPlaceTile(Vector2 position);
+        public event OnPlaceTile OnPlaceTileEvent;
+        
         void Start()
         {
-            selectedTilePrefab = TileFactory.GetRandomTile(false);
+            //selectedTilePrefab = TileFactory.GetRandomTile(false);
             mainCamera = Camera.main;
             Assert.IsNotNull(mainCamera);
         }
 
         void Update()
         {
-            if (Input.GetKeyUp(KeyCode.Tab))
+            /*if (Input.GetKeyUp(KeyCode.Tab))
             {
                 selectedTilePrefab =TileFactory.GetRandomTile(false);
                 ClearTilePreview();
-            }
+            }*/
             
-            HandleTilePreview();
+            //HandleTilePreview();
             if (Input.GetMouseButtonDown(0))
             {
                 PlaceTile();
             }
         }
 
-        private void ClearTilePreview()
+        /*private void ClearTilePreview()
         {
             // If the mouse is not over a grid cell, hide the preview tile
             if (previewTile != null)
@@ -79,7 +81,7 @@ namespace Exhale.Scripts.Board
                 // If the raycast doesn't hit anything, hide the preview tile
                 ClearTilePreview();
             }
-        }
+        }*/
 
         void PlaceTile()
         {
@@ -91,13 +93,10 @@ namespace Exhale.Scripts.Board
             {
                 // Check if the hit object is a grid cell
                 GameObject clickedObject = hit.collider.gameObject;
-                if (clickedObject.CompareTag("GridTile"))
+                if (clickedObject.CompareTag("GridTile") && 
+                    clickedObject.TryGetComponent(out ITileBoardPositionProvider tileBoardPositionProvider))
                 {
-                    // Place the selected tile at the clicked position
-                    Vector3 position = clickedObject.transform.position;
-                    GameObject newTile = Instantiate(selectedTilePrefab, position, Quaternion.identity);
-                    newTile.transform.parent = clickedObject.transform;
-
+                    OnPlaceTileEvent?.Invoke(tileBoardPositionProvider.BoardPosition);
                     // Destroy the preview tile to avoid duplication
                     if (previewTile != null)
                     {
@@ -105,52 +104,6 @@ namespace Exhale.Scripts.Board
                     }
                 }
             }
-        }
-
-        public void SelectTile(int tileType)
-        {
-            // Set the selected tile prefab based on the tileType (0: Wood, 1: Sand, etc.)
-            /*switch (tileType)
-            {
-                case 0:
-                    selectedTilePrefab = woodTilePrefab;
-                    break;
-                case 1:
-                    selectedTilePrefab = sandTilePrefab;
-                    break;
-                case 2:
-                    selectedTilePrefab = stoneTilePrefab;
-                    break;
-                case 3:
-                    selectedTilePrefab = waterTilePrefab;
-                    break;
-                // Add cases for other tile types
-            }*/
-
-            // Update the preview tile if it exists
-            if (previewTile != null)
-            {
-                Destroy(previewTile);
-                previewTile = Instantiate(selectedTilePrefab, previewTile.transform.position, Quaternion.identity);
-                SetTileTransparency(previewTile, 0.5f);
-            }
-        }
-
-        void SetTileTransparency(GameObject tile, float alpha)
-        {
-            // Set the transparency of the tile (assuming it has a Renderer component)
-            Renderer renderer = tile.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                Color color = renderer.material.color;
-                color.a = alpha;
-                renderer.material.color = color;
-            }
-        }
-
-        public void Dispose()
-        {
-            
         }
     }
 }

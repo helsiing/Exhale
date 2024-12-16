@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Exhale.Scripts.Board
+namespace Exhale.Scripts.Gameplay
 {
     public static class BoardHelper
     {

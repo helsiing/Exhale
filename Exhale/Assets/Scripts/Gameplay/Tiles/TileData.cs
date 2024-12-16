@@ -1,9 +1,9 @@
 using Exhale.Scripts.Data;
 using UnityEngine;
 
-namespace Exhale.Scripts.Board
+namespace Exhale.Scripts.Gameplay
 {
-    public class Tile
+    public class TileData
     {
         private TileType type;
         public TileType Type => type;
@@ -14,7 +14,7 @@ namespace Exhale.Scripts.Board
         private Vector2 position;
         public Vector2 Position => position;
         
-        public Tile(Vector2 position, TileType type, int level = 0)
+        public TileData(Vector2 position, TileType type, int level = 0)
         {
             this.position = position;
             this.type = type;

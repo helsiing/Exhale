@@ -2,7 +2,7 @@ using System.Linq;
 using Exhale.Scripts.Data;
 using UnityEngine;
 
-namespace Exhale.Scripts.Board
+namespace Exhale.Scripts.Gameplay
 {
     public static class TileFactory
     {

@@ -3,14 +3,14 @@ using Exhale.Scripts.Data;
 using Exhale.Scripts.Utils;
 using UnityEngine;
 
-namespace Exhale.Scripts.Board
+namespace Exhale.Scripts.Gameplay
 {
     public class BoardPresentation : MonoBehaviour
     {
         [SerializeField] private GameObject emptyTilePrefab;
         [SerializeField] private Transform gridRoot;
         
-        public void DrawBoard(Tile[,] tiles)
+        public void DrawBoard(TileData[,] tiles)
         {
             gridRoot.gameObject.DestroyChildObjects();
             for (int row = 0; row < tiles.GetLength(0); row++)
@@ -22,9 +22,9 @@ namespace Exhale.Scripts.Board
             }
         }
 
-        public void DrawTile(Tile tile)
+        public Tile DrawTile(TileData tileData)
         {
-            GameObject tileGameObject = tile.Type switch
+            GameObject tileGameObject = tileData.Type switch
             {
                 TileType.Empty => Instantiate(emptyTilePrefab),
                 TileType.Ground => TileFactory.GetRandomTile(true),
@@ -35,13 +35,16 @@ namespace Exhale.Scripts.Board
             if (tileGameObject != null)
             {
                 tileGameObject.transform.SetParent(gridRoot);
-                tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(tile.Position);
+                tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(tileData.Position);
 
-                if (tileGameObject.TryGetComponent(out TileSimulation tileSimulation))
+                if (tileGameObject.TryGetComponent(out Tile tile))
                 {
-                    tileSimulation.Init(tile);
+                    tile.Init(tileData);
+                    return tile;
                 }
             }
+
+            return null;
         }
     }
 }

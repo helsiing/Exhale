@@ -1,28 +1,28 @@
 using Exhale.Scripts.Data;
 using UnityEngine;
 
-namespace Exhale.Scripts.Board
+namespace Exhale.Scripts.Gameplay
 {
     public class BoardLogic
     {
-        private Tile[,] tiles;
-        public Tile[,] Tiles => tiles;
+        private TileData[,] tiles;
+        public TileData[,] Tiles => tiles;
         
         public void InitBoard(int width, int height)
         {
-            tiles = new Tile[width, height];
+            tiles = new TileData[width, height];
             
             for (int row = 0; row < width; row++)
             {
                 for (int col = 0; col < height; col++)
                 {
-                    Tile tile = new Tile(new Vector2(row, col), 0);
-                    tiles[row, col] = tile;
+                    TileData tileData = new TileData(new Vector2(row, col), 0);
+                    tiles[row, col] = tileData;
                 }
             }
         }
         
-        public Tile PlaceTile(Vector2 position, TileType tileType)
+        public TileData PlaceTile(Vector2 position, TileType tileType)
         {
             int row = (int) position.x;
             int col = (int) position.y;
@@ -30,15 +30,15 @@ namespace Exhale.Scripts.Board
             return PlaceTile(row, col, tileType);
         }
 
-        public Tile PlaceTile(int row, int col, TileType tileType)
+        public TileData PlaceTile(int row, int col, TileType tileType)
         {
             if (row <= tiles.GetLength(0) && col <= tiles.GetLength(1))
             {
                 if (tiles[row, col].Type == 0)
                 {
-                    Tile tile = new Tile(new Vector2(row, col), tileType);
-                    tiles[row, col] = tile;
-                    return tile;
+                    TileData tileData = new TileData(new Vector2(row, col), tileType);
+                    tiles[row, col] = tileData;
+                    return tileData;
                 }
             }
             

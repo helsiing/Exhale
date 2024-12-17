@@ -13,6 +13,7 @@ namespace Exhale.Scripts.Gameplay
         public void DrawBoard(TileData[,] tiles)
         {
             gridRoot.gameObject.DestroyChildObjects();
+
             for (int row = 0; row < tiles.GetLength(0); row++)
             {
                 for (int col = 0; col < tiles.GetLength(1); col++)
@@ -20,9 +21,6 @@ namespace Exhale.Scripts.Gameplay
                     DrawTile(tiles[row, col]);
                 }
             }
-
-            var boardCenterPosition = BoardHelper.CenterBoard(tiles.GetLength(0), tiles.GetLength(1), 1, 1);
-            gridRoot.transform.position = boardCenterPosition;
         }
 
         public Tile DrawTile(TileData tileData)

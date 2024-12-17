@@ -13,7 +13,8 @@ namespace Exhale.Scripts.Gameplay
         private BoardSimulation boardSimulation;
         private BoardPresentation boardPresentation;
         private readonly BoardLogic boardLogic = new();
-        
+        [SerializeField] private Camera camera;
+
         private void Awake()
         {
             TryGetComponent(out boardSimulation);
@@ -24,12 +25,17 @@ namespace Exhale.Scripts.Gameplay
 
         private void Start() 
         {
-            Vector2 centerCell = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
+            Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
          
             boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
             boardPresentation.DrawBoard(boardLogic.Tiles);
             
-            TileData tileData = new TileData(centerCell, TileType.Building);
+            // Position the camera
+            Vector3 centerCellWorldPosition = BoardHelper.FromCoordinatesToWorldPosition(centerCellBoardPosition);
+            camera.transform.position = new Vector3(centerCellWorldPosition.x, 10f, centerCellWorldPosition.z - 10f); // Adjust Y and Z for your scene setup
+            camera.transform.LookAt(centerCellWorldPosition); // Make the camera look at the grid center
+            
+            TileData tileData = new TileData(centerCellBoardPosition, TileType.Building);
             Tile tile = PlaceTile(tileData);
 
         }

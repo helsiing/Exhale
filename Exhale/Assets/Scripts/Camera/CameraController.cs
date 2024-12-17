@@ -242,13 +242,6 @@ public class CameraController : MonoBehaviour
 
     private void OnManipulationGesture(object sender, EventArgs e)
     {
-        /*var rotation = Quaternion.Euler(manipulationGesture.DeltaPosition.y / Screen.height * rotationSpeed,
-            -manipulationGesture.DeltaPosition.x / Screen.width * rotationSpeed,
-            manipulationGesture.DeltaRotation);*/
-        
-        
-        Debug.Log($"{manipulationGesture.DeltaPosition}");
-        
         camera.transform.RotateAround(board.position, Vector3.up, manipulationGesture.DeltaPosition.y + 2 * rotationSpeed);
         camera.transform.LookAt(board);
 

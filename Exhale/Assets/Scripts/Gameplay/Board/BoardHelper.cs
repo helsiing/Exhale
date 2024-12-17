@@ -18,7 +18,7 @@ namespace Exhale.Scripts.Gameplay
             return new Vector3(row + xOffset, 0, col * zOffSet);
         }
         
-        public static Vector3 CenterBoard(int rows, int columns, float hexWidth, float hexHeight)
+        public static Vector3 GetBoardCenterWorldPosition(int rows, int columns, float hexWidth, float hexHeight)
         {
             // Calculate the center position
             float totalWidth = (columns - 1) * hexWidth * 0.75f + hexWidth;

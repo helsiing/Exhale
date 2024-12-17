@@ -411,6 +411,9 @@ MonoBehaviour:
   panSpeed: 0.01
   rotationSpeed: 10
   zoomSpeed: 100
+  maxZoom: 15
+  minZoom: 75
+  board: {fileID: 1372846644}
 --- !u!4 &412532959
 Transform:
   m_ObjectHideFlags: 0
@@ -480,7 +483,7 @@ MonoBehaviour:
   OnTransformComplete:
     m_PersistentCalls:
       m_Calls: []
-  type: 5
+  type: 6
   screenTransformThreshold: 0.2
   minScreenPointsDistance: 0.5
 --- !u!114 &412532962

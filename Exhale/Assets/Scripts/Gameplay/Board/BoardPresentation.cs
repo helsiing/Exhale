@@ -20,6 +20,9 @@ namespace Exhale.Scripts.Gameplay
                     DrawTile(tiles[row, col]);
                 }
             }
+
+            var boardCenterPosition = BoardHelper.CenterBoard(tiles.GetLength(0), tiles.GetLength(1), 1, 1);
+            gridRoot.transform.position = boardCenterPosition;
         }
 
         public Tile DrawTile(TileData tileData)

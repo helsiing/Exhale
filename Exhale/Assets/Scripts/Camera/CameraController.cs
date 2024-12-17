@@ -224,6 +224,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float panSpeed = 200f;
     [SerializeField] private float rotationSpeed = 200f;
     [SerializeField] private float zoomSpeed = 10f;
+    [SerializeField] private float maxZoom = 75f;
+    [SerializeField] private float minZoom = 15f;
+    [SerializeField] private Transform board;
 
     private void OnEnable()
     {
@@ -239,12 +242,17 @@ public class CameraController : MonoBehaviour
 
     private void OnManipulationGesture(object sender, EventArgs e)
     {
-        var rotation = Quaternion.Euler(manipulationGesture.DeltaPosition.y / Screen.height * rotationSpeed,
+        /*var rotation = Quaternion.Euler(manipulationGesture.DeltaPosition.y / Screen.height * rotationSpeed,
             -manipulationGesture.DeltaPosition.x / Screen.width * rotationSpeed,
-            manipulationGesture.DeltaRotation);
-        pivot.localRotation *= rotation;
+            manipulationGesture.DeltaRotation);*/
         
-        camera.transform.localPosition += Vector3.forward * (manipulationGesture.DeltaScale - 1f) * zoomSpeed;
+        
+        Debug.Log($"{manipulationGesture.DeltaPosition}");
+        
+        camera.transform.RotateAround(board.position, Vector3.up, manipulationGesture.DeltaPosition.y + 2 * rotationSpeed);
+        camera.transform.LookAt(board);
+
+        camera.fieldOfView = Math.Clamp(camera.fieldOfView + (manipulationGesture.DeltaScale - 1f) * zoomSpeed, maxZoom, minZoom);
     }
 
     private void OnTwoFingerMoveGesture(object sender, EventArgs e)

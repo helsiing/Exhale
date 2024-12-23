@@ -242,9 +242,7 @@ public class CameraController : MonoBehaviour
 
     private void OnManipulationGesture(object sender, EventArgs e)
     {
-        camera.transform.RotateAround(board.position, Vector3.up, manipulationGesture.DeltaPosition.y + 2 * rotationSpeed);
-        camera.transform.LookAt(board);
-
+        pivot.RotateAround(board.position, Vector3.up, manipulationGesture.DeltaPosition.y + 2 * rotationSpeed);
         camera.fieldOfView = Math.Clamp(camera.fieldOfView + (manipulationGesture.DeltaScale - 1f) * zoomSpeed, maxZoom, minZoom);
     }
 

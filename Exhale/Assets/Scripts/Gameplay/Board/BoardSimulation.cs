@@ -17,13 +17,13 @@ namespace Exhale.Scripts.Gameplay
             Assert.IsNotNull(mainCamera);
         }
 
-        void Update()
+        /*void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
                 PlaceTile();
             }
-        }
+        }*/
 
         /*private void ClearTilePreview()
         {

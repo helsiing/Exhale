@@ -9,25 +9,26 @@ namespace Exhale.Scripts.Gameplay
             return new Vector2(width / 2, height / 2);
         }
         
-        public static Vector3 FromCoordinatesToWorldPosition(Vector2 position)
+        public static Vector3 FromCoordinatesToWorldPosition(Vector2 position, int totalRows, int totalCols)
         {
             int row = (int)position.x;
             int col = (int)position.y;
+
+            // Hexagon offsets (assuming flat-topped hexes)
             float xOffset = (col % 2 == 1) ? 0.5f : 0f;
-            float zOffSet = 0.87f;
-            return new Vector3(row + xOffset, 0, col * zOffSet);
+            float zOffset = 0.87f; // Distance between rows (based on hex height)
+
+            // Calculate raw world position (bottom-left origin)
+            Vector3 rawPosition = new Vector3(row + xOffset, 0, col * zOffset);
+
+            // Calculate board center offset
+            float boardWidth = (totalRows - 1) + 0.5f;  // Approx width of the board
+            float boardHeight = (totalCols - 1) * zOffset; // Approx height of the board
+            Vector3 boardCenterOffset = new Vector3(boardWidth / 2f, 0, boardHeight / 2f);
+
+            // Offset the position to center the board at (0, 0, 0)
+            return rawPosition - boardCenterOffset;
         }
         
-        public static Vector3 GetBoardCenterWorldPosition(int rows, int columns, float hexWidth, float hexHeight)
-        {
-            // Calculate the center position
-            float totalWidth = (columns - 1) * hexWidth * 0.75f + hexWidth;
-            float totalHeight = (rows - 1) * hexHeight + hexHeight;
-            Vector3 centerOffset = new Vector3(totalWidth * 0.5f - hexWidth * 0.5f, 0, totalHeight * 0.5f - hexHeight * 0.5f);
-
-            return -centerOffset;
-            // Move the board to center it at (0, 0, 0)
-            //board.transform.position = -centerOffset;
-        }
     }
 }

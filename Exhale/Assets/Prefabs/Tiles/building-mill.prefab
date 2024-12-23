@@ -58,10 +58,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7426233916827082813, guid: e6f6dbb41412641e0b87593546c82fe3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e6f6dbb41412641e0b87593546c82fe3,
         type: 3}
       propertyPath: m_Name
       value: building-mill
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6f6dbb41412641e0b87593546c82fe3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e6f6dbb41412641e0b87593546c82fe3,
         type: 3}
@@ -109,6 +119,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2055241860606461728}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6f6dbb41412641e0b87593546c82fe3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9036195212781845366}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6f6dbb41412641e0b87593546c82fe3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5188698833201305453}
   m_SourcePrefab: {fileID: 100100000, guid: e6f6dbb41412641e0b87593546c82fe3, type: 3}
 --- !u!1 &8345840523562764690 stripped
 GameObject:
@@ -135,7 +153,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5067410169945294008, guid: e6f6dbb41412641e0b87593546c82fe3, type: 3}
 --- !u!114 &-4456397300166157700
@@ -162,3 +180,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9384f6c05243a6934a6a8d762f571e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9036195212781845366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345840523562764690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d922f29bc6a46268e1a473ec919c8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5188698833201305453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345840523562764690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c8d97aff62a473e888feae3bec54cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+  basicEditor: 1
+  generalProps: 0
+  limitsProps: 0
+  advancedProps: 0
+  minPointers: 0
+  maxPointers: 0
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  useUnityEvents: 0
+  sendStateChangeEvents: 0
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  OnLongPress:
+    m_PersistentCalls:
+      m_Calls: []
+  timeToPress: 1
+  distanceLimit: Infinity

@@ -10,13 +10,17 @@ namespace Exhale.Scripts.Gameplay
         [SerializeField] private GameObject emptyTilePrefab;
         [SerializeField] private Transform gridRoot;
         
+        private int totalRows;
+        private int totalColumns;
+        
         public void DrawBoard(TileData[,] tiles)
         {
             gridRoot.gameObject.DestroyChildObjects();
-
-            for (int row = 0; row < tiles.GetLength(0); row++)
+            totalRows = tiles.GetLength(0);
+            totalColumns = tiles.GetLength(1);
+            for (int row = 0; row < totalRows; row++)
             {
-                for (int col = 0; col < tiles.GetLength(1); col++)
+                for (int col = 0; col < totalColumns; col++)
                 {
                     DrawTile(tiles[row, col]);
                 }
@@ -36,7 +40,8 @@ namespace Exhale.Scripts.Gameplay
             if (tileGameObject != null)
             {
                 tileGameObject.transform.SetParent(gridRoot);
-                tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(tileData.Position);
+                tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(tileData.Position, totalRows, totalColumns);
+                tileGameObject.name = $"Tile {tileData.Type} - [{tileData.Position.x}, {tileData.Position.y}]";
 
                 if (tileGameObject.TryGetComponent(out Tile tile))
                 {

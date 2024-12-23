@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -287,6 +288,30 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5768c36d1bb4acea50bd233372843a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Main Camera
+  basicEditor: 0
+  advancedProps: 0
+  hitProps: 0
+  hit3DObjects: 1
+  hit2DObjects: 0
+  hitWorldSpaceUI: 0
+  hitScreenSpaceUI: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  useHitFilters: 0
 --- !u!1 &335046272
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +430,7 @@ MonoBehaviour:
   twoFingerMoveGesture: {fileID: 412532962}
   manipulationGesture: {fileID: 412532961}
   panSpeed: 0.01
-  rotationSpeed: 10
+  rotationSpeed: 1
   zoomSpeed: 100
   maxZoom: 15
   minZoom: 75
@@ -479,7 +504,7 @@ MonoBehaviour:
   OnTransformComplete:
     m_PersistentCalls:
       m_Calls: []
-  type: 6
+  type: 7
   screenTransformThreshold: 0.2
   minScreenPointsDistance: 0.5
 --- !u!114 &412532962
@@ -634,7 +659,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardConfig: {fileID: 11400000, guid: c133cef94bd363f4bbc6a8cb6113dc9e, type: 2}
-  camera: {fileID: 330585545}
 --- !u!114 &2141700194
 MonoBehaviour:
   m_ObjectHideFlags: 0

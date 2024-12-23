@@ -65,6 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 574da73cc57944299926b4ce098a24d2,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 574da73cc57944299926b4ce098a24d2,
+        type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -84,6 +89,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -4458214017936101136}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 574da73cc57944299926b4ce098a24d2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6998832225113627865}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 574da73cc57944299926b4ce098a24d2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -554581038473462976}
   m_SourcePrefab: {fileID: 100100000, guid: 574da73cc57944299926b4ce098a24d2, type: 3}
 --- !u!1 &5951036546050511743 stripped
 GameObject:
@@ -110,7 +123,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8134003407345992923, guid: 574da73cc57944299926b4ce098a24d2, type: 3}
 --- !u!114 &-8190948175880429046
@@ -137,3 +150,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9384f6c05243a6934a6a8d762f571e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6998832225113627865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951036546050511743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d922f29bc6a46268e1a473ec919c8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-554581038473462976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951036546050511743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c8d97aff62a473e888feae3bec54cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+  basicEditor: 1
+  generalProps: 0
+  limitsProps: 0
+  advancedProps: 0
+  minPointers: 0
+  maxPointers: 0
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  useUnityEvents: 0
+  sendStateChangeEvents: 0
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  OnLongPress:
+    m_PersistentCalls:
+      m_Calls: []
+  timeToPress: 1
+  distanceLimit: Infinity

@@ -17,20 +17,21 @@ namespace Exhale.Scripts.Gameplay
         
         public Vector2 BoardPosition => tileData.Position;
 
-        public void Init(TileData tileData)
-        {
-            this.tileData = tileData;
-        }
-        
         private void Awake()
         {
             TryGetComponent(out tileSimulation);
             TryGetComponent(out tilePresentation);
         }
-
-        public void Init()
+        
+        public void Init(TileData tileData)
         {
-            
+            this.tileData = tileData;
+            tileSimulation.Init(OnTileAction);
+        }
+        
+        void OnTileAction()
+        {
+            Debug.Log($"Tile action: {tileData.Position} - {tileData.Type}");
         }
     }
 }

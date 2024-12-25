@@ -13,7 +13,7 @@ namespace Exhale.Scripts.Gameplay
         private int totalRows;
         private int totalColumns;
         
-        public void DrawBoard(TileData[,] tiles)
+        public void DrawBoard(HexTileData[,] tiles)
         {
             gridRoot.gameObject.DestroyChildObjects();
             totalRows = tiles.GetLength(0);
@@ -27,25 +27,25 @@ namespace Exhale.Scripts.Gameplay
             }
         }
 
-        public Tile DrawTile(TileData tileData)
+        public HexTile DrawTile(HexTileData hexTileData)
         {
-            GameObject tileGameObject = tileData.Type switch
+            GameObject tileGameObject = hexTileData.Type switch
             {
-                TileType.Empty => Instantiate(emptyTilePrefab),
-                TileType.Ground => TileFactory.GetRandomTile(true),
-                TileType.Building => TileFactory.GetRandomTile(true),
+                HexTileType.Empty => Instantiate(emptyTilePrefab),
+                HexTileType.Ground => HexTileFactory.GetRandomTile(true),
+                HexTileType.Building => HexTileFactory.GetRandomTile(true),
                 _ => throw new ArgumentOutOfRangeException()
             };
 
             if (tileGameObject != null)
             {
                 tileGameObject.transform.SetParent(gridRoot);
-                tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(tileData.Position, totalRows, totalColumns);
-                tileGameObject.name = $"Tile {tileData.Type} - [{tileData.Position.x}, {tileData.Position.y}]";
+                tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(hexTileData.Position, totalRows, totalColumns);
+                tileGameObject.name = $"HexTile {hexTileData.Type} - [{hexTileData.Position.x}, {hexTileData.Position.y}]";
 
-                if (tileGameObject.TryGetComponent(out Tile tile))
+                if (tileGameObject.TryGetComponent(out HexTile tile))
                 {
-                    tile.Init(tileData);
+                    tile.Init(hexTileData);
                     return tile;
                 }
             }

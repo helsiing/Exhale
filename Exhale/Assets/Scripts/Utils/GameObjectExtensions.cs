@@ -28,6 +28,17 @@ namespace Exhale.Scripts.Utils
 
             return path;
         }
+        
+        public static void SetTileTransparency(this GameObject obj, float alpha)
+        {
+            Renderer renderer = obj.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                Color color = renderer.material.color;
+                color.a = alpha;
+                renderer.material.color = color;
+            }
+        }
 
         public static void DestroyChildObjects(this GameObject obj)
         {

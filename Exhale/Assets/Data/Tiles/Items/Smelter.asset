@@ -18,5 +18,7 @@ MonoBehaviour:
   collectionGUID:
     value1: 5351680444876534161
     value2: -8142305740577081427
-  boardPrefab: {fileID: 2553793311016555777, guid: e66b0236d677e4d259a89f98c5ad9678,
+  type: 0
+  maxLevel: 0
+  boardPrefab: {fileID: 3296245825499227125, guid: 4283d97e07f7a4eea9185016d9b05e3d,
     type: 3}

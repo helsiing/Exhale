@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
-    public enum TileType
+    public enum HexTileType
     {
         Empty = 0,
         Ground = 1,
@@ -13,8 +13,8 @@ namespace Exhale.Scripts.Data
     public partial class TileTemplate : ScriptableObjectCollectionItem
     {
         [SerializeField]
-        private TileType type;
-        public TileType Type => type;
+        private HexTileType type;
+        public HexTileType Type => type;
         
         [SerializeField]
         private int maxLevel;

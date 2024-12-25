@@ -5,40 +5,40 @@ namespace Exhale.Scripts.Gameplay
 {
     public class BoardLogic
     {
-        private TileData[,] tiles;
-        public TileData[,] Tiles => tiles;
+        private HexTileData[,] tiles;
+        public HexTileData[,] Tiles => tiles;
         
         public void InitBoard(int width, int height)
         {
-            tiles = new TileData[width, height];
+            tiles = new HexTileData[width, height];
             
             for (int row = 0; row < width; row++)
             {
                 for (int col = 0; col < height; col++)
                 {
-                    TileData tileData = new TileData(new Vector2(row, col), 0);
-                    tiles[row, col] = tileData;
+                    HexTileData hexTileData = new HexTileData(new Vector2(row, col), 0);
+                    tiles[row, col] = hexTileData;
                 }
             }
         }
         
-        public TileData PlaceTile(Vector2 position, TileType tileType)
+        public HexTileData PlaceTile(Vector2 position, HexTileType hexTileType)
         {
             int row = (int) position.x;
             int col = (int) position.y;
 
-            return PlaceTile(row, col, tileType);
+            return PlaceTile(row, col, hexTileType);
         }
 
-        public TileData PlaceTile(int row, int col, TileType tileType)
+        public HexTileData PlaceTile(int row, int col, HexTileType hexTileType)
         {
             if (row <= tiles.GetLength(0) && col <= tiles.GetLength(1))
             {
                 if (tiles[row, col].Type == 0)
                 {
-                    TileData tileData = new TileData(new Vector2(row, col), tileType);
-                    tiles[row, col] = tileData;
-                    return tileData;
+                    HexTileData hexTileData = new HexTileData(new Vector2(row, col), hexTileType);
+                    tiles[row, col] = hexTileData;
+                    return hexTileData;
                 }
             }
             

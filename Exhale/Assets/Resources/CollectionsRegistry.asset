@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collections:
   - {fileID: 11400000, guid: 1767cd80d7ccc41f9a80cdb373f75776, type: 2}
-  autoSearchForCollections: 1
+  autoSearchForCollections: 0

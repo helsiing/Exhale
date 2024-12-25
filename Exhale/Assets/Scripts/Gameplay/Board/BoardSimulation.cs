@@ -85,7 +85,7 @@ namespace Exhale.Scripts.Gameplay
                 // Check if the hit object is a grid cell
                 GameObject clickedObject = hit.collider.gameObject;
                 if (clickedObject.CompareTag("GridTile") && 
-                    clickedObject.TryGetComponent(out ITileBoardPositionProvider tileBoardPositionProvider))
+                    clickedObject.TryGetComponent(out IHexTileBoardPositionProvider tileBoardPositionProvider))
                 {
                     OnPlaceTileEvent?.Invoke(tileBoardPositionProvider.BoardPosition);
                     // Destroy the preview tile to avoid duplication

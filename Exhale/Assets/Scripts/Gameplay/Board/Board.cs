@@ -29,21 +29,21 @@ namespace Exhale.Scripts.Gameplay
             boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
             boardPresentation.DrawBoard(boardLogic.Tiles);
             
-            TileData tileData = new TileData(centerCellBoardPosition, TileType.Building);
-            Tile tile = PlaceTile(tileData);
+            HexTileData hexTileData = new HexTileData(centerCellBoardPosition, HexTileType.Building);
+            HexTile hexTile = PlaceTile(hexTileData);
         }
 
-        private Tile PlaceTile(TileData tileData)
+        private HexTile PlaceTile(HexTileData hexTileData)
         {
-            TileData tile = boardLogic.PlaceTile(tileData.Position, tileData.Type);
-            Assert.IsNotNull(tile, "tile != null");
-            return boardPresentation.DrawTile(tile);
+            HexTileData hexTile = boardLogic.PlaceTile(hexTileData.Position, hexTileData.Type);
+            Assert.IsNotNull(hexTile, "tile != null");
+            return boardPresentation.DrawTile(hexTile);
         }
         
         void OnPlaceTile(Vector2 position)
         {
-            TileData tileData = new TileData(position, TileType.Building);
-            Tile tile = PlaceTile(tileData);
+            HexTileData hexTileData = new HexTileData(position, HexTileType.Building);
+            HexTile hexTile = PlaceTile(hexTileData);
         }
 
         private void OnDestroy()

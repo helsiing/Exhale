@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Exhale.Scripts.Gameplay
 {
-    public class HexTilePresentation : MonoBehaviour
+    public class HexPiecePresentation : MonoBehaviour
     {
         
     }

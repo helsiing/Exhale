@@ -19,36 +19,36 @@ namespace Exhale.Scripts.Gameplay
             TryGetComponent(out boardSimulation);
             TryGetComponent(out boardPresentation);
             
-            boardSimulation.OnPlaceTileEvent += OnPlaceTile;
+            boardSimulation.OnPlacePieceEvent += OnPiecePlaced;
         }
 
         private void Start() 
         {
-            Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
-         
             boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
-            boardPresentation.DrawBoard(boardLogic.Tiles);
             
-            HexTileData hexTileData = new HexTileData(centerCellBoardPosition);
-            PlaceTile(hexTileData);
-        }
-
-        private void PlaceTile(HexTileData hexTileData)
-        {
-            HexTileData hexTile = boardLogic.PlaceTile(hexTileData.Position);
-            Assert.IsNotNull(hexTile, "tile != null");
-            boardPresentation.DrawTile(hexTile);
+            Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
+            PlacePiece(centerCellBoardPosition);
+            boardPresentation.DrawBoard(boardLogic.Tiles, boardLogic.Pieces);
+         
+            
         }
         
-        void OnPlaceTile(Vector2 position)
+        private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null)
         {
-            HexTileData hexTileData = new HexTileData(position);
-            PlaceTile(hexTileData);
+            HexPieceData hexPieceData = boardLogic.PlacePiece(positionIndex, pieceTemplate);
+            Assert.IsNotNull(hexPieceData, "tile != null");
+            boardPresentation.DrawPiece(hexPieceData);
+        }
+        
+        void OnPiecePlaced(Vector2 position)
+        {
+            //HexPieceData hexTileData = new HexPieceData(position);
+            //PlacePiece(hexTileData);
         }
 
         private void OnDestroy()
         {
-            boardSimulation.OnPlaceTileEvent -= OnPlaceTile;
+            boardSimulation.OnPlacePieceEvent -= OnPiecePlaced;
         }
     }
 }

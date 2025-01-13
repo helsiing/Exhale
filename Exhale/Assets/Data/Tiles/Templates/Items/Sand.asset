@@ -9,14 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4795de478b7b4f33b2453004a7510432, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a76afc1883a547fda9325001544a0bf, type: 3}
   m_Name: Sand
   m_EditorClassIdentifier: 
   guid:
-    value1: 4639722944742706003
-    value2: 6700517400165799851
+    value1: 5720449389694058349
+    value2: -2588609753600281169
   collectionGUID:
-    value1: 4814370019778962896
-    value2: 4440340585036115603
-  boardPrefab: {fileID: 7185672462615679501, guid: 5fe1cca740ba96e4cb88148f042fe69f,
-    type: 3}
+    value1: 5478060591070782229
+    value2: -6452721688836149371
+  Traits:
+  - rid: 2092702986759569467
+  references:
+    version: 2
+    RefIds:
+    - rid: 2092702986759569467
+      type: {class: BoardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        prefab: {fileID: 7185672462615679501, guid: 5fe1cca740ba96e4cb88148f042fe69f,
+          type: 3}

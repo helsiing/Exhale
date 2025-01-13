@@ -9,7 +9,7 @@ namespace Exhale.Scripts.Gameplay
         private Camera mainCamera;
         
         public delegate void OnPlaceTile(Vector2 position);
-        public event OnPlaceTile OnPlaceTileEvent;
+        public event OnPlaceTile OnPlacePieceEvent;
         
         void Start()
         {
@@ -85,9 +85,9 @@ namespace Exhale.Scripts.Gameplay
                 // Check if the hit object is a grid cell
                 GameObject clickedObject = hit.collider.gameObject;
                 if (clickedObject.CompareTag("GridTile") && 
-                    clickedObject.TryGetComponent(out IHexTileBoardPositionProvider tileBoardPositionProvider))
+                    clickedObject.TryGetComponent(out IBoardPositionProvider tileBoardPositionProvider))
                 {
-                    OnPlaceTileEvent?.Invoke(tileBoardPositionProvider.BoardPosition);
+                    OnPlacePieceEvent?.Invoke(tileBoardPositionProvider.PositionIndex);
                     // Destroy the preview tile to avoid duplication
                     if (previewTile != null)
                     {

@@ -4,6 +4,16 @@ namespace Exhale.Scripts.Gameplay
 {
     public static class BoardHelper
     {
+        public static bool IsWithinBounds(HexPieceData[,] pieces, int row, int col)
+        {
+            if (row > pieces.GetLength(0) || col > pieces.GetLength(1))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
         public static Vector2 GetBoardCenter(int width, int height) 
         {
             return new Vector2(width / 2, height / 2);

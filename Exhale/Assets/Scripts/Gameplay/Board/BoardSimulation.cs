@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -8,8 +9,7 @@ namespace Exhale.Scripts.Gameplay
         private GameObject previewTile;
         private Camera mainCamera;
         
-        public delegate void OnPlaceTile(Vector2 position);
-        public event OnPlaceTile OnPlacePieceEvent;
+        public Action<Vector2> OnTileClickedEvent;
         
         void Start()
         {
@@ -17,15 +17,15 @@ namespace Exhale.Scripts.Gameplay
             Assert.IsNotNull(mainCamera);
         }
 
-        /*void Update()
+        void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                PlaceTile();
+                OnMouseClicked();
             }
-        }*/
+        }
 
-        /*private void ClearTilePreview()
+        private void ClearTilePreview()
         {
             // If the mouse is not over a grid cell, hide the preview tile
             if (previewTile != null)
@@ -33,48 +33,8 @@ namespace Exhale.Scripts.Gameplay
                 Destroy(previewTile);
             }
         }
-
-        private void HandleTilePreview()
-        {
-            // Create a ray from the mouse position
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Check if the hit object is a grid cell
-                GameObject hoveredObject = hit.collider.gameObject;
-                if (hoveredObject.CompareTag("GridTile"))
-                {
-                    Vector3 position = hoveredObject.transform.position;
-
-                    // If there's no preview tile, create one
-                    if (previewTile == null)
-                    {
-                        previewTile = Instantiate(selectedTilePrefab, position, Quaternion.identity);
-                        // Make the preview tile semi-transparent
-                        SetTileTransparency(previewTile, 0.5f);
-                    }
-                    else
-                    {
-                        // Move the preview tile to the new position
-                        previewTile.transform.position = position;
-                    }
-                }
-                else
-                {
-                    // If the mouse is not over a grid cell, hide the preview tile
-                    ClearTilePreview();
-                }
-            }
-            else
-            {
-                // If the raycast doesn't hit anything, hide the preview tile
-                ClearTilePreview();
-            }
-        }*/
-
-        void PlaceTile()
+        
+        void OnMouseClicked()
         {
             // Create a ray from the mouse position
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -87,7 +47,7 @@ namespace Exhale.Scripts.Gameplay
                 if (clickedObject.CompareTag("GridTile") && 
                     clickedObject.TryGetComponent(out IBoardPositionProvider tileBoardPositionProvider))
                 {
-                    OnPlacePieceEvent?.Invoke(tileBoardPositionProvider.PositionIndex);
+                    OnTileClickedEvent?.Invoke(tileBoardPositionProvider.PositionIndex);
                     // Destroy the preview tile to avoid duplication
                     if (previewTile != null)
                     {

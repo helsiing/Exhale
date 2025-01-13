@@ -5,44 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/PieceTrait.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/PieceTrait.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTilePresentation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTilePresentation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileSimulation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileSimulation.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/HexTileElementsCollection.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/HexTileElementsCollection.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/Items.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/Items/Grass.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/Items/Grass.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/Items/Stone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/Items/Stone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/Items/Water.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Elements/Items/Water.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/HexPieceTemplateCollection.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/HexPieceTemplateCollection.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Dirt.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Dirt.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Grass.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Grass.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Sand.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Sand.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Stone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Stone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Water.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Tiles/Templates/Items/Water.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/[HexTile] Empty.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/[HexTile] Empty.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardPresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardPresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiece.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiecePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiecePresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiecePresentation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiecePresentation.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceSimulation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceSimulation.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/IBoardPositionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/IBoardPositionProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/IBoardPositionProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/IBoardPositionProvider.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Tiles.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Tiles/HexTileData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Tiles/HexTileData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTile.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe-0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe-0.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

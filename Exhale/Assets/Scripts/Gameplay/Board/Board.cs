@@ -19,7 +19,7 @@ namespace Exhale.Scripts.Gameplay
             TryGetComponent(out boardSimulation);
             TryGetComponent(out boardPresentation);
             
-            boardSimulation.OnPlacePieceEvent += OnPiecePlaced;
+            boardSimulation.OnTileClickedEvent += OnTileClicked;
         }
 
         private void Start() 
@@ -31,8 +31,6 @@ namespace Exhale.Scripts.Gameplay
             PlacePiece(centerCellBoardPosition, centerPieceTemplate, false);
             
             boardPresentation.DrawBoard(boardLogic.Tiles, boardLogic.Pieces);
-         
-            
         }
         
         private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null, bool shouldDraw = true)
@@ -48,15 +46,14 @@ namespace Exhale.Scripts.Gameplay
             boardPresentation.DrawPiece(hexPieceData);
         }
         
-        void OnPiecePlaced(Vector2 position)
+        void OnTileClicked(Vector2 position)
         {
-            //HexPieceData hexTileData = new HexPieceData(position);
-            //PlacePiece(hexTileData);
+            PlacePiece(position, HexPieceFactory.GetRandomTemplate());
         }
 
         private void OnDestroy()
         {
-            boardSimulation.OnPlacePieceEvent -= OnPiecePlaced;
+            boardSimulation.OnTileClickedEvent -= OnTileClicked;
         }
     }
 }

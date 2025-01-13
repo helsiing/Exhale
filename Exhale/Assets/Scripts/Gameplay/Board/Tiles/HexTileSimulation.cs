@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Exhale.Scripts.Gameplay
 {
-    public class HexPieceSimulation : MonoBehaviour
+    public class HexTileSimulation : MonoBehaviour
     {
         private Action onTileAction;
         
@@ -11,6 +11,5 @@ namespace Exhale.Scripts.Gameplay
         {
             this.onTileAction = onTileAction;
         }
-        
     }
 }

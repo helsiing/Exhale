@@ -35,6 +35,11 @@ namespace Exhale.Scripts.Gameplay
             if (tileGameObject != null)
             {
                 SetObjectInBoard(hexTileData.PositionIndex, tileGameObject, "[HexTile]");
+                if (tileGameObject.TryGetComponent(out HexTile hexTile))
+                {
+                    hexTile.Init(hexTileData);
+                    return hexTile;    
+                }
             }
             return null;
         }
@@ -47,7 +52,11 @@ namespace Exhale.Scripts.Gameplay
                 if (pieceGameObject != null)
                 {
                     SetObjectInBoard(hexPieceData.PositionIndex, pieceGameObject, "[HexPiece]");
-                    return pieceGameObject.GetComponent<HexPiece>();
+                    if (pieceGameObject.TryGetComponent(out HexPiece hexPiece))
+                    {
+                        hexPiece.Init(hexPieceData);
+                        return hexPiece;    
+                    }
                 }
             }
 

@@ -1,0 +1,8 @@
+fileFormatVersion: 2
+guid: feb89954bc8170541a99f5959f574efa
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: '{"Guid":{"value1":5686771040444286450,"value2":-542766035505445246},"Namespace":"Exhale","StaticFilename":"HexTileElementsCollection","ParentFolderPath":"Assets\\Scripts\\Data\\Tiles","WriteAsPartialClass":true,"UseBaseClassForItems":false,"EnforceIndirectAccess":false,"WriteAddressableLoadingMethods":false}'
+  assetBundleName: 
+  assetBundleVariant: 

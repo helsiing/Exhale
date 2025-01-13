@@ -29,19 +29,21 @@ namespace Exhale.Scripts.Gameplay
 
         public HexTile DrawTile(HexTileData hexTileData)
         {
-            GameObject tileGameObject = hexTileData.Type switch
+            /*GameObject tileGameObject = hexTileData.Type switch
             {
                 HexTileType.Empty => Instantiate(emptyTilePrefab),
                 HexTileType.Ground => HexTileFactory.GetRandomTile(true),
                 HexTileType.Building => HexTileFactory.GetRandomTile(true),
                 _ => throw new ArgumentOutOfRangeException()
-            };
+            };*/
+
+            GameObject tileGameObject = HexTileFactory.GetRandomTile(true);
 
             if (tileGameObject != null)
             {
                 tileGameObject.transform.SetParent(gridRoot);
                 tileGameObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(hexTileData.Position, totalRows, totalColumns);
-                tileGameObject.name = $"HexTile {hexTileData.Type} - [{hexTileData.Position.x}, {hexTileData.Position.y}]";
+                tileGameObject.name = $"HexTile [{hexTileData.Position.x}, {hexTileData.Position.y}]";
 
                 if (tileGameObject.TryGetComponent(out HexTile tile))
                 {

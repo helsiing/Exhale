@@ -31,7 +31,7 @@ namespace Exhale.Scripts.Gameplay
         
         void OnTileAction()
         {
-            Debug.Log($"Tile action: {hexTileData.Position} - {hexTileData.Type}");
+            Debug.Log($"Tile action: {hexTileData.Position}");
         }
     }
 }

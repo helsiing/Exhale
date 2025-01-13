@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: CollectionsRegistry
   m_EditorClassIdentifier: 
   collections:
+  - {fileID: 11400000, guid: 1b6a6c6a2a7c9f34c8024a0edab5a33e, type: 2}
+  - {fileID: 11400000, guid: feb89954bc8170541a99f5959f574efa, type: 2}
   - {fileID: 11400000, guid: 1767cd80d7ccc41f9a80cdb373f75776, type: 2}
   autoSearchForCollections: 0

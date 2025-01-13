@@ -1,8 +1,0 @@
-fileFormatVersion: 2
-guid: 1767cd80d7ccc41f9a80cdb373f75776
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: '{"Guid":{"value1":5351680444876534161,"value2":-8142305740577081427},"Namespace":"Exhale","StaticFilename":"HexCellBuildingCollectionStatic","ParentFolderPath":"Assets/Data/Cells/Buildings","WriteAsPartialClass":false,"UseBaseClassForItems":false,"EnforceIndirectAccess":false,"WriteAddressableLoadingMethods":false}'
-  assetBundleName: 
-  assetBundleVariant: 

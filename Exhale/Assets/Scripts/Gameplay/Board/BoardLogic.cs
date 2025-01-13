@@ -16,35 +16,26 @@ namespace Exhale.Scripts.Gameplay
             {
                 for (int col = 0; col < height; col++)
                 {
-                    HexTileData hexTileData = new HexTileData(new Vector2(row, col), 0);
+                    HexTileData hexTileData = new HexTileData(new Vector2(row, col));
                     tiles[row, col] = hexTileData;
                 }
             }
         }
         
-        public HexTileData PlaceTile(Vector2 position, HexTileType hexTileType)
+        public HexTileData PlaceTile(Vector2 position)
         {
             int row = (int) position.x;
             int col = (int) position.y;
 
-            return PlaceTile(row, col, hexTileType);
-        }
-
-        public HexTileData PlaceTile(int row, int col, HexTileType hexTileType)
-        {
-            if (row <= tiles.GetLength(0) && col <= tiles.GetLength(1))
+            if (row > tiles.GetLength(0) || col > tiles.GetLength(1))
             {
-                if (tiles[row, col].Type == 0)
-                {
-                    HexTileData hexTileData = new HexTileData(new Vector2(row, col), hexTileType);
-                    tiles[row, col] = hexTileData;
-                    return hexTileData;
-                }
+                return null;
             }
-            
-            return null;
+
+            HexTileData hexTileData = new HexTileData(new Vector2(row, col));
+            tiles[row, col] = hexTileData;
+            return hexTileData;
+
         }
-        
-        
     }
 }

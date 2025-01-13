@@ -34,12 +34,6 @@ namespace Exhale.Scripts.Gameplay
             {
                 return null;
             }
-
-            // if it's null let's get a random one
-            if (pieceTemplate == null)
-            {
-                pieceTemplate = HexPieceFactory.GetRandomTemplate();
-            }
             
             HexPieceData hexPieceData = new HexPieceData(new Vector2(row, col), pieceTemplate);
             pieces[row, col] = hexPieceData;

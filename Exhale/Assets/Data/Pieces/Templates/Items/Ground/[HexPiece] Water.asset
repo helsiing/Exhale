@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a76afc1883a547fda9325001544a0bf, type: 3}
-  m_Name: Grass
+  m_Name: '[HexPiece] Water'
   m_EditorClassIdentifier: 
   guid:
-    value1: 5103420702636664875
-    value2: -1966393470748761979
+    value1: 5092215102062273884
+    value2: 7466426929445307522
   collectionGUID:
     value1: 5478060591070782229
     value2: -6452721688836149371
@@ -26,5 +26,5 @@ MonoBehaviour:
     - rid: 2092702986759569467
       type: {class: BoardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
-        prefab: {fileID: 7185672462615679501, guid: 5e7d1021124e6484693655124ad9f50d,
+        prefab: {fileID: 7185672462615679501, guid: 03947306bb0c33648932f4d118cfb763,
           type: 3}

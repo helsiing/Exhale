@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a76afc1883a547fda9325001544a0bf, type: 3}
-  m_Name: Stone
+  m_Name: '[HexPiece] Stone'
   m_EditorClassIdentifier: 
   guid:
     value1: 5087929416343253570

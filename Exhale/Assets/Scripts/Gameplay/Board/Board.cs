@@ -27,16 +27,24 @@ namespace Exhale.Scripts.Gameplay
             boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
             
             Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
-            PlacePiece(centerCellBoardPosition);
+            HexPieceTemplate centerPieceTemplate = HexPieceFactory.GetRandomTemplate<Building>();
+            PlacePiece(centerCellBoardPosition, centerPieceTemplate, false);
+            
             boardPresentation.DrawBoard(boardLogic.Tiles, boardLogic.Pieces);
          
             
         }
         
-        private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null)
+        private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null, bool shouldDraw = true)
         {
             HexPieceData hexPieceData = boardLogic.PlacePiece(positionIndex, pieceTemplate);
             Assert.IsNotNull(hexPieceData, "tile != null");
+
+            if (!shouldDraw)
+            {
+                return;
+            }
+
             boardPresentation.DrawPiece(hexPieceData);
         }
         

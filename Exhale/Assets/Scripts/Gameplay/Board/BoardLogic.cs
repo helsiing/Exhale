@@ -24,7 +24,7 @@ namespace Exhale.Scripts.Gameplay
             {
                 for (int col = 0; col < height; col++)
                 {
-                    HexTileData hexTileData = new HexTileData(row, col);
+                    HexTileData hexTileData = new HexTileData(row, col, false);
                     tilesData[row, col] = hexTileData;
                 }
             }
@@ -38,7 +38,7 @@ namespace Exhale.Scripts.Gameplay
             }
 
             // check if it's a building and if so update the tiles with the building unlock requirements
-            if (pieceTemplate.TryGetTrait(out Building building))
+            /*if (pieceTemplate.TryGetTrait(out Building building))
             {
                 foreach (var buildingRequirement in building.UnlockRequirementsData)
                 {
@@ -47,11 +47,11 @@ namespace Exhale.Scripts.Gameplay
                     
                     if(BoardHelper.IsWithinBounds(tilesData.GetLength(0), tilesData.GetLength(1), positionX, positionY))
                     {
-                        HexTileData hexTileData = new HexTileData(positionX, positionY, buildingRequirement.PieceTemplate);
+                        HexTileData hexTileData = new HexTileData(positionX, positionY, true);
                         tilesData[positionX, positionY] = hexTileData;
                     }
                 }
-            }
+            }*/
             
             HexPieceData hexPieceData = new HexPieceData(row, col, pieceTemplate);
             piecesData[row, col] = hexPieceData;

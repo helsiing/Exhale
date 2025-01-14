@@ -4,9 +4,13 @@ using UnityEngine.Assertions;
 
 namespace Exhale.Scripts.Gameplay
 {
+    public interface IBoard
+    {
+    }
+
     [RequireComponent(typeof(BoardSimulation))]
     [RequireComponent(typeof(BoardPresentation))]
-    public class Board : MonoBehaviour
+    public class Board : MonoBehaviour, IBoard
     {
         [SerializeField] private BoardConfig boardConfig;
         
@@ -78,14 +82,25 @@ namespace Exhale.Scripts.Gameplay
                 hexPiece.Show();
                 pieces[(int) positionIndex.x, (int) positionIndex.y] = hexPiece;
                 
-                if(hexPieceData.PieceTemplate.TryGetTrait(out Building building))
+                var neighbors = BoardHelper.GetNeighbours(positionIndex, boardConfig.Width, boardConfig.Height);
+
+                foreach (Vector2 neighbor in neighbors)
+                {
+                    IHexTile hexTile = tiles[(int)neighbor.x, (int)neighbor.y];
+                    
+                    if(hexTile.IsOccupied) continue;
+                    
+                    tiles[(int) neighbor.x, (int) neighbor.y].Show();
+                }
+                
+                /*if(hexPieceData.PieceTemplate.TryGetTrait(out Building building))
                 {
                     foreach (var buildingRequirement in building.UnlockRequirementsData)
                     {
                         Vector2 position = positionIndex + buildingRequirement.PositionIndex;
                         PlacePiece(position, buildingRequirement.PieceTemplate);
                     }
-                }
+                }*/
             }
         }
         

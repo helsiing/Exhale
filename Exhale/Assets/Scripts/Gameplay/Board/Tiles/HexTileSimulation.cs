@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace Exhale.Scripts.Gameplay
 {
+    public interface IHexTileSimulation
+    {
+        public void Init(Action onTileAction);
+    }
+    
     public class HexTileSimulation : MonoBehaviour
     {
         private Action onTileAction;

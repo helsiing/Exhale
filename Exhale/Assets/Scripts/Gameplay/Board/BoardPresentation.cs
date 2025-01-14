@@ -80,6 +80,11 @@ namespace Exhale.Scripts.Gameplay
         void OnPiecePlaced(HexPieceData hexPieceData)
         {
             Debug.Log($"Piece placed on ({hexPieceData.PositionIndex.x}, {hexPieceData.PositionIndex.y}) with template {hexPieceData.PieceTemplate}");
+            // get all the neighbors of the piece and show the tiles
+            foreach (Vector2 neighbour in BoardHelper.GetNeighbours(hexPieceData.PositionIndex, totalRows, totalColumns))
+            {
+                
+            }
         }
         
         private void SetObjectInBoard(Vector2 positionIndex, GameObject boardObject, string prefix = "")

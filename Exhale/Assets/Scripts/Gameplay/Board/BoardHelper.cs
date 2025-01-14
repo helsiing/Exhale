@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Exhale.Scripts.Gameplay
@@ -40,5 +41,33 @@ namespace Exhale.Scripts.Gameplay
             return rawPosition - boardCenterOffset;
         }
         
+        public static List<Vector2> GetNeighbours(Vector2 position, int totalRows, int totalCols)
+        {
+            List<Vector2> neighbours = new List<Vector2>();
+            int row = (int)position.x;
+            int col = (int)position.y;
+
+            // Check all 6 possible neighbours
+            Vector2[] possibleNeighbours = new Vector2[]
+            {
+                new Vector2(row - 1, col), // Top
+                new Vector2(row + 1, col), // Bottom
+                new Vector2(row, col - 1), // Left
+                new Vector2(row, col + 1), // Right
+                new Vector2(row - 1, col + 1), // Top Right
+                new Vector2(row + 1, col - 1) // Bottom Left
+            };
+
+            // Check if each neighbour is within bounds
+            foreach (Vector2 neighbour in possibleNeighbours)
+            {
+                if (IsWithinBounds(totalRows, totalCols, (int)neighbour.x, (int)neighbour.y))
+                {
+                    neighbours.Add(neighbour);
+                }
+            }
+
+            return neighbours;
+        }
     }
 }

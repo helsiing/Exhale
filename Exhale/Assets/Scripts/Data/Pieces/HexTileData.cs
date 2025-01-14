@@ -7,19 +7,19 @@ namespace Exhale.Scripts.Data
         private Vector2 positionIndex;
         public Vector2 PositionIndex => positionIndex;
         
-        private HexPieceTemplate expectedPieceTemplate;
-        public HexPieceTemplate ExpectedPieceTemplate => expectedPieceTemplate;
+        private bool isOccupied;
+        public bool IsOccupied => isOccupied;
         
-        public HexTileData(int x, int y, HexPieceTemplate expectedPieceTemplate = null)
+        public HexTileData(int x, int y, bool isOccupied)
         {
             this.positionIndex = new Vector2(x, y);
-            this.expectedPieceTemplate = expectedPieceTemplate;
+            this.isOccupied = this.isOccupied;
         }
         
-        public HexTileData(Vector2 positionIndex, HexPieceTemplate expectedPieceTemplate = null)
+        public HexTileData(Vector2 positionIndex, bool isOccupied)
         {
             this.positionIndex = positionIndex;
-            this.expectedPieceTemplate = expectedPieceTemplate;
+            this.isOccupied = isOccupied;
         }
     }
 }

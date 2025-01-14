@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
@@ -8,22 +9,28 @@ namespace Exhale.Scripts.Data
     public class Building : PieceTrait
     {
         [Serializable]
-        public class BuildingConstructionData
+        public class BuildingUnlockRequirementsData
         {
             [SerializeField] private Vector2 positionIndex;
-            private Vector2 PositionIndex => positionIndex;
+            public Vector2 PositionIndex => positionIndex;
             
             [SerializeField] private HexPieceTemplate pieceTemplate;
-            private HexPieceTemplate PieceTemplate => pieceTemplate;
+            public HexPieceTemplate PieceTemplate => pieceTemplate;
         }
         
-        [SerializeField] private List<BuildingConstructionData> constructionRequirements = new List<BuildingConstructionData>();
+        [SerializeField] private List<BuildingUnlockRequirementsData> unlockRequirementsData = new();
         
         public override bool ValidateConfig()
         {
-            if (constructionRequirements.Count == 0)
+            if (unlockRequirementsData.Count == 0)
             {
-                Debug.LogError("Building trait has no construction requirements");
+                Debug.LogError("Building trait has no unlock requirements");
+                return false;
+            }
+
+            if (unlockRequirementsData.Any(data => data.PositionIndex == Vector2.zero))
+            {
+                Debug.LogError("Position (0, 0) is protected");
                 return false;
             }
 

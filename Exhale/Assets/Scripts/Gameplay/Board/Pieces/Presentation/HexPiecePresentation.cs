@@ -10,7 +10,7 @@ namespace Exhale.Scripts.Gameplay
             transform.localScale = Vector3.zero;
         }
 
-        public void Show()
+        public virtual void Show()
         {
             transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutBounce);
         }

@@ -1,3 +1,4 @@
+using Exhale.Scripts.Data;
 using UnityEngine;
 
 namespace Exhale.Scripts.Gameplay
@@ -19,5 +20,9 @@ namespace Exhale.Scripts.Gameplay
             this.hexTileData = hexTileData;
         }
 
+        public void SetTileTargetPiece()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

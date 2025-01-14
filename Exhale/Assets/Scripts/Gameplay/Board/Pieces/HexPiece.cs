@@ -1,3 +1,4 @@
+using Exhale.Scripts.Data;
 using UnityEngine;
 
 namespace Exhale.Scripts.Gameplay

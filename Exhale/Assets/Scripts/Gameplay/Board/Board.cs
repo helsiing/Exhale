@@ -50,13 +50,13 @@ namespace Exhale.Scripts.Gameplay
             {
                 for (int col = 0; col < boardConfig.Height; col++)
                 {
-                    var tileGameObject = boardPresentation.GetTileGameObject(boardLogic.TilesData[row, col]);
+                    var tileGameObject = boardPresentation.SetTileGameObject(boardLogic.TilesData[row, col]);
                     if (tileGameObject != null && tileGameObject.TryGetComponent(out HexTile hexTile))
                     {
                         hexTile.Init(boardLogic.TilesData[row, col]);
                         tiles[row, col] = hexTile;
                     }
-                    var pieceGameObject = boardPresentation.GetPieceGameObject(boardLogic.PiecesData[row, col]);
+                    var pieceGameObject = boardPresentation.SetPieceGameObject(boardLogic.PiecesData[row, col]);
                     if (pieceGameObject != null && pieceGameObject.TryGetComponent(out HexPiece hexPiece))
                     {
                         hexPiece.Init(boardLogic.PiecesData[row, col]);
@@ -68,15 +68,24 @@ namespace Exhale.Scripts.Gameplay
         
         private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null)
         {
-            HexPieceData hexPieceData = boardLogic.PlacePiece(positionIndex, pieceTemplate);
+            HexPieceData hexPieceData = boardLogic.PlacePiece((int)positionIndex.x, (int)positionIndex.y, pieceTemplate);
             Assert.IsNotNull(hexPieceData, "tile != null");
             
-            GameObject pieceGameObject = boardPresentation.GetPieceGameObject(hexPieceData);
+            GameObject pieceGameObject = boardPresentation.SetPieceGameObject(hexPieceData);
             if (pieceGameObject != null && pieceGameObject.TryGetComponent(out HexPiece hexPiece))
             {
                 hexPiece.Init(hexPieceData);
                 hexPiece.Show();
                 pieces[(int) positionIndex.x, (int) positionIndex.y] = hexPiece;
+                
+                if(hexPieceData.PieceTemplate.TryGetTrait(out Building building))
+                {
+                    foreach (var buildingRequirement in building.UnlockRequirementsData)
+                    {
+                        Vector2 position = positionIndex + buildingRequirement.PositionIndex;
+                        PlacePiece(position, buildingRequirement.PieceTemplate);
+                    }
+                }
             }
         }
         

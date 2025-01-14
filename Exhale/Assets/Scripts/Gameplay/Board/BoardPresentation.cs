@@ -1,3 +1,6 @@
+using Exhale.Scripts.Data;
+using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Scripts.Services;
 using Exhale.Scripts.Utils;
 using UnityEngine;
 
@@ -8,9 +11,21 @@ namespace Exhale.Scripts.Gameplay
         [SerializeField] private GameObject emptyTilePrefab;
         [SerializeField] private Transform gridRoot;
         
+        private readonly ServiceReference<IBoardService> boardService = new();
+        
         private int totalRows;
         private int totalColumns;
-        
+
+        private void Start()
+        {
+            boardService.Reference.OnPiecePlaced += OnPiecePlaced;
+        }
+
+        private void OnDestroy()
+        {
+            boardService.Reference.OnPiecePlaced -= OnPiecePlaced;
+        }
+
         public void InitBoard(HexTileData[,] tiles)
         {
             gridRoot.gameObject.DestroyChildObjects();
@@ -18,7 +33,7 @@ namespace Exhale.Scripts.Gameplay
             totalColumns = tiles.GetLength(1);
         }
 
-        public GameObject GetTileGameObject(HexTileData hexTileData)
+        public GameObject SetTileGameObject(HexTileData hexTileData)
         {
             if (hexTileData != null)
             {
@@ -33,7 +48,7 @@ namespace Exhale.Scripts.Gameplay
             return null;
         }
 
-        public GameObject GetPieceGameObject(HexPieceData hexPieceData)
+        public GameObject SetPieceGameObject(HexPieceData hexPieceData)
         {
             if (hexPieceData != null)
             {
@@ -60,6 +75,11 @@ namespace Exhale.Scripts.Gameplay
                     }
                 }
             }
+        }
+        
+        void OnPiecePlaced(HexPieceData hexPieceData)
+        {
+            Debug.Log($"Piece placed on ({hexPieceData.PositionIndex.x}, {hexPieceData.PositionIndex.y}) with template {hexPieceData.PieceTemplate}");
         }
         
         private void SetObjectInBoard(Vector2 positionIndex, GameObject boardObject, string prefix = "")

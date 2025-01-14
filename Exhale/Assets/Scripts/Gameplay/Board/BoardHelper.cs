@@ -4,9 +4,9 @@ namespace Exhale.Scripts.Gameplay
 {
     public static class BoardHelper
     {
-        public static bool IsWithinBounds(HexPieceData[,] pieces, int row, int col)
+        public static bool IsWithinBounds(int width, int height, int row, int col)
         {
-            if (row > pieces.GetLength(0) || col > pieces.GetLength(1))
+            if (row > width || col > height)
             {
                 return false;
             }

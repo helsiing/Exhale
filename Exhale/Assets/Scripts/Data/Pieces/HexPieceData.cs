@@ -1,7 +1,6 @@
-using Exhale.Scripts.Data;
 using UnityEngine;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Scripts.Data
 {
     public class HexPieceData
     {
@@ -10,6 +9,12 @@ namespace Exhale.Scripts.Gameplay
         
         private HexPieceTemplate pieceTemplate;
         public HexPieceTemplate PieceTemplate => pieceTemplate;
+        
+        public HexPieceData(int x, int y, HexPieceTemplate pieceTemplate)
+        {
+            this.positionIndex = new Vector2(x, y);
+            this.pieceTemplate = pieceTemplate;
+        }
         
         public HexPieceData(Vector2 positionIndex, HexPieceTemplate pieceTemplate)
         {

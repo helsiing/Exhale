@@ -19,10 +19,5 @@ namespace Exhale.Scripts.Gameplay
         {
             this.hexTileData = hexTileData;
         }
-
-        public void SetTileTargetPiece()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

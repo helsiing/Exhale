@@ -19,6 +19,7 @@ namespace Exhale.Scripts.Data
         }
         
         [SerializeField] private List<BuildingUnlockRequirementsData> unlockRequirementsData = new();
+        public List<BuildingUnlockRequirementsData> UnlockRequirementsData => unlockRequirementsData;
         
         public override bool ValidateConfig()
         {

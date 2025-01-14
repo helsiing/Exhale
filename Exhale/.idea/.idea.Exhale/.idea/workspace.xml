@@ -5,35 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTilePresentation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTilePresentation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileSimulation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTileSimulation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation/BuildingPiecePresentation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation/BuildingPiecePresentation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation/GroundPiecePresentation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation/GroundPiecePresentation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation/HexPiecePresentation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation/HexPiecePresentation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Simulation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Simulation/BuildingPieceSimulation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Simulation/BuildingPieceSimulation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Simulation/GroundPieceSimulation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Simulation/GroundPieceSimulation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Simulation/IHexPieceSimulation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/[HexTile] Empty.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/[HexTile] Empty.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Dirt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Dirt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Grass.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Grass.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Sand.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Sand.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Stone.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Stone.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Water.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Water.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Base - Building.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Base - Building.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexTile] Base - Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexTile] Base - Ground.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IService.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceObservable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IServiceObservable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceObservable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IServiceObservable.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceRegistered.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IServiceRegistered.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceRegistered.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IServiceRegistered.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IServiceUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/IServiceUpdate.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/IServiceUpdate.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/ServiceLocator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceLocator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/ServiceLocator.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/ServiceReference.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReference.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/ServiceReference.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/ServiceReporter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/ServiceLocator/ServiceReporter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocator/ServiceReporter.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardLogic.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardPresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardPresentation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/BoardSimulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiece.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceFactory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiecePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiecePresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPiecePresentation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiecePresentation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceSimulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/HexPieceSimulation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceSimulation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/IBoardPositionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/IBoardPositionProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pieces/IBoardPositionProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/IBoardPositionProvider.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Tiles.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Tiles/HexTileData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Tiles/HexTileData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTile.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe-0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe-0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiecePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/Presentation/IHexPiecePresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiecePresentation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceSimulation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPieceSimulation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Tiles/HexTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TouchScript/Examples/Photos/RenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TouchScript/Examples/Photos/RenderTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe-0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Sirenix.OdinInspector.Modules.UnityMathematics.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Sirenix.OdinInspector.Modules.UnityMathematics.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +81,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Unity/Hub/Editor/6000.0.31f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.multiplayer.center/Tests/Editor/TabGroupTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Unity/Hub/Editor/6000.0.31f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.render-pipelines.universal/Runtime/Passes/CopyDepthPass.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Unity/Hub/Editor/6000.0.31f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UGUI/UI/Core/Text.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/Tiles/HexTileElementsCollection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1aa0835139af4ed8aa7889bf0e6f26941f7a00/55/fb390366/LayoutDataStore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenes/SceneGroupLoader.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -64,25 +95,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/board-poc&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/board-poc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/tiagopascoal/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/Users/tiagopascoal/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/Users/tiagopascoal/Library/Application Support/Symbols/src"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.31f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.31f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -90,7 +128,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.31f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.31f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -110,24 +148,16 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="57140">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="75792">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="57140" />
+      <option name="pid" value="75792" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -167,6 +197,7 @@
       <workItem from="1734473651932" duration="3862000" />
       <workItem from="1734994324841" duration="2441000" />
       <workItem from="1735034288192" duration="61000" />
+      <workItem from="1736792611051" duration="7129000" />
     </task>
     <servers />
   </component>
@@ -194,5 +225,37 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Board.cs</url>
+          <line>77</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Board.cs" containingFunctionPresentation="Method 'PlacePiece'">
+            <startOffsets>
+              <option value="3179" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3195" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs</url>
+          <line>22</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Board/Pieces/HexPiece.cs" containingFunctionPresentation="Method 'Init'">
+            <startOffsets>
+              <option value="694" />
+            </startOffsets>
+            <endOffsets>
+              <option value="752" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

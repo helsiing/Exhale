@@ -24,15 +24,6 @@ namespace Exhale.Scripts.Gameplay
                 OnMouseClicked();
             }
         }
-
-        private void ClearTilePreview()
-        {
-            // If the mouse is not over a grid cell, hide the preview tile
-            if (previewTile != null)
-            {
-                Destroy(previewTile);
-            }
-        }
         
         void OnMouseClicked()
         {

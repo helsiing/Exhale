@@ -5,22 +5,22 @@ namespace Exhale.Scripts.Gameplay
 {
     public class BoardLogic
     {
-        private HexTileData[,] tiles;
-        public HexTileData[,] Tiles => tiles;
+        private HexTileData[,] tilesData;
+        public HexTileData[,] TilesData => tilesData;
         
-        private HexPieceData[,] pieces;
-        public HexPieceData[,] Pieces => pieces;
+        private HexPieceData[,] piecesData;
+        public HexPieceData[,] PiecesData => piecesData;
         
         public void InitBoard(int width, int height)
         {
-            tiles = new HexTileData[width, height];
-            pieces = new HexPieceData[width, height];
+            tilesData = new HexTileData[width, height];
+            piecesData = new HexPieceData[width, height];
             for (int row = 0; row < width; row++)
             {
                 for (int col = 0; col < height; col++)
                 {
                     HexTileData hexTileData = new HexTileData(new Vector2(row, col));
-                    tiles[row, col] = hexTileData;
+                    tilesData[row, col] = hexTileData;
                 }
             }
         }
@@ -30,13 +30,13 @@ namespace Exhale.Scripts.Gameplay
             int row = (int) position.x;
             int col = (int) position.y;
 
-            if (!BoardHelper.IsWithinBounds(pieces, row, col))
+            if (!BoardHelper.IsWithinBounds(piecesData, row, col))
             {
                 return null;
             }
             
             HexPieceData hexPieceData = new HexPieceData(new Vector2(row, col), pieceTemplate);
-            pieces[row, col] = hexPieceData;
+            piecesData[row, col] = hexPieceData;
             return hexPieceData;
 
         }

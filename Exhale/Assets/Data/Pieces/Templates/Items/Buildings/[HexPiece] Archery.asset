@@ -31,4 +31,8 @@ MonoBehaviour:
           type: 3}
     - rid: 2092702986759569468
       type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
-      data: 
+      data:
+        constructionRequirements:
+        - positionIndex: {x: 1, y: 1}
+          pieceTemplate: {fileID: 11400000, guid: 301e30fa5fa348946bc99f04f6ba6d3c,
+            type: 2}

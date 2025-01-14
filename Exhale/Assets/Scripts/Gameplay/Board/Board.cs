@@ -10,6 +10,12 @@ namespace Exhale.Scripts.Gameplay
     {
         [SerializeField] private BoardConfig boardConfig;
         
+        private IHexTile[,] tiles;
+        public IHexTile[,] Tiles => tiles;
+        
+        private IHexPiece[,] pieces;
+        public IHexPiece[,] Pieces => pieces;
+        
         private BoardSimulation boardSimulation;
         private BoardPresentation boardPresentation;
         private readonly BoardLogic boardLogic = new();
@@ -24,26 +30,54 @@ namespace Exhale.Scripts.Gameplay
 
         private void Start() 
         {
-            boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
+            InitBoard();
             
             Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
             HexPieceTemplate centerPieceTemplate = HexPieceFactory.GetRandomTemplate<Building>();
-            PlacePiece(centerCellBoardPosition, centerPieceTemplate, false);
+            PlacePiece(centerCellBoardPosition, centerPieceTemplate);
             
-            boardPresentation.DrawBoard(boardLogic.Tiles, boardLogic.Pieces);
+            boardPresentation.ShowBoard(pieces);
+        }
+
+        private void InitBoard()
+        {
+            tiles = new IHexTile[boardConfig.Width, boardConfig.Height];
+            pieces = new IHexPiece[boardConfig.Width, boardConfig.Height];
+            
+            boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
+            boardPresentation.InitBoard(boardLogic.TilesData);
+            for (int row = 0; row < boardConfig.Width; row++)
+            {
+                for (int col = 0; col < boardConfig.Height; col++)
+                {
+                    var tileGameObject = boardPresentation.GetTileGameObject(boardLogic.TilesData[row, col]);
+                    if (tileGameObject != null && tileGameObject.TryGetComponent(out HexTile hexTile))
+                    {
+                        hexTile.Init(boardLogic.TilesData[row, col]);
+                        tiles[row, col] = hexTile;
+                    }
+                    var pieceGameObject = boardPresentation.GetPieceGameObject(boardLogic.PiecesData[row, col]);
+                    if (pieceGameObject != null && pieceGameObject.TryGetComponent(out HexPiece hexPiece))
+                    {
+                        hexPiece.Init(boardLogic.PiecesData[row, col]);
+                        pieces[row, col] = hexPiece;
+                    }
+                }
+            }
         }
         
-        private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null, bool shouldDraw = true)
+        private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null)
         {
             HexPieceData hexPieceData = boardLogic.PlacePiece(positionIndex, pieceTemplate);
             Assert.IsNotNull(hexPieceData, "tile != null");
-
-            if (!shouldDraw)
+            
+            GameObject pieceGameObject = boardPresentation.GetPieceGameObject(hexPieceData);
+            if (pieceGameObject != null && pieceGameObject.TryGetComponent(out HexPiece hexPiece))
             {
-                return;
+                hexPiece.Init(hexPieceData);
+                hexPiece.Show();
+                pieces[(int) positionIndex.x, (int) positionIndex.y] = hexPiece;
             }
-
-            boardPresentation.DrawPiece(hexPieceData);
         }
         
         void OnTileClicked(Vector2 position)

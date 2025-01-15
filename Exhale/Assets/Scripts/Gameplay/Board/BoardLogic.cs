@@ -1,62 +1,87 @@
+using System.Collections.Generic;
+using System.Linq;
 using Exhale.Scripts.Data;
-using Exhale.Scripts.External.ServiceLocators;
-using Exhale.Scripts.Services;
+using UnityEngine;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
-    public class BoardLogic
+    public interface IBoardLogic
+    {
+        public void Init(int width, int height);
+        public HexTileData GetTileAt(int x, int y);
+        public bool SetTileAt(int x, int y, HexTileData hexTileData);
+        public HexPieceData GetPieceAt(int x, int y);
+        public bool SetPieceAt(int x, int y, HexPieceData hexPieceData);
+        public HexPieceData PlacePiece(int x, int y, HexPieceTemplate pieceTemplate = null);
+    }
+    
+    public class BoardLogic: IBoardLogic
     {
         private HexTileData[,] tilesData;
-        public HexTileData[,] TilesData => tilesData;
         
         private HexPieceData[,] piecesData;
-        public HexPieceData[,] PiecesData => piecesData;
+        private int width;
+        private int height;
         
-        private readonly ServiceReference<IBoardService> boardService = new();
-        
-        public void InitBoard(int width, int height)
+        public void Init(int width, int height)
         {
-            //TODO: get the services from the constructor
+            this.width = width;
+            this.height = height;
             
             tilesData = new HexTileData[width, height];
             piecesData = new HexPieceData[width, height];
-            for (int row = 0; row < width; row++)
+            for (int x = 0; x < width; x++)
             {
-                for (int col = 0; col < height; col++)
+                for (int y = 0; y < height; y++)
                 {
-                    HexTileData hexTileData = new HexTileData(row, col, false);
-                    tilesData[row, col] = hexTileData;
+                    SetTileAt(x, y, new HexTileData(x, y));
                 }
             }
         }
         
-        public HexPieceData PlacePiece(int row, int col, HexPieceTemplate pieceTemplate = null)
+        public HexTileData GetTileAt(int x, int y)
         {
-            if (!BoardHelper.IsWithinBounds(piecesData.GetLength(0), piecesData.GetLength(1), row, col))
+            return BoardHelper.IsWithinBounds(width, height, x, y) ? tilesData[x, y] : null;
+        }
+
+        public bool SetTileAt(int x, int y, HexTileData hexTileData)
+        {
+            if (!BoardHelper.IsWithinBounds(width, height, x, y)) return false;
+            tilesData[x, y] = hexTileData;
+            return true;
+        }
+
+        public HexPieceData GetPieceAt(int x, int y)
+        {
+            return BoardHelper.IsWithinBounds(width, height, x, y) ? piecesData[x, y] : null;
+        }
+
+        public bool SetPieceAt(int x, int y, HexPieceData hexPieceData)
+        {
+            if (!BoardHelper.IsWithinBounds(width, height, x, y)) return false;
+            piecesData[x, y] = hexPieceData;
+            tilesData[x, y].SetHasPiece(true);
+            
+            foreach (var neighbourTileData in BoardHelper.GetNeighbours(new Vector2(x, y), width, height)
+                         .Select(neighbour => tilesData[(int)neighbour.x, (int)neighbour.y])
+                         .Where(neighbourTileData => !neighbourTileData.HasPiece))
+            {
+                neighbourTileData.SetEnabled(true);
+            }
+            
+            return true;
+        }
+        
+        public HexPieceData PlacePiece(int x, int y, HexPieceTemplate pieceTemplate = null)
+        {
+            if (!BoardHelper.IsWithinBounds(width, height, x, y))
             {
                 return null;
             }
-
-            // check if it's a building and if so update the tiles with the building unlock requirements
-            /*if (pieceTemplate.TryGetTrait(out Building building))
-            {
-                foreach (var buildingRequirement in building.UnlockRequirementsData)
-                {
-                    int positionX = (int) (row + buildingRequirement.PositionIndex.x);
-                    int positionY = (int) (col + buildingRequirement.PositionIndex.y);
-                    
-                    if(BoardHelper.IsWithinBounds(tilesData.GetLength(0), tilesData.GetLength(1), positionX, positionY))
-                    {
-                        HexTileData hexTileData = new HexTileData(positionX, positionY, true);
-                        tilesData[positionX, positionY] = hexTileData;
-                    }
-                }
-            }*/
             
-            HexPieceData hexPieceData = new HexPieceData(row, col, pieceTemplate);
-            piecesData[row, col] = hexPieceData;
+            HexPieceData hexPieceData = new HexPieceData(x, y, pieceTemplate);
+            SetPieceAt(x, y, hexPieceData);
             
-            boardService.Reference.OnPiecePlaced?.Invoke(hexPieceData);
             return hexPieceData;
 
         }

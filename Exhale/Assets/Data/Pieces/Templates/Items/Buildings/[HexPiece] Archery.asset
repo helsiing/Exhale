@@ -32,6 +32,13 @@ MonoBehaviour:
     - rid: 2092702986759569468
       type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
+        rewards:
+        - yieldTemplate: {fileID: 11400000, guid: 056a0b50c43b593449877a304f3d343e,
+            type: 2}
+          amount: 10
+        - yieldTemplate: {fileID: 11400000, guid: e86f24f1bb11cab49961f56110d08bd6,
+            type: 2}
+          amount: 5
         unlockRequirementsData:
         - positionIndex: {x: 1, y: 1}
           pieceTemplate: {fileID: 11400000, guid: 301e30fa5fa348946bc99f04f6ba6d3c,

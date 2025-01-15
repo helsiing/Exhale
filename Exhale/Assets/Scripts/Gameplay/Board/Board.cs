@@ -1,11 +1,16 @@
+using System.Linq;
 using Exhale.Scripts.Data;
+using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Services;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public interface IBoard
     {
+        public int Width { get; }
+        public int Height { get; }
     }
 
     [RequireComponent(typeof(BoardSimulation))]
@@ -15,14 +20,17 @@ namespace Exhale.Scripts.Gameplay
         [SerializeField] private BoardConfig boardConfig;
         
         private IHexTile[,] tiles;
-        public IHexTile[,] Tiles => tiles;
-        
         private IHexPiece[,] pieces;
-        public IHexPiece[,] Pieces => pieces;
         
         private BoardSimulation boardSimulation;
         private BoardPresentation boardPresentation;
-        private readonly BoardLogic boardLogic = new();
+        private IBoardLogic boardLogic;
+        
+        private readonly ServiceReference<IBoardService> boardService = new();
+        private readonly ServiceReference<IInventoryService> inventoryService = new();
+
+        public int Width => boardConfig.Width;
+        public int Height => boardConfig.Height;
 
         private void Awake()
         {
@@ -32,10 +40,11 @@ namespace Exhale.Scripts.Gameplay
             boardSimulation.OnTileClickedEvent += OnTileClicked;
         }
 
-        private void Start() 
+        private void Start()
         {
-            InitBoard();
+            boardLogic = new BoardLogic();
             
+            InitBoard();
             Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
             HexPieceTemplate centerPieceTemplate = HexPieceFactory.GetRandomTemplate<Building>();
             PlacePiece(centerCellBoardPosition, centerPieceTemplate);
@@ -48,59 +57,79 @@ namespace Exhale.Scripts.Gameplay
             tiles = new IHexTile[boardConfig.Width, boardConfig.Height];
             pieces = new IHexPiece[boardConfig.Width, boardConfig.Height];
             
-            boardLogic.InitBoard(boardConfig.Width, boardConfig.Height);
-            boardPresentation.InitBoard(boardLogic.TilesData);
-            for (int row = 0; row < boardConfig.Width; row++)
+            boardLogic.Init(boardConfig.Width, boardConfig.Height);
+            boardPresentation.Init(this);
+            
+            for (int x = 0; x < boardConfig.Width; x++)
             {
-                for (int col = 0; col < boardConfig.Height; col++)
+                for (int y = 0; y < boardConfig.Height; y++)
                 {
-                    var tileGameObject = boardPresentation.SetTileGameObject(boardLogic.TilesData[row, col]);
-                    if (tileGameObject != null && tileGameObject.TryGetComponent(out HexTile hexTile))
+                    var tileData = boardLogic.GetTileAt(x, y);
+                    Assert.IsNotNull(tileData, "tileData != null");
+                    
+                    var tileGameObject = boardPresentation.SetTileGameObject(tileData);
+                    if (tileGameObject != null && tileGameObject.TryGetComponent(out IHexTile hexTile))
                     {
-                        hexTile.Init(boardLogic.TilesData[row, col]);
-                        tiles[row, col] = hexTile;
-                    }
-                    var pieceGameObject = boardPresentation.SetPieceGameObject(boardLogic.PiecesData[row, col]);
-                    if (pieceGameObject != null && pieceGameObject.TryGetComponent(out HexPiece hexPiece))
-                    {
-                        hexPiece.Init(boardLogic.PiecesData[row, col]);
-                        pieces[row, col] = hexPiece;
+                        hexTile.Init(tileData);
+                        hexTile.Hide();
+                        SetTileAt(x, y, hexTile);
                     }
                 }
             }
         }
+
+        public IHexTile GetTileAt(int x, int y)
+        {
+            return BoardHelper.IsWithinBounds(Width, Height, x, y) ? tiles[x, y] : null;
+        }
+
+        public bool SetTileAt(int x, int y, IHexTile hexTile)
+        {
+            if (!BoardHelper.IsWithinBounds(Width, Height, x, y)) return false;
+            tiles[x, y] = hexTile;
+            return true;
+        }
+        
+        public IHexPiece GetPieceAt(int x, int y)
+        {
+            return BoardHelper.IsWithinBounds(Width, Height, x, y) ? pieces[x, y] : null;
+        }
+
+        public bool SetPieceAt(int x, int y, IHexPiece hexPiece)
+        {
+            if (!BoardHelper.IsWithinBounds(Width, Height, x, y)) return false;
+            
+            pieces[x, y] = hexPiece;
+            hexPiece.Show();
+            
+            foreach (var neighbourTile in BoardHelper.GetNeighbours(new Vector2(x, y), Width, Height)
+                         .Select(neighbour => GetTileAt((int)neighbour.x, (int)neighbour.y)))
+            {
+                neighbourTile.Show();
+            }
+            
+            return true;
+        }
         
         private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null)
         {
-            HexPieceData hexPieceData = boardLogic.PlacePiece((int)positionIndex.x, (int)positionIndex.y, pieceTemplate);
-            Assert.IsNotNull(hexPieceData, "tile != null");
+            // check if the tile is empty
+            HexTileData hexTileData = boardLogic.GetTileAt((int)positionIndex.x, (int)positionIndex.y);
+            if (hexTileData.HasPiece)
+            {
+                Debug.LogError($"Tile at ({positionIndex.x}, {positionIndex.y}) is already occupied.");
+                return;
+            }
             
+            HexPieceData hexPieceData = boardLogic.PlacePiece((int)positionIndex.x, (int)positionIndex.y, pieceTemplate);
+            Assert.IsNotNull(hexPieceData, "hexPieceData != null");
             GameObject pieceGameObject = boardPresentation.SetPieceGameObject(hexPieceData);
             if (pieceGameObject != null && pieceGameObject.TryGetComponent(out HexPiece hexPiece))
             {
                 hexPiece.Init(hexPieceData);
-                hexPiece.Show();
-                pieces[(int) positionIndex.x, (int) positionIndex.y] = hexPiece;
+                SetPieceAt((int) positionIndex.x, (int) positionIndex.y, hexPiece);
                 
-                var neighbors = BoardHelper.GetNeighbours(positionIndex, boardConfig.Width, boardConfig.Height);
-
-                foreach (Vector2 neighbor in neighbors)
-                {
-                    IHexTile hexTile = tiles[(int)neighbor.x, (int)neighbor.y];
-                    
-                    if(hexTile.IsOccupied) continue;
-                    
-                    tiles[(int) neighbor.x, (int) neighbor.y].Show();
-                }
-                
-                /*if(hexPieceData.PieceTemplate.TryGetTrait(out Building building))
-                {
-                    foreach (var buildingRequirement in building.UnlockRequirementsData)
-                    {
-                        Vector2 position = positionIndex + buildingRequirement.PositionIndex;
-                        PlacePiece(position, buildingRequirement.PieceTemplate);
-                    }
-                }*/
+                boardService.Reference.OnPiecePlaced?.Invoke(hexPieceData);
             }
         }
         
@@ -113,5 +142,7 @@ namespace Exhale.Scripts.Gameplay
         {
             boardSimulation.OnTileClickedEvent -= OnTileClicked;
         }
+
+        
     }
 }

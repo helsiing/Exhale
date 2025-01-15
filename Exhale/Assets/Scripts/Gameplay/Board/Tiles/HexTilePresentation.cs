@@ -1,16 +1,17 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public interface IHexTilePresentation
     {
         public void Show();
+        public void Hide();
     }
     
     public class HexTilePresentation : MonoBehaviour, IHexTilePresentation
     {
-        public void Awake()
+        public void Hide()
         {
             transform.localScale = Vector3.zero;
         }

@@ -1,20 +1,19 @@
 using Exhale.Scripts.Data;
 using Exhale.Scripts.External.ServiceLocators;
-using Exhale.Scripts.Services;
-using Exhale.Scripts.Utils;
+using Exhale.Services;
+using Exhale.Utils;
 using UnityEngine;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public class BoardPresentation : MonoBehaviour
     {
         [SerializeField] private GameObject emptyTilePrefab;
-        [SerializeField] private Transform gridRoot;
+        [SerializeField] private Transform tilesRoot;
+        [SerializeField] private Transform piecesRoot;
         
         private readonly ServiceReference<IBoardService> boardService = new();
-        
-        private int totalRows;
-        private int totalColumns;
+        private IBoard board;
 
         private void Start()
         {
@@ -26,11 +25,11 @@ namespace Exhale.Scripts.Gameplay
             boardService.Reference.OnPiecePlaced -= OnPiecePlaced;
         }
 
-        public void InitBoard(HexTileData[,] tiles)
+        public void Init(IBoard board)
         {
-            gridRoot.gameObject.DestroyChildObjects();
-            totalRows = tiles.GetLength(0);
-            totalColumns = tiles.GetLength(1);
+            this.board = board;
+            tilesRoot.gameObject.DestroyChildObjects();
+            piecesRoot.gameObject.DestroyChildObjects();
         }
 
         public GameObject SetTileGameObject(HexTileData hexTileData)
@@ -41,6 +40,7 @@ namespace Exhale.Scripts.Gameplay
                 if (tileGameObject != null)
                 {
                     SetObjectInBoard(hexTileData.PositionIndex, tileGameObject, "[HexTile]");
+                    tileGameObject.transform.SetParent(tilesRoot);
                     return tileGameObject;
                 }
             }
@@ -56,6 +56,7 @@ namespace Exhale.Scripts.Gameplay
                 if (pieceGameObject != null)
                 {
                     SetObjectInBoard(hexPieceData.PositionIndex, pieceGameObject, "[HexPiece]");
+                    pieceGameObject.transform.SetParent(piecesRoot);
                     return pieceGameObject;
                 }
             }
@@ -65,13 +66,13 @@ namespace Exhale.Scripts.Gameplay
 
         public void ShowBoard(IHexPiece[,] pieces)
         {
-            for (int row = 0; row < totalRows; row++)
+            for (int x = 0; x < board.Width; x++)
             {
-                for (int col = 0; col < totalColumns; col++)
+                for (int y = 0; y < board.Height; y++)
                 {
-                    if (pieces[row, col] != null)
+                    if (pieces[x, y] != null)
                     {
-                        pieces[row, col].Show();
+                        pieces[x, y].Show();
                     }
                 }
             }
@@ -79,18 +80,12 @@ namespace Exhale.Scripts.Gameplay
         
         void OnPiecePlaced(HexPieceData hexPieceData)
         {
-            Debug.Log($"Piece placed on ({hexPieceData.PositionIndex.x}, {hexPieceData.PositionIndex.y}) with template {hexPieceData.PieceTemplate}");
-            // get all the neighbors of the piece and show the tiles
-            foreach (Vector2 neighbour in BoardHelper.GetNeighbours(hexPieceData.PositionIndex, totalRows, totalColumns))
-            {
-                
-            }
+            
         }
         
         private void SetObjectInBoard(Vector2 positionIndex, GameObject boardObject, string prefix = "")
         {
-            boardObject.transform.SetParent(gridRoot);
-            boardObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(positionIndex, totalRows, totalColumns);
+            boardObject.transform.position = BoardHelper.FromCoordinatesToWorldPosition(positionIndex, board.Width, board.Height);
             boardObject.name = $"{prefix} [{positionIndex.x}, {positionIndex.y}]";
         }
     }

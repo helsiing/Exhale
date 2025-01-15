@@ -1,6 +1,6 @@
 ﻿using Exhale.Scripts.External.ServiceLocators;
 
-namespace Exhale.Scripts.Services
+namespace Exhale.Services
 {
     public class GameplayServicesBootstrapper : ServiceReporter<IService>
     {
@@ -9,6 +9,7 @@ namespace Exhale.Scripts.Services
             base.RegisterServices();
 
             RegisterServiceInstance<IBoardService>(new BoardService());
+            RegisterServiceInstance<IInventoryService>(new InventoryService());
         }
     }
 }

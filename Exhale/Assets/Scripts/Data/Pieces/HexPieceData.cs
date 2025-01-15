@@ -15,11 +15,5 @@ namespace Exhale.Scripts.Data
             this.positionIndex = new Vector2(x, y);
             this.pieceTemplate = pieceTemplate;
         }
-        
-        public HexPieceData(Vector2 positionIndex, HexPieceTemplate pieceTemplate)
-        {
-            this.positionIndex = positionIndex;
-            this.pieceTemplate = pieceTemplate;
-        }
     }
 }

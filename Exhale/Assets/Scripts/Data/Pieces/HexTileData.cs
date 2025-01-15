@@ -7,19 +7,27 @@ namespace Exhale.Scripts.Data
         private Vector2 positionIndex;
         public Vector2 PositionIndex => positionIndex;
         
-        private bool isOccupied;
-        public bool IsOccupied => isOccupied;
+        private bool isEnabled;
+        public bool IsEnabled => isEnabled;
         
-        public HexTileData(int x, int y, bool isOccupied)
+        private bool hasPiece;
+        public bool HasPiece => hasPiece;
+        
+        public HexTileData(int x, int y, bool hasPiece = false, bool isEnabled = false)
         {
             this.positionIndex = new Vector2(x, y);
-            this.isOccupied = this.isOccupied;
+            this.hasPiece = hasPiece;
+            this.isEnabled = isEnabled;
         }
         
-        public HexTileData(Vector2 positionIndex, bool isOccupied)
+        public void SetEnabled(bool isEnabled)
         {
-            this.positionIndex = positionIndex;
-            this.isOccupied = isOccupied;
+            this.isEnabled = isEnabled;
+        }
+        
+        public void SetHasPiece(bool hasPiece)
+        {
+            this.hasPiece = hasPiece;
         }
     }
 }

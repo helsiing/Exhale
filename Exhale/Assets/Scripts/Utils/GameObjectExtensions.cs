@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Exhale.Scripts.Utils
+namespace Exhale.Utils
 {
     public static class GameObjectExtensions
     {

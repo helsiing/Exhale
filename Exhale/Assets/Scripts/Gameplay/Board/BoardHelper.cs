@@ -1,18 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public static class BoardHelper
     {
-        public static bool IsWithinBounds(int width, int height, int row, int col)
+        public static bool IsWithinBounds(int width, int height, int x, int y)
         {
-            if (row > width || col > height)
-            {
-                return false;
-            }
-
-            return true;
+            return x <= width && y <= height;
         }
         
         public static Vector2 GetBoardCenter(int width, int height) 
@@ -20,7 +15,7 @@ namespace Exhale.Scripts.Gameplay
             return new Vector2(width / 2, height / 2);
         }
         
-        public static Vector3 FromCoordinatesToWorldPosition(Vector2 position, int totalRows, int totalCols)
+        public static Vector3 FromCoordinatesToWorldPosition(Vector2 position, int width, int height)
         {
             int row = (int)position.x;
             int col = (int)position.y;
@@ -33,15 +28,15 @@ namespace Exhale.Scripts.Gameplay
             Vector3 rawPosition = new Vector3(row + xOffset, 0, col * zOffset);
 
             // Calculate board center offset
-            float boardWidth = (totalRows - 1) + 0.5f;  // Approx width of the board
-            float boardHeight = (totalCols - 1) * zOffset; // Approx height of the board
+            float boardWidth = (width - 1) + 0.5f;  // Approx width of the board
+            float boardHeight = (height - 1) * zOffset; // Approx height of the board
             Vector3 boardCenterOffset = new Vector3(boardWidth / 2f, 0, boardHeight / 2f);
 
             // Offset the position to center the board at (0, 0, 0)
             return rawPosition - boardCenterOffset;
         }
         
-        public static List<Vector2> GetNeighbours(Vector2 position, int totalRows, int totalCols)
+        public static List<Vector2> GetNeighbours(Vector2 position, int width, int height)
         {
             List<Vector2> neighbours = new List<Vector2>();
             int row = (int)position.x;
@@ -61,7 +56,7 @@ namespace Exhale.Scripts.Gameplay
             // Check if each neighbour is within bounds
             foreach (Vector2 neighbour in possibleNeighbours)
             {
-                if (IsWithinBounds(totalRows, totalCols, (int)neighbour.x, (int)neighbour.y))
+                if (IsWithinBounds(width, height, (int)neighbour.x, (int)neighbour.y))
                 {
                     neighbours.Add(neighbour);
                 }

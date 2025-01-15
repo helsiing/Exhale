@@ -3,7 +3,7 @@ using Exhale.Scripts.Data;
 using Exhale.Scripts.External.ServiceLocators;
 using UnityEngine;
 
-namespace Exhale.Scripts.Services
+namespace Exhale.Services
 {
     public interface IBoardService : IService
     {

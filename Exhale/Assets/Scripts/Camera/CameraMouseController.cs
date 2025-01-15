@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Exhale.Scripts.Controllers
+namespace Exhale.Board
 {
     public class CameraMouseController : MonoBehaviour
     {

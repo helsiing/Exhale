@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public class BuildingPiecePresentation : HexPiecePresentation
     {

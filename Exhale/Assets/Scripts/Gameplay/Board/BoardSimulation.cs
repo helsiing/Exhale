@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public class BoardSimulation : MonoBehaviour
     {

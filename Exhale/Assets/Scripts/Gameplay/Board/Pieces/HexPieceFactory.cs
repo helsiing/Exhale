@@ -1,7 +1,7 @@
 using Exhale.Scripts.Data;
 using UnityEngine;
 
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public static class HexPieceFactory
     {

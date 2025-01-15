@@ -1,4 +1,4 @@
-namespace Exhale.Scripts.Gameplay
+namespace Exhale.Gameplay
 {
     public interface IHexPiecePresentation
     {

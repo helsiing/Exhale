@@ -21,6 +21,7 @@ MonoBehaviour:
   Traits:
   - rid: 2092702986759569467
   - rid: 3924880789907963966
+  - rid: 3924880789907964164
   references:
     version: 2
     RefIds:
@@ -32,3 +33,10 @@ MonoBehaviour:
     - rid: 3924880789907963966
       type: {class: Ground, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data: 
+    - rid: 3924880789907964164
+      type: {class: Yield, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        yields:
+        - yieldTemplate: {fileID: 11400000, guid: 056a0b50c43b593449877a304f3d343e,
+            type: 2}
+          amount: 5

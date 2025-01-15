@@ -7,9 +7,15 @@ namespace Exhale.Services
         public override void RegisterServices()
         {
             base.RegisterServices();
+            
+            IInventoryService inventoryService = new InventoryService();
+            RegisterServiceInstance(inventoryService);
 
-            RegisterServiceInstance<IBoardService>(new BoardService());
-            RegisterServiceInstance<IInventoryService>(new InventoryService());
+            IBoardService boardService = new BoardService();
+            RegisterServiceInstance(boardService);
+            
+            RegisterServiceInstance<IGameplayService>(new GameplayService(inventoryService, boardService));
+            
         }
     }
 }

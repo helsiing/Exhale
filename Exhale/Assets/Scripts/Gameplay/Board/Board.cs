@@ -27,7 +27,6 @@ namespace Exhale.Gameplay
         private IBoardLogic boardLogic;
         
         private readonly ServiceReference<IBoardService> boardService = new();
-        private readonly ServiceReference<IInventoryService> inventoryService = new();
 
         public int Width => boardConfig.Width;
         public int Height => boardConfig.Height;
@@ -45,11 +44,11 @@ namespace Exhale.Gameplay
             boardLogic = new BoardLogic();
             
             InitBoard();
+            
             Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
             HexPieceTemplate centerPieceTemplate = HexPieceFactory.GetRandomTemplate<Building>();
-            PlacePiece(centerCellBoardPosition, centerPieceTemplate);
-            
-            boardPresentation.ShowBoard(pieces);
+            IHexPiece hexPiece = PlacePiece(centerCellBoardPosition, centerPieceTemplate);
+            hexPiece.Show();
         }
 
         private void InitBoard()
@@ -111,26 +110,26 @@ namespace Exhale.Gameplay
             return true;
         }
         
-        private void PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null)
+        private IHexPiece PlacePiece(Vector2 positionIndex, HexPieceTemplate pieceTemplate = null)
         {
             // check if the tile is empty
             HexTileData hexTileData = boardLogic.GetTileAt((int)positionIndex.x, (int)positionIndex.y);
             if (hexTileData.HasPiece)
             {
                 Debug.LogError($"Tile at ({positionIndex.x}, {positionIndex.y}) is already occupied.");
-                return;
+                return null;
             }
             
             HexPieceData hexPieceData = boardLogic.PlacePiece((int)positionIndex.x, (int)positionIndex.y, pieceTemplate);
             Assert.IsNotNull(hexPieceData, "hexPieceData != null");
-            GameObject pieceGameObject = boardPresentation.SetPieceGameObject(hexPieceData);
-            if (pieceGameObject != null && pieceGameObject.TryGetComponent(out HexPiece hexPiece))
-            {
-                hexPiece.Init(hexPieceData);
-                SetPieceAt((int) positionIndex.x, (int) positionIndex.y, hexPiece);
-                
-                boardService.Reference.OnPiecePlaced?.Invoke(hexPieceData);
-            }
+            IHexPiece hexPiece = boardPresentation.SetPieceGameObject(hexPieceData);
+            
+            if (hexPiece == null) return null;
+            
+            SetPieceAt((int) positionIndex.x, (int) positionIndex.y, hexPiece);
+            boardService.Reference.OnPiecePlaced(hexPiece);
+            return hexPiece;
+
         }
         
         void OnTileClicked(Vector2 position)
@@ -142,7 +141,5 @@ namespace Exhale.Gameplay
         {
             boardSimulation.OnTileClickedEvent -= OnTileClicked;
         }
-
-        
     }
 }

@@ -66,6 +66,7 @@ namespace Exhale.Gameplay
                          .Select(neighbour => tilesData[(int)neighbour.x, (int)neighbour.y])
                          .Where(neighbourTileData => !neighbourTileData.HasPiece))
             {
+                Debug.Log($"Neighbour: {neighbourTileData.PositionIndex}");
                 neighbourTileData.SetEnabled(true);
             }
             

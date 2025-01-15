@@ -37,7 +37,7 @@ namespace Exhale.Gameplay
         }
         
         public static List<Vector2> GetNeighbours(Vector2 position, int width, int height)
-        {
+        {       
             List<Vector2> neighbours = new List<Vector2>();
             int row = (int)position.x;
             int col = (int)position.y;

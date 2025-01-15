@@ -21,7 +21,7 @@ namespace Exhale.Services
                 yieldsStorage[yieldTemplate] += amount;
             }
 
-            Debug.Log("Adding yield to inventory");
+            Debug.Log($"Added {amount} of {yieldTemplate.name}");
         }
         
         public void Dispose()

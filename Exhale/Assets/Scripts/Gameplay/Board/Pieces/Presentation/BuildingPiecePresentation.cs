@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Exhale.Gameplay
 {
     public class BuildingPiecePresentation : HexPiecePresentation
@@ -7,7 +5,6 @@ namespace Exhale.Gameplay
         public override void Show()
         {
             base.Show();
-            
         }
     }
 }

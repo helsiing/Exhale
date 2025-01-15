@@ -1,5 +1,5 @@
 using System;
-using Exhale.Scripts.Data;
+using Exhale.Gameplay;
 using Exhale.Scripts.External.ServiceLocators;
 using UnityEngine;
 
@@ -7,8 +7,9 @@ namespace Exhale.Services
 {
     public interface IBoardService : IService
     {
-        public Action<HexPieceData> OnPiecePlaced { get; set; }
+        public Action<IHexPiece> OnPiecePlaced { get; set; }
     }
+
     public class BoardService : IBoardService
     {
         public BoardService()
@@ -21,6 +22,6 @@ namespace Exhale.Services
             // TODO release managed resources here
         }
 
-        public Action<HexPieceData> OnPiecePlaced { get; set; }
+        public Action<IHexPiece> OnPiecePlaced { get; set; }
     }
 }

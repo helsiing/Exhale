@@ -15,27 +15,27 @@ namespace Exhale.Gameplay
             return HexPieceTemplateCollection.GetRandomTemplate<T>();
         }
         
-        public static GameObject GetPiece (HexPieceTemplate pieceTemplate)
+        public static GameObject GetPiece (HexPieceTemplate pieceTemplate, bool shouldInitialize = true)
         {
-            if (pieceTemplate.TryGetTrait(out BoardObject boardObject))
+            if (!pieceTemplate.TryGetTrait(out BoardObject boardObject)) return null;
+            
+            GameObject pieceGameObject = Object.Instantiate(boardObject.Prefab);
+            if (!shouldInitialize) return pieceGameObject;
+                
+            pieceGameObject.AddComponent<HexPiece>();
+            if (pieceTemplate.HasTrait<Ground>())
             {
-                GameObject pieceGameObject = Object.Instantiate(boardObject.Prefab);
-                pieceGameObject.AddComponent<HexPiece>();
-                if(pieceTemplate.HasTrait<Ground>())
-                {
-                    pieceGameObject.AddComponent<GroundPieceSimulation>();
-                    pieceGameObject.AddComponent<GroundPiecePresentation>();
-                }
-                else if(pieceTemplate.HasTrait<Building>())
-                {
-                    pieceGameObject.AddComponent<BuildingPieceSimulation>();
-                    pieceGameObject.AddComponent<BuildingPiecePresentation>();
-                }
-
-                return pieceGameObject;
+                pieceGameObject.AddComponent<GroundPieceSimulation>();
+                pieceGameObject.AddComponent<GroundPiecePresentation>();
+            }
+            else if (pieceTemplate.HasTrait<Building>())
+            {
+                pieceGameObject.AddComponent<BuildingPieceSimulation>();
+                pieceGameObject.AddComponent<BuildingPiecePresentation>();
             }
 
-            return null;
+            return pieceGameObject;
+
         }
         
     }

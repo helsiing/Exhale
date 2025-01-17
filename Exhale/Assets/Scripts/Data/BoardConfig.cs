@@ -1,17 +1,30 @@
+using System;
+using Sirenix.OdinInspector;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
+    [Serializable]
+    public struct BoardData : IComponentData
+    {
+        public int Width;
+        public int Height;
+        public Entity HexTilePrefab;
+    }
+    
     [CreateAssetMenu(fileName = "BoardConfig", menuName = "Exhale/BoardConfig", order = 0)]
     public class BoardConfig : ScriptableObject
     {
-        [SerializeField] private int width = 11;
-        public int Width => width;
+        [InlineProperty, HideLabel, SerializeField]
+        private BoardData data;
+        public BoardData Data => data;
         
-        [SerializeField] private int height = 11;
-        public int Height => height;
+        [SerializeField]
+        private GameObject hexTilePiecePrefab;
+        public GameObject HexTilePiecePrefab => hexTilePiecePrefab;
         
-        [SerializeField] private int numBuildings = 5;
-        public int NumBuildings => numBuildings;
+        public int Width => data.Width;
+        public int Height => data.Height;
     }
 }

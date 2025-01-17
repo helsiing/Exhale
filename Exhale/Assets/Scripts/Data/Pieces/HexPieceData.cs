@@ -1,7 +1,15 @@
+using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
+    public struct HexPieceComponent : IComponentData
+    {
+        public int2 PositionIndex; // The tile's position on the grid
+        public Entity PieceEntity;   // The associated tile type entity
+    }
+    
     public class HexPieceData
     {
         private Vector2 positionIndex;

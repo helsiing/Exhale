@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc11940d08d4a1495483a114444f18b, type: 3}
   m_Name: BoardConfig
   m_EditorClassIdentifier: 
-  width: 50
-  height: 50
-  numBuildings: 5
+  data:
+    Width: 5
+    Height: 5
+  hexTilePiecePrefab: {fileID: 1398692384538076482, guid: 3db0692e46ab71841a57493400822dc4,
+    type: 3}

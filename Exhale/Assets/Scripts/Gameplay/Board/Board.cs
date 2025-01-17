@@ -45,10 +45,10 @@ namespace Exhale.Gameplay
             
             InitBoard();
             
-            Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
-            HexPieceTemplate centerPieceTemplate = HexPieceFactory.GetRandomTemplate<Building>();
-            IHexPiece hexPiece = PlacePiece(centerCellBoardPosition, centerPieceTemplate);
-            hexPiece.Show();
+            //Vector2 centerCellBoardPosition = BoardHelper.GetBoardCenter(boardConfig.Width, boardConfig.Height);
+            //HexPieceTemplate centerPieceTemplate = HexPieceFactory.GetRandomTemplate<Building>();
+            //IHexPiece hexPiece = PlacePiece(centerCellBoardPosition, centerPieceTemplate);
+            //hexPiece.Show();
         }
 
         private void InitBoard()
@@ -64,14 +64,14 @@ namespace Exhale.Gameplay
                 for (int y = 0; y < boardConfig.Height; y++)
                 {
                     var tileData = boardLogic.GetTileAt(x, y);
-                    Assert.IsNotNull(tileData, "tileData != null");
-                    
                     var tileGameObject = boardPresentation.SetTileGameObject(tileData);
                     if (tileGameObject != null && tileGameObject.TryGetComponent(out IHexTile hexTile))
                     {
                         hexTile.Init(tileData);
                         hexTile.Hide();
                         SetTileAt(x, y, hexTile);
+                        
+                        PlacePiece(new Vector2(x, y));
                     }
                 }
             }
@@ -104,7 +104,7 @@ namespace Exhale.Gameplay
             foreach (var neighbourTile in BoardHelper.GetNeighbours(new Vector2(x, y), Width, Height)
                          .Select(neighbour => GetTileAt((int)neighbour.x, (int)neighbour.y)))
             {
-                neighbourTile.Show();
+                neighbourTile?.Show();
             }
             
             return true;
@@ -119,6 +119,9 @@ namespace Exhale.Gameplay
                 Debug.LogError($"Tile at ({positionIndex.x}, {positionIndex.y}) is already occupied.");
                 return null;
             }
+
+            if (pieceTemplate == null)
+                pieceTemplate = HexPieceFactory.GetRandomTemplate();
             
             HexPieceData hexPieceData = boardLogic.PlacePiece((int)positionIndex.x, (int)positionIndex.y, pieceTemplate);
             Assert.IsNotNull(hexPieceData, "hexPieceData != null");

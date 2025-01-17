@@ -7,7 +7,7 @@ namespace Exhale.Gameplay
     {
         public static bool IsWithinBounds(int width, int height, int x, int y)
         {
-            return x <= width && y <= height;
+            return x >= 0 && x < width && y >= 0 && y < height;
         }
         
         public static Vector2 GetBoardCenter(int width, int height) 

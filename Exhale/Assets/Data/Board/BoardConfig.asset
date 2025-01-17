@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc11940d08d4a1495483a114444f18b, type: 3}
   m_Name: BoardConfig
   m_EditorClassIdentifier: 
-  width: 11
-  height: 11
+  width: 50
+  height: 50
   numBuildings: 5

@@ -46,7 +46,11 @@ namespace Exhale.Gameplay
 
         public bool SetTileAt(int x, int y, HexTileData hexTileData)
         {
-            if (!BoardHelper.IsWithinBounds(width, height, x, y)) return false;
+            if (!BoardHelper.IsWithinBounds(width, height, x, y))
+            {
+                return false;
+            }
+
             tilesData[x, y] = hexTileData;
             return true;
         }
@@ -58,15 +62,32 @@ namespace Exhale.Gameplay
 
         public bool SetPieceAt(int x, int y, HexPieceData hexPieceData)
         {
-            if (!BoardHelper.IsWithinBounds(width, height, x, y)) return false;
+            if (!BoardHelper.IsWithinBounds(width, height, x, y))
+            {
+                return false;
+            }
+
             piecesData[x, y] = hexPieceData;
             tilesData[x, y].SetHasPiece(true);
             
-            foreach (var neighbourTileData in BoardHelper.GetNeighbours(new Vector2(x, y), width, height)
-                         .Select(neighbour => tilesData[(int)neighbour.x, (int)neighbour.y])
-                         .Where(neighbourTileData => !neighbourTileData.HasPiece))
+            Debug.Log($"Placed piece at: {x}, {y}");
+            List<Vector2> neighboursPositions = BoardHelper.GetNeighbours(new Vector2(x, y), width, height);
+            foreach (Vector2 neighbourPositionIndex in neighboursPositions)
             {
-                Debug.Log($"Neighbour: {neighbourTileData.PositionIndex}");
+                if(!BoardHelper.IsWithinBounds(width, height, (int)neighbourPositionIndex.x, (int)neighbourPositionIndex.y))
+                {
+                    continue;
+                }
+                
+                if(y == 999)
+                    Debug.Log("AQUI");
+                
+                HexTileData neighbourTileData = GetTileAt((int)neighbourPositionIndex.x, (int)neighbourPositionIndex.y);
+                if(neighbourTileData.HasPiece)
+                {
+                    continue;
+                }
+
                 neighbourTileData.SetEnabled(true);
             }
             

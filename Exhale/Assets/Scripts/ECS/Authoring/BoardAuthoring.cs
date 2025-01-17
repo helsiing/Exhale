@@ -14,7 +14,9 @@ namespace Exhale.ECS.Authoring
             {
                 Entity entity = GetEntity(TransformUsageFlags.Renderable);
                 var componentData = authoring.boardConfig.Data;
-                componentData.HexTilePrefab = GetEntity(authoring.boardConfig.HexTilePiecePrefab, TransformUsageFlags.Renderable);
+                
+                // bake the prefab into entity
+                componentData.HexTilePrefab = GetEntity(authoring.boardConfig.HexTilePiecePrefab, TransformUsageFlags.Dynamic);
                 AddComponent(entity, componentData);
             }
         }

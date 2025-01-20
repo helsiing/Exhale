@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardConfig: {fileID: 11400000, guid: c133cef94bd363f4bbc6a8cb6113dc9e, type: 2}
+  pieceTemplateCollection: {fileID: 11400000, guid: 990e0d52db8a451418116905fc83d06f,
+    type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

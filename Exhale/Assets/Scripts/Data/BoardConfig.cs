@@ -6,21 +6,20 @@ using UnityEngine;
 namespace Exhale.Scripts.Data
 {
     [Serializable]
-    public struct BoardData : IComponentData
+    public struct BoardDataComponent : IComponentData
     {
         public int Width;
         public int Height;
-        public Entity HexTilePrefab;
+        public Entity HexTilePrefabEntity;
     }
     
     [CreateAssetMenu(fileName = "BoardConfig", menuName = "Exhale/BoardConfig", order = 0)]
     public class BoardConfig : ScriptableObject
     {
         [InlineProperty, HideLabel, SerializeField]
-        private BoardData data;
-        public BoardData Data => data;
+        private BoardDataComponent data;
+        public BoardDataComponent Data => data;
         
-        [SerializeField]
         private GameObject hexTilePiecePrefab;
         public GameObject HexTilePiecePrefab => hexTilePiecePrefab;
         

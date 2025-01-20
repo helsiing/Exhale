@@ -19,8 +19,7 @@ namespace Exhale.ECS.Systems
         
         protected override void OnCreate()
         {
-            // Run this system once on startup
-            RequireForUpdate<BoardData>();
+            RequireForUpdate<BoardDataComponent>();
             Debug.Log($"Starting {nameof(BoardTilesInitializationSystem)}...");
             
             sphereCollider = SphereCollider.Create(new SphereGeometry
@@ -70,16 +69,16 @@ namespace Exhale.ECS.Systems
         
         // Method for processing each BoardData entity
         [UsedImplicitly]
-        public void Execute(Entity entity, [EntityIndexInQuery] int entityIndexInQuery, ref BoardData board)
+        public void Execute(Entity entity, [EntityIndexInQuery] int entityIndexInQuery, ref BoardDataComponent board)
         {
             for (int y = 0; y < board.Height; y++)
             {
                 for (int x = 0; x < board.Width; x++)
                 {
                     // Instantiate the prefab
-                    if (board.HexTilePrefab != Entity.Null)
+                    if (board.HexTilePrefabEntity != Entity.Null)
                     {
-                        Entity hexTileEntity = Ecb.Instantiate(entityIndexInQuery, board.HexTilePrefab);
+                        Entity hexTileEntity = Ecb.Instantiate(entityIndexInQuery, board.HexTilePrefabEntity);
                         
                         // Add the hex tile tag
                         Ecb.AddComponent(entityIndexInQuery, hexTileEntity, new HexTileTag());

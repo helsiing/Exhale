@@ -13,10 +13,10 @@ namespace Exhale.ECS.Authoring
             public override void Bake(BoardAuthoring authoring)
             {
                 Entity entity = GetEntity(TransformUsageFlags.Renderable);
-                BoardData componentData = authoring.boardConfig.Data;
+                BoardDataComponent componentData = authoring.boardConfig.Data;
                 
                 // bake the prefab into entity
-                componentData.HexTilePrefab = GetEntity(authoring.boardConfig.HexTilePiecePrefab, TransformUsageFlags.Dynamic);
+                componentData.HexTilePrefabEntity = GetEntity(authoring.boardConfig.HexTilePiecePrefab, TransformUsageFlags.Dynamic);
                 AddComponent(entity, componentData);
             }
         }

@@ -18,7 +18,7 @@ namespace Exhale.ECS.Authoring
                 {
                     Data = authoring.pieceTemplateCollection
                 };
-                AddComponent(entity, componentData);
+                //AddComponent(entity, componentData);
             }
         }
     }

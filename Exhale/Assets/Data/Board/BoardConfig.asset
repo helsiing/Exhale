@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: BoardConfig
   m_EditorClassIdentifier: 
   data:
-    Width: 300
-    Height: 300
-  hexTilePiecePrefab: {fileID: 1398692384538076482, guid: 3db0692e46ab71841a57493400822dc4,
-    type: 3}
+    Width: 10
+    Height: 10
+  emptyPieceTemplate: {fileID: 11400000, guid: fbe4c3c6214784d51960da95a7691135, type: 2}

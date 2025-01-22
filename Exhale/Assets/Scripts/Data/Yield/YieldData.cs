@@ -8,9 +8,9 @@ namespace Data.Yield
     public class YieldData
     {
         [SerializeField] private YieldTemplate yieldTemplate;
-        public YieldTemplate YieldTemplate => yieldTemplate;
-        
+
         [SerializeField] private int amount;
+        public YieldTemplate YieldTemplate => yieldTemplate;
         public int Amount => amount;
     }
 }

@@ -1,36 +1,32 @@
-using Exhale.Scripts.Data;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Physics.Systems;
-using Unity.Transforms;
 using UnityEngine;
-using Ray = UnityEngine.Ray;
-using RaycastHit = Unity.Physics.RaycastHit;
 
 namespace Exhale.ECS.Systems
 {
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateBefore(typeof(PhysicsSystemGroup))] 
+    [UpdateBefore(typeof(PhysicsSystemGroup))]
     [BurstCompile]
-    public partial class TileClickSystem : SystemBase
+    public partial class PieceClickSystem : SystemBase
     {
         protected override void OnCreate()
         {
-            Debug.Log($"Starting {nameof(TileClickSystem)}...");
+            Debug.Log($"Starting {nameof(PieceClickSystem)}...");
             base.OnCreate();
         }
-        
+
         [BurstCompile]
         protected override void OnUpdate()
         {
             // Only process when the left mouse button is clicked
             if (!Input.GetMouseButtonDown(0)) return;
-            
-            PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
+
+            var physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
             // Get the mouse click position in screen space and convert to a ray
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             float3 rayOrigin = ray.origin;
             float3 rayDirection = ray.direction;
 
@@ -46,15 +42,13 @@ namespace Exhale.ECS.Systems
             };
 
             // Perform the raycast and check for hits
-            if (collisionWorld.CastRay(rayInput, out RaycastHit hit))
+            if (collisionWorld.CastRay(rayInput, out var hit))
             {
                 // Get the entity that was hit
-                Entity hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
+                var hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
                 Debug.Log("HIT");
                 // Process the hit entity
                 //ProcessTileClick(hitEntity);
-                
-                
             }
         }
 

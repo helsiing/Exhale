@@ -8,15 +8,12 @@ namespace Exhale.Scenes
     [Serializable]
     public class SceneData
     {
-        [ReadOnly]
-        public string Name;
-        
-        [ReadOnly]
-        public string Path;
+        [ReadOnly] public string Name;
+
+        [ReadOnly] public string Path;
 
 #if UNITY_EDITOR
-        [HideInInspector]
-        public SceneSetup Setup;
+        [HideInInspector] public SceneSetup Setup;
 #endif
     }
 }

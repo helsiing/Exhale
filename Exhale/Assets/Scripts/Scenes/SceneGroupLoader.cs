@@ -4,7 +4,6 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -18,20 +17,17 @@ namespace Exhale.Scenes
 
         private void Start()
         {
-            foreach (SceneData sceneData in sceneList)
+            foreach (var sceneData in sceneList)
             {
-                bool alreadyLoaded = false;
-                for (int i = 0; i < SceneManager.sceneCount; i++)
+                var alreadyLoaded = false;
+                for (var i = 0; i < SceneManager.sceneCount; i++)
                     if (SceneManager.GetSceneAt(i).name + ".unity" == sceneData.Name)
                         alreadyLoaded = true;
 
-                if (!alreadyLoaded)
-                {
-                    SceneManager.LoadScene(sceneData.Path, LoadSceneMode.Additive);
-                }
+                if (!alreadyLoaded) SceneManager.LoadScene(sceneData.Path, LoadSceneMode.Additive);
             }
         }
-        
+
 #if UNITY_EDITOR
         [Button("Update")]
         public void UpdateSceneSetup()
@@ -42,8 +38,9 @@ namespace Exhale.Scenes
             {
                 // check if scene already exists
                 if (sceneList.Exists(x => x.Path == sceneSetup.path)) continue;
-                
-                var sceneData = new SceneData {
+
+                var sceneData = new SceneData
+                {
                     Name = Path.GetFileName(sceneSetup.path),
                     Path = sceneSetup.path,
                     Setup = sceneSetup

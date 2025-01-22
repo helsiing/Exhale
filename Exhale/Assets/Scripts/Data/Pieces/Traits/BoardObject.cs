@@ -10,20 +10,20 @@ namespace Exhale.Scripts.Data
     {
         public Entity Prefab;
     }
-    
+
     /// <summary>
-    /// Trait that indicates the board object that should be instantiated for a piece.
+    ///     Trait that indicates the board object that should be instantiated for a piece.
     /// </summary>
     [Serializable]
     public class BoardObject : PieceTrait
     {
-        [InlineProperty, HideLabel, SerializeField]
+        [InlineProperty] [HideLabel] [SerializeField]
         private BoardObjectComponent data;
-        public BoardObjectComponent Data => data;
-        
+
         [SerializeField] private GameObject prefab;
+        public BoardObjectComponent Data => data;
         public GameObject Prefab => prefab;
-        
+
         public override bool ValidateConfig()
         {
             return prefab != null;

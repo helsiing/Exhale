@@ -13,7 +13,7 @@ using SphereCollider = Unity.Physics.SphereCollider;
 
 namespace Exhale.ECS.Systems
 {
-    public partial class TilesInitializationSystem : SystemBase
+    public partial class BoardInitializationSystem : SystemBase
     {
         private BlobAssetReference<Collider> sphereCollider;
         private PieceFactorySystem pieceFactorySystem;
@@ -21,7 +21,7 @@ namespace Exhale.ECS.Systems
         protected override void OnCreate()
         {
             RequireForUpdate<BoardDataComponent>();
-            Debug.Log($"Starting {nameof(TilesInitializationSystem)}...");
+            Debug.Log($"Starting {nameof(BoardInitializationSystem)}...");
 
             sphereCollider = SphereCollider.Create(new SphereGeometry
             {
@@ -49,20 +49,24 @@ namespace Exhale.ECS.Systems
 
             Dependency = job.ScheduleParallel(Dependency);
             ecbSystem.AddJobHandleForProducer(Dependency);
-            
-            pieceFactorySystem.CreateRandomPiece(new int2(0, 0));
-            pieceFactorySystem.CreateRandomPiece(new int2(3, 3));
-            pieceFactorySystem.CreateRandomPiece(new int2(5, 5));
         }
 
         protected override void OnUpdate()
         {
+            BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
+            for(int i = 0; i < 5; i ++)
+            {
+                pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
+            }
         }
 
         protected override void OnDestroy()
         {
             // Dispose of the collider when the system is destroyed
-            if (sphereCollider.IsCreated) sphereCollider.Dispose();
+            if (sphereCollider.IsCreated)
+            {
+                sphereCollider.Dispose();
+            }
         }
     }
 

@@ -115,7 +115,7 @@ public partial class @CameraControlActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""6c02b788-fc7d-47f9-9661-286337649921"",
                     ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RotateCamera"",

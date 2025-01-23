@@ -162,7 +162,7 @@ namespace Exhale.Board
 
         private void ZoomCamera(InputAction.CallbackContext obj)
         {
-            var inputValue = -obj.ReadValue<Vector2>().y / 100f;
+            var inputValue = -obj.ReadValue<Vector2>().y / 10f;
 
             if (Mathf.Abs(inputValue) > 0.1f)
             {

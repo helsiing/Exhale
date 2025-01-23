@@ -5,50 +5,257 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceTemplatesAuthoring.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/BoardPiece.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/PieceTemplatesInitializationSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/PieceTemplatesInitializationSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/BoardHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/BoardHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Materials/EmptyCell_Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Materials/EmptyCell_Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/bridge.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/bridge.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-archery.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-archery.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-cabin.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-cabin.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-castle.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-castle.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-dock.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-dock.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-farm.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-farm.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-house.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-house.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-market.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-market.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-mill.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-mill.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-mine.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-mine.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-port.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-port.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-sheep.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-sheep.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-smelter.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-smelter.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-tower.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-tower.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-village.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-village.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-wall.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-wall.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-walls.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-walls.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-watermill.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-watermill.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-wizard-tower.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Buildings/building-wizard-tower.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-house.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-house.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-mansion.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-mansion.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-mill.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-mill.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-ship-large.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-ship-large.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-ship.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-ship.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-tower.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-tower.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-tree.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-tree.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-wall-tower.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Misc/unit-wall-tower.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/dirt-lumber.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/dirt-lumber.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/dirt.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/dirt.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/grass-forest.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/grass-forest.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/grass-hill.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/grass-hill.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/grass.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/grass.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/sand-desert.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/sand-desert.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/sand-rocks.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/sand-rocks.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/sand.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/sand.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone-hill.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone-hill.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone-mountain.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone-mountain.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone-rocks.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone-rocks.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/stone.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/water-island.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/water-island.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/water-rocks.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/water-rocks.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/water.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Nature/water.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-corner-sharp.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-corner-sharp.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-corner.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-corner.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-crossing.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-crossing.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-end.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-end.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionA.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionA.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionB.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionB.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionC.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionC.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionD.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionD.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionE.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionE.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionF.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionF.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionG.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionG.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionH.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-intersectionH.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-square-end.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-square-end.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-square.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-square.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-start.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-start.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-straight.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/Path/path-straight.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-corner-sharp.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-corner-sharp.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-corner.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-corner.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-crossing.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-crossing.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-end.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-end.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionA.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionA.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionB.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionB.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionC.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionC.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionD.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionD.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionE.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionE.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionF.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionF.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionG.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionG.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionH.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-intersectionH.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-start.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-start.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-straight.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Models/River/river-straight.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Textures/colormap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Textures/colormap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Textures/variation-a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Textures/variation-a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Textures/variation-b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Cells/Textures/variation-b.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/HexPieceTemplateCollection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/HexPieceTemplateCollection.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/[HexTile] Empty.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/[HexTile] Empty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Dirt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Dirt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Grass.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Grass.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Sand.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Sand.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Stone.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Stone.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Water.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Water.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[HexPiece] Empty.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[HexPiece] Empty.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Base - Building.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Base - Building.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Archery).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Archery).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Bridge).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Bridge).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Cabin).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Cabin).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Castle).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Castle).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Dock).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Dock).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Farm).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Farm).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (House).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (House).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Market).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Market).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Mill).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Mill).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Mine).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Mine).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Port).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Port).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Sheep).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Sheep).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Smelter).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Smelter).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Tower).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Tower).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Village).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Village).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Wall).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Wall).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Walls).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Walls).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Watermill).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Watermill).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Wizard Tower).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece] Building (Wizard Tower).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Dirt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Dirt.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Dirt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Dirt.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Grass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Grass.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Grass.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Grass.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Sand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Sand.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Sand.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Sand.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Stone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Stone.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Stone.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Water.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Water.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Water.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Water.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexTile] Base - Ground.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexTile] Base - Ground.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexPiece] Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexPiece] Base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale/Exhale (ECS).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale/Exhale (ECS).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraMouseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraMouseController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/BoardConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/BoardConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexTileData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexTileData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/PieceTrait.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/PieceTrait.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplateCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplateCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexTileData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexTileData.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/HexPieceTemplatesAuthoring.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/HexPieceTemplatesAuthoring.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceTemplatesAuthoring.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceCollectionAuthoring.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceCollectionAuthoring.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/HexPieceComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/HexPieceComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/BoardPiece.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/HexTileTag.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/HexTileTag.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/PieceCollectionComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/PieceCollectionComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/BoardTilesInitializationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardPiecesInitializationSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/BoardTilesInitializationSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardPiecesInitializationSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneGroupLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneGroupLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/GameObjectExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/GameObjectExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceTemplatesAuthoring.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceTemplatesAuthoring.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/BoardPiece.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/BoardPiece.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardPiecesInitializationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/TilesInitializationSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardPiecesInitializationSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/TilesInitializationSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/PieceTemplatesInitializationSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/PieceTemplatesInitializationSystem.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +273,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/70fdcc94916545348b67efb0e9dda70b9b8600/f5/97602a68/GameObjectInspector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/97293d5044dc43e3b0baffe4c836dfc21de200/e2/aeff873f/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardPiecesInitializationSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/TilesInitializationSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenes/SceneGroupLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities.Hybrid/Baking/Baker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities/ComponentSystemGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities/ScriptBehaviourUpdateOrder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities/SystemBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Transforms/LocalTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.physics/Unity.Physics/ECS/Base/Systems/BuildPhysicsWorld.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -143,10 +353,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11250">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="29071">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="11250" />
+      <option name="pid" value="29071" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -188,7 +398,7 @@
       <workItem from="1734994324841" duration="2441000" />
       <workItem from="1735034288192" duration="61000" />
       <workItem from="1736792611051" duration="27661000" />
-      <workItem from="1737326169599" duration="10024000" />
+      <workItem from="1737326169599" duration="25902000" />
     </task>
     <servers />
   </component>
@@ -251,6 +461,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs</url>
+          <line>115</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs" containingFunctionPresentation="Method 'Execute'">
+            <startOffsets>
+              <option value="4199" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4217" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

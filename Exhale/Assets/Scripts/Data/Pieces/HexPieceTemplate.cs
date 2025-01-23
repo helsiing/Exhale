@@ -1,25 +1,32 @@
 using System;
 using BrunoMikoski.ScriptableObjectCollections;
-using Sirenix.OdinInspector;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
-    [Serializable]
-    public struct PieceTemplate : IComponentData
+    [Serializable] 
+    public struct PieceTemplateData : IComponentData
     {
         public int PieceId;
-        [NonSerialized] public Entity PiecePrefabEntity;
-    }
-
+    } 
+    
+    [Serializable] 
+    public struct BoardPosition : IComponentData
+    {
+        public int2 PositionIndex;
+    } 
+    
     public class HexPieceTemplate : ScriptableObjectCollectionItem
     {
-        [InlineProperty] [HideLabel] [SerializeField]
-        private PieceTemplate data;
-
         [SerializeField] private GameObject piecePrefab;
-        public PieceTemplate Data => data;
         public GameObject PiecePrefab => piecePrefab;
+        
+        public int GetId()
+        {
+            return GUID.GetHashCode();
+        }
+        
     }
 }

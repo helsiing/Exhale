@@ -10,19 +10,18 @@ namespace Exhale.Scripts.Data
     {
         public int Width;
         public int Height;
-        [NonSerialized] public int EmptyPieceId;
         [NonSerialized] public Entity EmptyPiecePrefabEntity;
     }
 
     [CreateAssetMenu(fileName = "BoardConfig", menuName = "Exhale/BoardConfig", order = 0)]
     public class BoardConfig : ScriptableObject
     {
-        [InlineProperty] [HideLabel] [SerializeField]
+        [InlineProperty, HideLabel, SerializeField]
         private BoardDataComponent data;
-
-        [SerializeField] private HexPieceTemplate emptyPieceTemplate;
         public BoardDataComponent Data => data;
-        public HexPieceTemplate EmptyPieceTemplate => emptyPieceTemplate;
+        
+        [SerializeField] private GameObject emptyPiecePrefab;
+        public GameObject EmptyPiecePrefab => emptyPiecePrefab;
 
         public int Width => data.Width;
         public int Height => data.Height;

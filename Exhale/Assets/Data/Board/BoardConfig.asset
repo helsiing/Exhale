@@ -15,4 +15,5 @@ MonoBehaviour:
   data:
     Width: 10
     Height: 10
-  emptyPieceTemplate: {fileID: 11400000, guid: fbe4c3c6214784d51960da95a7691135, type: 2}
+  emptyPiecePrefab: {fileID: 195783397064062652, guid: 1649ba7e3f31c41a483d36dce5537029,
+    type: 3}

@@ -1,4 +1,3 @@
-using Exhale.ECS.Components;
 using Exhale.Scripts.Data;
 using Exhale.Utils;
 using JetBrains.Annotations;
@@ -14,20 +13,24 @@ using SphereCollider = Unity.Physics.SphereCollider;
 
 namespace Exhale.ECS.Systems
 {
-    public partial class BoardPiecesInitializationSystem : SystemBase
+    public partial class TilesInitializationSystem : SystemBase
     {
         private BlobAssetReference<Collider> sphereCollider;
+        private PieceFactorySystem pieceFactorySystem;
 
         protected override void OnCreate()
         {
             RequireForUpdate<BoardDataComponent>();
-            Debug.Log($"Starting {nameof(BoardPiecesInitializationSystem)}...");
+            Debug.Log($"Starting {nameof(TilesInitializationSystem)}...");
 
             sphereCollider = SphereCollider.Create(new SphereGeometry
             {
                 Center = float3.zero,
                 Radius = 1f // Adjust to match your tile size
             }, CollisionFilter.Default);
+            
+            // Access the PieceFactorySystem
+            pieceFactorySystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PieceFactorySystem>();
 
             base.OnCreate();
         }
@@ -41,11 +44,15 @@ namespace Exhale.ECS.Systems
             CreateBoardJob job = new()
             {
                 Ecb = ecb,
-                SphereCollider = sphereCollider
+                SphereCollider = sphereCollider,
             };
 
             Dependency = job.ScheduleParallel(Dependency);
             ecbSystem.AddJobHandleForProducer(Dependency);
+            
+            pieceFactorySystem.CreateRandomPiece(new int2(0, 0));
+            pieceFactorySystem.CreateRandomPiece(new int2(3, 3));
+            pieceFactorySystem.CreateRandomPiece(new int2(5, 5));
         }
 
         protected override void OnUpdate()
@@ -68,6 +75,7 @@ namespace Exhale.ECS.Systems
         [UsedImplicitly]
         public void Execute(Entity entity, [EntityIndexInQuery] int entityIndexInQuery, ref BoardDataComponent board)
         {
+            
             for (var y = 0; y < board.Height; y++)
             for (var x = 0; x < board.Width; x++)
             {
@@ -75,10 +83,10 @@ namespace Exhale.ECS.Systems
 
                 var hexTileEntity = Ecb.Instantiate(entityIndexInQuery, board.EmptyPiecePrefabEntity);
                 Ecb.AddComponent(entityIndexInQuery, hexTileEntity, new PhysicsCollider { Value = SphereCollider });
-                Ecb.AddComponent(entityIndexInQuery, hexTileEntity,
+                /*Ecb.AddComponent(entityIndexInQuery, hexTileEntity,
                     new BoardPiece { PieceId = board.EmptyPieceId});
                 Ecb.AddComponent(entityIndexInQuery, hexTileEntity,
-                    new BoardPosition() { PositionIndex = new int2(x, y) });
+                    new BoardPosition() { PositionIndex = new int2(x, y) });*/
                 Ecb.SetComponent(entityIndexInQuery, hexTileEntity,
                     LocalTransform.FromPosition(BoardHelper.HexToWorldPosition(x, y)));
             }

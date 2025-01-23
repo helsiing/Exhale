@@ -3,11 +3,12 @@ using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
 
-namespace ECS.Authoring
+namespace Exhale.ECS.Authoring
 {
     public class PieceAuthoring : MonoBehaviour
     {
         [SerializeField] private HexPieceTemplate pieceTemplate;
+        public HexPieceTemplate PieceTemplate => pieceTemplate;
         
         public class Baker : Baker<PieceAuthoring>
         {

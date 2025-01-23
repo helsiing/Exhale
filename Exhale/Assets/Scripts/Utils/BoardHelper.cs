@@ -4,6 +4,11 @@ namespace Exhale.Utils
 {
     public static class BoardHelper
     {
+        public static float3 HexToWorldPosition(int2 positionIndex)
+        {
+            return HexToWorldPosition(positionIndex.x, positionIndex.y);
+        }
+        
         public static float3 HexToWorldPosition(int x, int y)
         {
             var hexWidth = 1.0f;

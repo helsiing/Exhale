@@ -10,7 +10,7 @@ namespace Exhale.Scripts.Data
     {
         public int Width;
         public int Height;
-        [NonSerialized] public Entity EmptyPiecePrefabEntity;
+        [NonSerialized] public Entity EmptyTTilePrefabEntity;
     }
 
     [CreateAssetMenu(fileName = "BoardConfig", menuName = "Exhale/BoardConfig", order = 0)]
@@ -20,10 +20,7 @@ namespace Exhale.Scripts.Data
         private BoardDataComponent data;
         public BoardDataComponent Data => data;
         
-        [SerializeField] private GameObject emptyPiecePrefab;
-        public GameObject EmptyPiecePrefab => emptyPiecePrefab;
-
-        public int Width => data.Width;
-        public int Height => data.Height;
+        [SerializeField] private GameObject emptyTilePrefab;
+        public GameObject EmptyTilePrefab => emptyTilePrefab;
     }
 }

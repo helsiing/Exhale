@@ -5,11 +5,10 @@ using UnityEngine;
 
 namespace Exhale.ECS.Authoring
 {
-    public struct HexTileData : IComponentData
+    public struct TileData : IComponentData
     {
-        public int2 GridPosition; // Position in hexagonal grid (use axial or offset coordinates)
+        public int2 PositionIndex; // Position in hexagonal grid (use axial or offset coordinates)
         public bool IsOccupied;   // Whether this tile is occupied by a piece
-        public bool IsUnlocked;   // Whether this tile is available for placement
     }
     
     public class BoardAuthoring : MonoBehaviour
@@ -23,7 +22,7 @@ namespace Exhale.ECS.Authoring
                 var entity = GetEntity(TransformUsageFlags.Renderable);
 
                 var componentData = authoring.boardConfig.Data;
-                componentData.EmptyPiecePrefabEntity = GetEntity(authoring.boardConfig.EmptyPiecePrefab,
+                componentData.EmptyTTilePrefabEntity = GetEntity(authoring.boardConfig.EmptyTilePrefab,
                     TransformUsageFlags.Dynamic);
 
                 AddComponent(entity, componentData);

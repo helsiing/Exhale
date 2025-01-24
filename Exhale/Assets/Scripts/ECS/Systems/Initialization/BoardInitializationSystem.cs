@@ -54,11 +54,11 @@ namespace Exhale.ECS.Systems
 
         protected override void OnUpdate()
         {
-            BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
+            /*BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
             for(int i = 0; i < 1; i ++)
             {
                 pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
-            }
+            }*/
         }
 
         protected override void OnDestroy()
@@ -82,23 +82,27 @@ namespace Exhale.ECS.Systems
         {
             
             for (var y = 0; y < board.Height; y++)
-            for (var x = 0; x < board.Width; x++)
             {
-                if (board.EmptyPiecePrefabEntity == Entity.Null) continue;
+                for (var x = 0; x < board.Width; x++)
+                {
+                    if (board.EmptyTTilePrefabEntity == Entity.Null)
+                    {
+                        continue;
+                    }
 
-                var hexTileEntity = Ecb.Instantiate(entityIndexInQuery, board.EmptyPiecePrefabEntity);
-                Ecb.AddComponent(entityIndexInQuery, hexTileEntity, 
-                    new PhysicsCollider { Value = SphereCollider });
-                
-                /*Ecb.AddComponent(entityIndexInQuery, hexTileEntity, 
-                    new TileData
-                                {
-                                    PositionIndex = new int2(x, y),
-                                    IsOccupied = false
-                                });*/
+                    Entity hexTileEntity = Ecb.Instantiate(entityIndexInQuery, board.EmptyTTilePrefabEntity);
+                    Ecb.AddComponent(entityIndexInQuery, hexTileEntity, 
+                        new PhysicsCollider { Value = SphereCollider });
+                    Ecb.AddComponent(entityIndexInQuery, hexTileEntity, 
+                        new TileData
+                        {
+                            PositionIndex = new int2(x, y),
+                            IsOccupied = false
+                        });
 
-                Ecb.SetComponent(entityIndexInQuery, hexTileEntity,
-                    LocalTransform.FromPosition(BoardHelper.HexToWorldPosition(x, y)));
+                    Ecb.SetComponent(entityIndexInQuery, hexTileEntity,
+                        LocalTransform.FromPosition(BoardHelper.HexToWorldPosition(x, y)));
+                }
             }
         }
     }

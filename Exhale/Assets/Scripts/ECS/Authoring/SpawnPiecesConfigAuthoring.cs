@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Exhale.Scripts.Data;
 using Unity.Entities;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ namespace Exhale.ECS.Authoring
     
     public class SpawnPiecesConfigAuthoring : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> piecePrefabs;
+        [SerializeField] private HexPieceTemplateCollection pieceTemplateCollection;
         private class Baker : Baker<SpawnPiecesConfigAuthoring>
         {
             public override void Bake(SpawnPiecesConfigAuthoring authoring)
@@ -40,14 +41,14 @@ namespace Exhale.ECS.Authoring
                 Entity entity = GetEntity(TransformUsageFlags.None);
                 
                 DynamicBuffer<PieceEntityData> buffer = AddBuffer<PieceEntityData>(entity);
-                foreach (GameObject prefab in authoring.piecePrefabs)
+                foreach (HexPieceTemplate pieceTemplate in authoring.pieceTemplateCollection)
                 {
-                    if (prefab.TryGetComponent(out PieceAuthoring pieceAuthoring))
+                    if (pieceTemplate.PiecePrefab.TryGetComponent(out PieceAuthoring pieceAuthoring))
                     {
                         buffer.Add(new PieceEntityData
                         {
                             PieceId = pieceAuthoring.PieceTemplate.GetId(),
-                            PrefabEntity = GetEntity(prefab, TransformUsageFlags.Dynamic)
+                            PrefabEntity = GetEntity(pieceTemplate.PiecePrefab, TransformUsageFlags.Dynamic)
                         });
                     }
                 }

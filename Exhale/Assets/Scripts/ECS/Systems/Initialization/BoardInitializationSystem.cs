@@ -1,3 +1,4 @@
+using Exhale.ECS.Authoring;
 using Exhale.Scripts.Data;
 using Exhale.Utils;
 using JetBrains.Annotations;
@@ -54,7 +55,7 @@ namespace Exhale.ECS.Systems
         protected override void OnUpdate()
         {
             BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
-            for(int i = 0; i < 20; i ++)
+            for(int i = 0; i < 1; i ++)
             {
                 pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
             }
@@ -86,7 +87,16 @@ namespace Exhale.ECS.Systems
                 if (board.EmptyPiecePrefabEntity == Entity.Null) continue;
 
                 var hexTileEntity = Ecb.Instantiate(entityIndexInQuery, board.EmptyPiecePrefabEntity);
-                Ecb.AddComponent(entityIndexInQuery, hexTileEntity, new PhysicsCollider { Value = SphereCollider });
+                Ecb.AddComponent(entityIndexInQuery, hexTileEntity, 
+                    new PhysicsCollider { Value = SphereCollider });
+                
+                /*Ecb.AddComponent(entityIndexInQuery, hexTileEntity, 
+                    new TileData
+                                {
+                                    PositionIndex = new int2(x, y),
+                                    IsOccupied = false
+                                });*/
+
                 Ecb.SetComponent(entityIndexInQuery, hexTileEntity,
                     LocalTransform.FromPosition(BoardHelper.HexToWorldPosition(x, y)));
             }

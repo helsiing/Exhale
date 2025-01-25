@@ -5,18 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Attribute Processors.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Drawers.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Editor Windows.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Sample - RPG Editor.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale/Exhale (ECS).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale/Exhale (ECS).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/BoardConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/BoardConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraMouseController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraMouseController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Materials/SimpleSky.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Materials/SimpleSky.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_01.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_01.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_02.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_02.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_03.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_03.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_04.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_04.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_05.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_05.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_06.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_06.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/SkyDome.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/SkyDome.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_04.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_04.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_05.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_05.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_06.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_06.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/SkyDome.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/SkyDome.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/ReadMe.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_Demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_Demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_DemoSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_DemoSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Textures/SimpleSky.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Textures/SimpleSky.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +73,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/TilesInitializationSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenes/SceneGroupLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities.Editor/Hierarchy/Model/HierarchyNodes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities.Hybrid/Baking/Baker.cs" root0="SKIP_HIGHLIGHTING" />
@@ -41,6 +81,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities/SystemBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Entities/Types/Entity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities/Unity.Transforms/LocalTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.physics/Unity.Physics/ECS/Base/Systems/BuildPhysicsWorld.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -109,13 +150,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="50352">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="50352" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />

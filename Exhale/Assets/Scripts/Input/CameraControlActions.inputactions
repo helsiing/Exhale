@@ -6,7 +6,7 @@
             "id": "6c076e31-86ff-4fc3-b6e7-9f79dc97dd50",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Pan_Keyboard",
                     "type": "Value",
                     "id": "e6827342-4ad9-400c-9dbb-ebcf0c4a0450",
                     "expectedControlType": "Vector2",
@@ -15,7 +15,25 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RotateCamera",
+                    "name": "Rotate_Keyboard",
+                    "type": "Button",
+                    "id": "5c724a6f-e9e0-4791-aa6f-efb02ec3cb8a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Pan_Mouse",
+                    "type": "Value",
+                    "id": "90ac112d-e221-4c8e-9ec1-aa298d10de45",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Rotate",
                     "type": "Value",
                     "id": "f9b95638-e1b6-4c4e-9985-8558e8949b7a",
                     "expectedControlType": "Vector2",
@@ -24,7 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ZoomCamera",
+                    "name": "Zoom_Mouse",
                     "type": "Value",
                     "id": "91c8c515-a92f-442a-b2e8-ef543c24a60d",
                     "expectedControlType": "Vector2",
@@ -41,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Pan_Keyboard",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -52,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Pan_Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -63,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Pan_Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -74,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Pan_Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -85,18 +103,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Pan_Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "6c02b788-fc7d-47f9-9661-286337649921",
+                    "path": "<Pointer>/delta",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49ed45b5-77db-4888-938c-a4d60058c47c",
                     "path": "<Mouse>/delta",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCamera",
+                    "action": "Pan_Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -107,9 +136,42 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ZoomCamera",
+                    "action": "Zoom_Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "3ab08aec-f4ff-41a8-a709-f68495fdb398",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate_Keyboard",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "103de67e-19d0-49e7-8980-153f6e3e7260",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate_Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5a3b315d-ebf2-4a41-8af7-485a9e64fadd",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate_Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

@@ -1,78 +1,74 @@
-using Unity.Burst;
+using Exhale.ECS.Authoring;
+using Exhale.ECS.Systems;
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.Physics;
-using Unity.Physics.Systems;
+using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 
-namespace Exhale.ECS.Systems
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+public partial class PieceClickSystem : SystemBase
 {
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateBefore(typeof(PhysicsSystemGroup))]
-    [BurstCompile]
-    public partial class PieceClickSystem : SystemBase
+    private PieceFactorySystem pieceFactorySystem;
+
+    protected override void OnCreate()
     {
-        protected override void OnCreate()
+        // Ensure the system only runs when the PhysicsWorldSingleton exists
+        RequireForUpdate<PhysicsWorldSingleton>();
+        pieceFactorySystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PieceFactorySystem>();
+    }
+
+    protected override void OnUpdate()
+    {
+        // Check if the user has clicked the left mouse button
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        // Retrieve the PhysicsWorldSingleton for raycasting
+        var physicsWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>().PhysicsWorld;
+
+        // Get the mouse click position and generate a ray
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var rayInput = new RaycastInput
         {
-            Debug.Log($"Starting {nameof(PieceClickSystem)}...");
-            base.OnCreate();
-        }
+            Start = ray.origin,
+            End = ray.origin + ray.direction * 1000f,
+            Filter = CollisionFilter.Default
+        };
 
-        [BurstCompile]
-        protected override void OnUpdate()
+        // Perform the raycast
+        if (physicsWorld.CollisionWorld.CastRay(rayInput, out var hit))
         {
-            // Only process when the left mouse button is clicked
-            if (!Input.GetMouseButtonDown(0)) return;
+            // Get the entity that was hit
+            var hitEntity = physicsWorld.Bodies[hit.RigidBodyIndex].Entity;
 
-            var physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
-            // Get the mouse click position in screen space and convert to a ray
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            float3 rayOrigin = ray.origin;
-            float3 rayDirection = ray.direction;
-
-            // Access the CollisionWorld via the BuildPhysicsWorld singleton
-            var collisionWorld = physicsWorldSingleton.PhysicsWorld.CollisionWorld;
-
-            // Create a RaycastInput for the physics raycast
-            var rayInput = new RaycastInput
+            var tileData = EntityManager.GetComponentData<TileData>(hitEntity);
+            pieceFactorySystem.CreateRandomPiece(tileData.PositionIndex);
+            // Example: Add or modify components on the hit entity
+            /*if (EntityManager.HasComponent<HexPieceComponent>(hitEntity))
             {
-                Start = rayOrigin,
-                End = rayOrigin + rayDirection * 1000f, // Extend the ray far into the world
-                Filter = CollisionFilter.Default // Default collision filter
-            };
-
-            // Perform the raycast and check for hits
-            if (collisionWorld.CastRay(rayInput, out var hit))
-            {
-                // Get the entity that was hit
-                var hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
-                Debug.Log("HIT");
-                // Process the hit entity
-                //ProcessTileClick(hitEntity);
-            }
-        }
-
-        /*private void ProcessTileClick(Entity tileEntity)
-        {
-            var entityManager = EntityManager;
-
-            // Check if the entity has a HexTileTag component
-            if (entityManager.HasComponent<HexTileTag>(tileEntity))
-            {
-                // Remove the HexTileTag to mark the entity as converted
-                entityManager.RemoveComponent<HexTileTag>(tileEntity);
-
-                // Add a HexPieceComponent to represent the new piece
-                entityManager.AddComponent<HexPieceComponent>(tileEntity);
-
-                // Optionally modify the transform (e.g., scale up the piece)
-                if (entityManager.HasComponent<LocalTransform>(tileEntity))
+                // Modify existing components
+                EntityManager.SetComponentData(hitEntity, new LocalTransform
                 {
-                    var transform = entityManager.GetComponentData<LocalTransform>(tileEntity);
-                    transform.Scale *= 1.2f; // Visually indicate the conversion
-                    entityManager.SetComponentData(tileEntity, transform);
-                }
+                    Position = new float3(0, 1, 0), // Example transformation
+                    Rotation = quaternion.identity,
+                    Scale = 1f
+                });
             }
-        }*/
+            else
+            {
+                // Add new components if not already present
+                EntityManager.AddComponent<HexPieceComponent>(hitEntity);
+                EntityManager.SetComponentData(hitEntity, new LocalTransform
+                {
+                    Position = new float3(0, 1, 0), // Example transformation
+                    Rotation = quaternion.identity,
+                    Scale = 1f
+                });
+            }*/
+
+            Debug.Log($"Entity hit: {hitEntity}");
+        }
     }
 }
+
+public struct HexPieceComponent : IComponentData { }

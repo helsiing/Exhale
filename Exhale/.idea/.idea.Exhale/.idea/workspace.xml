@@ -5,59 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraMouseController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraMouseController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/CameraControlActions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Materials/SimpleSky.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Materials/SimpleSky.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_01.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_01.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_02.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_02.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_03.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_03.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_04.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_04.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_05.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_05.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_06.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/Cloud_06.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/SkyDome.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Models/SkyDome.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_01.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_01.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_02.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_02.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_03.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_03.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_04.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_04.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_05.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_05.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_06.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/Cloud_06.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/SkyDome.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Prefabs/SkyDome.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/ReadMe.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/ReadMe.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_Demo.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_Demo.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_DemoSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Scenes/SimpleSky_DemoSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Textures/SimpleSky.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleSky/Textures/SimpleSky.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Dirt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Dirt.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Grass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Grass.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Sand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Sand.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Stone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Water.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Ground/[HexPiece][Ground] Water.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,19 +196,6 @@
           <line>9</line>
           <properties documentPath="C:\Users\User\Documents\GitHub\Exhale\Exhale\Assets\Scripts\Gameplay\Board\BoardHelper.cs" containingFunctionPresentation="Method 'IsWithinBounds'" />
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs</url>
-          <line>26</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs" containingFunctionPresentation="Method 'OnUpdate'">
-            <startOffsets>
-              <option value="722" />
-            </startOffsets>
-            <endOffsets>
-              <option value="798" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

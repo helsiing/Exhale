@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BoardConfig
   m_EditorClassIdentifier: 
   data:
-    Width: 100
-    Height: 100
+    Width: 50
+    Height: 50
   emptyTilePrefab: {fileID: 195783397064062652, guid: 1649ba7e3f31c41a483d36dce5537029,
     type: 3}

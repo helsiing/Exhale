@@ -9,6 +9,11 @@ namespace Exhale.ECS.Authoring
     {
         [SerializeField] private HexPieceTemplate pieceTemplate;
         public HexPieceTemplate PieceTemplate => pieceTemplate;
+
+        public void SetPieceTemplate(HexPieceTemplate pieceTemplate)
+        {
+            this.pieceTemplate = pieceTemplate;
+        }
         
         public class Baker : Baker<PieceAuthoring>
         {

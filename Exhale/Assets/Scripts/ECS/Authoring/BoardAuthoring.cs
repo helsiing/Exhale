@@ -11,6 +11,11 @@ namespace Exhale.ECS.Authoring
         public bool IsOccupied;   // Whether this tile is occupied by a piece
     }
     
+    public struct TileDataHighlight : IComponentData
+    {
+        public bool IsHighlighted;
+    }
+    
     public class BoardAuthoring : MonoBehaviour
     {
         [SerializeField] private BoardConfig boardConfig;

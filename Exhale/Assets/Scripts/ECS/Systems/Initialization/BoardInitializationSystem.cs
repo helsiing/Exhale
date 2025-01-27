@@ -10,6 +10,7 @@ using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 using Collider = Unity.Physics.Collider;
+using MeshCollider = UnityEngine.MeshCollider;
 using SphereCollider = Unity.Physics.SphereCollider;
 
 namespace Exhale.ECS.Systems
@@ -23,12 +24,13 @@ namespace Exhale.ECS.Systems
         {
             RequireForUpdate<BoardDataComponent>();
             Debug.Log($"Starting {nameof(BoardInitializationSystem)}...");
-
+            
             sphereCollider = SphereCollider.Create(new SphereGeometry
             {
                 Center = float3.zero,
-                Radius = 1f // Adjust to match your tile size
+                Radius = .25f // Adjust to match your tile size
             }, CollisionFilter.Default);
+            
             
             // Access the PieceFactorySystem
             pieceFactorySystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PieceFactorySystem>();

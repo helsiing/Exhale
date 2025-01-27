@@ -2,45 +2,52 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Exhale.Scripts.Data
 {
-    [Serializable]
-    public struct BuildingUnlockRequirementComponent : IComponentData
+    #region ECS
+    public struct BuildingPlacementRequirementsDataBlob
     {
-        public float2 PositionIndex;
-        public Entity pieceTemplateEntity;
+        public BlobArray<float2> Positions;
+        public BlobArray<Entity> PieceEntities;
     }
-
-    [Serializable]
-    public class BuildingUnlockRequirementsData
+    
+    public struct BuildingComponentData : IComponentData
     {
-        [InlineProperty] [HideLabel] [SerializeField]
-        private BuildingUnlockRequirementComponent data;
-
+        public BlobAssetReference<BuildingPlacementRequirementsDataBlob> PlacementRequirementsData;
+    }
+    #endregion
+    
+    [Serializable]
+    public class BuildingPlacementRequirementsData
+    {
+        [SerializeField] private Vector2 positionIndex;
+        public Vector2 PositionIndex => positionIndex;
+        
         [SerializeField] private HexPieceTemplate pieceTemplate;
-        public BuildingUnlockRequirementComponent Data => data;
         public HexPieceTemplate PieceTemplate => pieceTemplate;
     }
 
     [Serializable]
     public class Building : PieceTrait
     {
-        [SerializeField] private List<BuildingUnlockRequirementsData> unlockRequirementsData = new();
-        public List<BuildingUnlockRequirementsData> UnlockRequirementsData => unlockRequirementsData;
+        [SerializeField] private List<BuildingPlacementRequirementsData> placementRequirementsData = new();
+        public List<BuildingPlacementRequirementsData> PlacementRequirementsData => placementRequirementsData;
 
         public override bool ValidateConfig()
         {
-            if (unlockRequirementsData.Count == 0)
+            if (placementRequirementsData.Count == 0)
             {
                 Debug.LogError("Building trait has no unlock requirements");
                 return false;
             }
 
-            if (unlockRequirementsData.Any(requirement => requirement.Data.PositionIndex.Equals(float2.zero)))
+            if (placementRequirementsData.Any(requirement => requirement.PositionIndex.Equals(float2.zero)))
             {
                 Debug.LogError("Position (0, 0) is protected");
                 return false;

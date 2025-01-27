@@ -6,6 +6,8 @@ using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Ray = UnityEngine.Ray;
+using RaycastHit = Unity.Physics.RaycastHit;
 
 namespace ECS.Systems
 {
@@ -23,29 +25,29 @@ namespace ECS.Systems
 
         public void OnUpdate(ref SystemState state)
         {
-            var mousePosition = Mouse.current.position.ReadValue();
-            var ray = Camera.main.ScreenPointToRay(mousePosition);
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
             // Access the physics world
-            var physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
-            var collisionWorld = physicsWorldSingleton.PhysicsWorld.CollisionWorld;
+            PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
+            CollisionWorld collisionWorld = physicsWorldSingleton.PhysicsWorld.CollisionWorld;
 
             // Perform raycast
-            var rayInput = new RaycastInput
+            RaycastInput rayInput = new()
             {
                 Start = ray.origin,
                 End = ray.origin + ray.direction * 1000f,
                 Filter = new CollisionFilter
                 {
-                    BelongsTo = ~0u,    // Collides with everything
+                    BelongsTo = ~0u, // Collides with everything
                     CollidesWith = ~0u, // Detect all collision layers
                     GroupIndex = 0
                 }
             };
 
-            if (collisionWorld.CastRay(rayInput, out var hit))
+            if (collisionWorld.CastRay(rayInput, out RaycastHit hit))
             {
-                var hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
+                Entity hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
 
                 if (SystemAPI.HasComponent<TileData>(hitEntity))
                 {
@@ -63,7 +65,9 @@ namespace ECS.Systems
         private void HighlightTile(ref SystemState state, Entity tileEntity)
         {
             if (tileEntity == highlightedTile)
+            {
                 return; // The tile is already highlighted
+            }
 
             // Clear the previous highlight
             ClearHighlight(ref state);
@@ -73,14 +77,14 @@ namespace ECS.Systems
 
             if (SystemAPI.HasComponent<LocalTransform>(tileEntity))
             {
-                var transform = SystemAPI.GetComponent<LocalTransform>(tileEntity);
+                LocalTransform transform = SystemAPI.GetComponent<LocalTransform>(tileEntity);
                 transform.Scale *= 1.1f; // Slightly scale up the tile
                 SystemAPI.SetComponent(tileEntity, transform);
             }
 
             if (SystemAPI.HasComponent<TileDataHighlight>(tileEntity))
             {
-                var highlight = SystemAPI.GetComponent<TileDataHighlight>(tileEntity);
+                TileDataHighlight highlight = SystemAPI.GetComponent<TileDataHighlight>(tileEntity);
                 highlight.IsHighlighted = true;
                 SystemAPI.SetComponent(tileEntity, highlight);
             }
@@ -92,14 +96,14 @@ namespace ECS.Systems
             {
                 if (SystemAPI.HasComponent<LocalTransform>(highlightedTile))
                 {
-                    var transform = SystemAPI.GetComponent<LocalTransform>(highlightedTile);
+                    LocalTransform transform = SystemAPI.GetComponent<LocalTransform>(highlightedTile);
                     transform.Scale /= 1.1f; // Restore the original scale
                     SystemAPI.SetComponent(highlightedTile, transform);
                 }
 
                 if (SystemAPI.HasComponent<TileDataHighlight>(highlightedTile))
                 {
-                    var highlight = SystemAPI.GetComponent<TileDataHighlight>(highlightedTile);
+                    TileDataHighlight highlight = SystemAPI.GetComponent<TileDataHighlight>(highlightedTile);
                     highlight.IsHighlighted = false;
                     SystemAPI.SetComponent(highlightedTile, highlight);
                 }

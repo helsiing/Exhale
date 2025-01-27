@@ -38,8 +38,17 @@ namespace Exhale.Scripts.Data
                     {
                         pieceAuthoring = instance.AddComponent<PieceAuthoring>();
                     }
-
-                    pieceAuthoring.SetPieceTemplate(hexPieceTemplate);
+                    pieceAuthoring.Init(hexPieceTemplate);
+                    
+                    
+                    if (hexPieceTemplate.HasTrait<Building>() && 
+                        !instance.TryGetComponent(out PieceBuildingAuthoring building))
+                    {
+                        instance.AddComponent<PieceBuildingAuthoring>();
+                    }
+                    
+                    
+                    
                     // Apply changes back to the prefab
                     PrefabUtility.SaveAsPrefabAsset(instance, AssetDatabase.GetAssetPath(boardObject.Prefab));
                     DestroyImmediate(instance);

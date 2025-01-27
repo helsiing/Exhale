@@ -10,16 +10,16 @@ namespace Exhale.ECS.Authoring
         [SerializeField] private HexPieceTemplate pieceTemplate;
         public HexPieceTemplate PieceTemplate => pieceTemplate;
 
-        public void SetPieceTemplate(HexPieceTemplate pieceTemplate)
+        public void Init(HexPieceTemplate pieceTemplate)
         {
             this.pieceTemplate = pieceTemplate;
         }
         
-        public class Baker : Baker<PieceAuthoring>
+        private class Baker : Baker<PieceAuthoring>
         {
             public override void Bake(PieceAuthoring authoring)
             {
-                var entity = GetEntity(TransformUsageFlags.Renderable);
+                Entity entity = GetEntity(TransformUsageFlags.Renderable);
                 
                 // Add the PieceTemplateData component to the entity
                 PieceTemplateData componentData = new PieceTemplateData

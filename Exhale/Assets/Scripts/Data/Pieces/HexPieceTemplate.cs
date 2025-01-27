@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
+    #region ECS
     [Serializable] 
     public struct PieceTemplateData : IComponentData
     {
@@ -17,6 +18,7 @@ namespace Exhale.Scripts.Data
     {
         public int2 PositionIndex;
     } 
+    #endregion
     
     public class HexPieceTemplate : ScriptableObjectCollectionItem
     {
@@ -26,6 +28,17 @@ namespace Exhale.Scripts.Data
         public int GetId()
         {
             return GUID.GetHashCode();
+        }
+        
+        public GameObject GetPrefab()
+        {
+            if (TryGetTrait(out BoardObject boardObject))
+            {
+                return boardObject.Prefab;
+            }
+
+            Debug.LogError($"The piece {name} does not have a BoardObject trait");
+            return null;
         }
         
         public bool TryGetTrait<T>(out T trait) where T : PieceTrait

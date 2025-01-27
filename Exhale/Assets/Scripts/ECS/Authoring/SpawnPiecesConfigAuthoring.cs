@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Exhale.Scripts.Data;
 using Unity.Entities;
 using UnityEngine;
@@ -40,20 +41,14 @@ namespace Exhale.ECS.Authoring
                 Entity entity = GetEntity(TransformUsageFlags.None);
                 
                 DynamicBuffer<PieceEntityData> buffer = AddBuffer<PieceEntityData>(entity);
-                foreach (HexPieceTemplate pieceTemplate in authoring.pieceTemplateCollection)
+                foreach (GameObject prefab in authoring.pieceTemplateCollection.Select(pieceTemplate => pieceTemplate.GetPrefab()))
                 {
-                    if (!pieceTemplate.TryGetTrait(out BoardObject boardObject))
-                    {
-                        Debug.Log($"Piece {pieceTemplate.name} does not have a BoardObject trait");;
-                        return;
-                    }
-                    
-                    if (boardObject.Prefab.TryGetComponent(out PieceAuthoring pieceAuthoring))
+                    if (prefab != null && prefab.TryGetComponent(out PieceAuthoring pieceAuthoring))
                     {
                         buffer.Add(new PieceEntityData
                         {
                             PieceId = pieceAuthoring.PieceTemplate.GetId(),
-                            PrefabEntity = GetEntity(boardObject.Prefab, TransformUsageFlags.Dynamic)
+                            PrefabEntity = GetEntity(prefab, TransformUsageFlags.Dynamic)
                         });
                     }
                 }

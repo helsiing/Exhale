@@ -19,14 +19,20 @@ namespace Exhale.Scripts.Data
 
             foreach (HexPieceTemplate hexPieceTemplate in pieceTemplates)
             {
-                if (hexPieceTemplate.PiecePrefab == null)
+                if (!hexPieceTemplate.TryGetTrait(out BoardObject boardObject))
+                {
+                    Debug.Log($"Piece {hexPieceTemplate.name} does not have a BoardObject trait");;
+                    return;
+                }
+                
+                if (boardObject.Prefab == null)
                 {
                     Debug.LogError($"Piece {hexPieceTemplate.name} does not have a prefab assigned");
                 }
                 else
                 {
                     // Create an instance of the prefab in memory to modify
-                    GameObject instance = (GameObject) PrefabUtility.InstantiatePrefab(hexPieceTemplate.PiecePrefab);
+                    GameObject instance = (GameObject) PrefabUtility.InstantiatePrefab(boardObject.Prefab);
 
                     if (!instance.TryGetComponent(out PieceAuthoring pieceAuthoring))
                     {
@@ -35,7 +41,7 @@ namespace Exhale.Scripts.Data
 
                     pieceAuthoring.SetPieceTemplate(hexPieceTemplate);
                     // Apply changes back to the prefab
-                    PrefabUtility.SaveAsPrefabAsset(instance, AssetDatabase.GetAssetPath(hexPieceTemplate.PiecePrefab));
+                    PrefabUtility.SaveAsPrefabAsset(instance, AssetDatabase.GetAssetPath(boardObject.Prefab));
                     DestroyImmediate(instance);
                 }
 

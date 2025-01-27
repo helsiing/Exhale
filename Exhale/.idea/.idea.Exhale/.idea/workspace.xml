@@ -5,16 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/TileAuthoring.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/TileAuthoring.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileHighlightSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileHighlightSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/PieceClickSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Dirt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Dirt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Grass.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Grass.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Sand.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Sand.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Stone.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Stone.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Water.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Ground/[HexPiece] Water.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Cabin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Cabin.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Castle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Castle.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Dock.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Dock.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Farm.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Farm.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] House.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] House.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Market.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Market.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Attribute Processors.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Drawers.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Editor Windows.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Sample - RPG Editor.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/SpawnPiecesConfigAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/SpawnPiecesConfigAuthoring.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +118,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -114,6 +131,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>

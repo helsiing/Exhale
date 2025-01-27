@@ -18,7 +18,15 @@ MonoBehaviour:
   collectionGUID:
     value1: 5478060591070782229
     value2: -6452721688836149371
-  data:
-    PieceId: 0
   piecePrefab: {fileID: 6430525309914373221, guid: 39af3fe346a32485e8b898ec7fe86371,
     type: 3}
+  Traits:
+  - rid: 2092703302845464647
+  references:
+    version: 2
+    RefIds:
+    - rid: 2092703302845464647
+      type: {class: BoardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        prefab: {fileID: 6430525309914373221, guid: 39af3fe346a32485e8b898ec7fe86371,
+          type: 3}

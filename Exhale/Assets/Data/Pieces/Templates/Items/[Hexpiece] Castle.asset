@@ -20,3 +20,13 @@ MonoBehaviour:
     value2: -6452721688836149371
   piecePrefab: {fileID: 3946300195300607669, guid: f55881bd672b85845a0100c30c0c6885,
     type: 3}
+  Traits:
+  - rid: 2092703302845464644
+  references:
+    version: 2
+    RefIds:
+    - rid: 2092703302845464644
+      type: {class: BoardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        prefab: {fileID: 3946300195300607669, guid: f55881bd672b85845a0100c30c0c6885,
+          type: 3}

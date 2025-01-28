@@ -136,7 +136,7 @@ namespace Exhale.Board
 
         private void ZoomCamera(InputAction.CallbackContext context)
         {
-            float zoomDelta = -context.ReadValue<Vector2>().y / 10f;
+            float zoomDelta = context.ReadValue<Vector2>().y / 10f;
             Vector3 zoomDirection = cameraTransform.transform.forward * zoomDelta * zoomForce;
             rb.AddForce(zoomDirection, ForceMode.Acceleration);
         }

@@ -15,41 +15,6 @@ namespace Exhale.ECS.Authoring
             return GetComponent<PieceAuthoring>();
         }
 
-        private BlobAssetReference<BuildingPlacementRequirementsDataBlob> CreateBuildingDataBlob(float2[] positions,
-            Entity[] entities)
-        {
-            // Ensure the input arrays match in length
-            if (positions.Length != entities.Length)
-            {
-                Debug.LogError("Dimensions and HitPoints arrays must have the same length!");
-                return default;
-            }
-
-            BlobBuilder builder = new(Allocator.Temp);
-
-            // Construct the root blob
-            ref BuildingPlacementRequirementsDataBlob root =
-                ref builder.ConstructRoot<BuildingPlacementRequirementsDataBlob>();
-
-            // Allocate the BlobArrays
-            BlobBuilderArray<float2> positionsArray = builder.Allocate(ref root.Positions, positions.Length);
-            BlobBuilderArray<Entity> entitiesArray = builder.Allocate(ref root.PieceEntities, entities.Length);
-
-            // Fill the BlobArrays
-            for (int i = 0; i < positions.Length; i++)
-            {
-                positionsArray[i] = positions[i];
-                entitiesArray[i] = entities[i];
-            }
-
-            // Finalize and return the BlobAssetReference
-            BlobAssetReference<BuildingPlacementRequirementsDataBlob> blobAsset =
-                builder.CreateBlobAssetReference<BuildingPlacementRequirementsDataBlob>(Allocator.Persistent);
-            builder.Dispose();
-
-            return blobAsset;
-        }
-
         private class Baker : Baker<PieceBuildingAuthoring>
         {
             public override void Bake(PieceBuildingAuthoring authoring)
@@ -62,23 +27,39 @@ namespace Exhale.ECS.Authoring
                 {
                     Debug.Log($"Piece {pieceTemplate.name} does not have a Building trait");
                 }
-                
-                var positions = building.PlacementRequirementsData
-                    .Select(data => (float2)data.PositionIndex)
-                    .ToArray();
-                
-                var entities = building.PlacementRequirementsData
-                    .Select(data => GetEntity(data.PieceTemplate.GetPrefab(), TransformUsageFlags.Dynamic))
-                    .ToArray();
-                
-                
-                var blobAsset = authoring.CreateBuildingDataBlob(positions, entities);
-                
-                BuildingComponentData componentData = new BuildingComponentData
+
+                BuildingComponentData componentData = new()
                 {
-                    PlacementRequirementsData = blobAsset
+                    PlacementRequirementsData = GetPlacementRequirementsBlob(building),
+                    CostData = GetCostBlob(building)
                 };
                 AddComponent(entity, componentData);
+            }
+
+            private BlobAssetReference<BuildingPlacementRequirementsDataBlob> GetPlacementRequirementsBlob(Building building)
+            {
+                float2[] positions = building.PlacementRequirementsData
+                    .Select(data => (float2) data.PositionIndex)
+                    .ToArray();
+
+                Entity[] entities = building.PlacementRequirementsData
+                    .Select(data => GetEntity(data.PieceTemplate.GetPrefab(), TransformUsageFlags.Dynamic))
+                    .ToArray();
+
+                return Building.CreateBuildingPlacementRequirementDataBlob(positions, entities);
+            }
+            
+            private BlobAssetReference<BuildingCostItemDataBlob> GetCostBlob(Building building)
+            {
+                int[] yieldTemplatesIds = building.CostData
+                    .Select(data => data.YieldTemplate.GetId())
+                    .ToArray();
+
+                int[] cost = building.CostData
+                    .Select(data => data.Amount)
+                    .ToArray();
+
+                return Building.CreateBuildingCostDataBlob(yieldTemplatesIds, cost);
             }
         }
     }

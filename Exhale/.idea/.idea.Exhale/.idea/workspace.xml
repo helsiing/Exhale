@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/Yield.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/Yield.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplateCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/SpawnPiecesConfigAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/SpawnPiecesConfigAuthoring.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/TileAuthoring.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/TileAuthoring.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -33,15 +33,16 @@ MonoBehaviour:
       type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
         placementRequirementsData:
-        - data:
-            PositionIndex:
-              x: 1
-              y: 1
+        - positionIndex: {x: 0, y: 0}
           pieceTemplate: {fileID: 11400000, guid: 34273a9d503443a43bbbe9a8205539a6,
             type: 2}
-        - data:
-            PositionIndex:
-              x: 2
-              y: 2
+        - positionIndex: {x: 0, y: 0}
           pieceTemplate: {fileID: 11400000, guid: 2c42a5f7ab88483439668906c60780bc,
+            type: 2}
+        costData:
+        - amount: 10
+          yieldTemplate: {fileID: 11400000, guid: 056a0b50c43b593449877a304f3d343e,
+            type: 2}
+        - amount: 10
+          yieldTemplate: {fileID: 11400000, guid: 30843e6c429d18e4f9a78c6a2fe368a1,
             type: 2}

@@ -148,28 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1efab57b51d4938814b392c7ac75ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 10
-  panDampening: 15
-  zoomSpeed: 2
-  zoomDampening: 7.5
-  minZoom: 5
-  maxZoom: 50
-  rotationSpeed: 100
-  minRotationX: 15
-  maxRotationX: 75
-  targetPosition: {x: 0, y: 0, z: 0}
-  targetZoom: 0
-  rotationEuler: {x: 0, y: 0, z: 0}
-  movement:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e755f444-3a76-404a-99b4-678f4af159ce
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  cameraTransform: {fileID: 0}
 --- !u!4 &163702371
 Transform:
   m_ObjectHideFlags: 0
@@ -412,8 +390,8 @@ MonoBehaviour:
   minZoom: 5
   maxZoom: 50
   rotationSpeed: 100
-  maxTiltAngle: 75
-  minTiltAngle: 15
+  maxTiltAngle: 50
+  minTiltAngle: 0
 --- !u!54 &1489480560
 Rigidbody:
   m_ObjectHideFlags: 0

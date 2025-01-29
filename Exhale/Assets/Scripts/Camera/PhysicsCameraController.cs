@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using DG.Tweening;
+using ECS.Scripts.Managers;
+using Exhale.Utils;
+using Unity.Mathematics;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Exhale.Board
@@ -24,7 +29,7 @@ namespace Exhale.Board
         [SerializeField] private float minTiltAngle = 15f;
 
         private Rigidbody rb;
-        private Camera cameraTransform;
+        [SerializeField] private Transform cameraTransform;
 
         private InputAction panInputKeyboard;
         private InputAction rotateInputMouse;
@@ -34,6 +39,10 @@ namespace Exhale.Board
 
         private CameraControlActions cameraActions;
 
+        
+        //TODO: refactor this into a service
+        private BoardEventManager boardEventManager;
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -41,11 +50,14 @@ namespace Exhale.Board
             rb.linearDamping = 5f;
             rb.angularDamping = 5f;
 
-            cameraTransform = GetComponentInChildren<Camera>();
-
             cameraActions = new CameraControlActions();
         }
-
+        
+        private void Start()
+        {
+            BoardEventManager.OnBoardInitialized += OnBoardInitialized;
+        }
+        
         private void OnEnable()
         {
             cameraActions.Camera.Enable();
@@ -64,7 +76,8 @@ namespace Exhale.Board
         {
             rotateInputMouse.performed -= RotateCamera;
             zoomInputMouse.performed -= ZoomCamera;
-
+            BoardEventManager.OnBoardInitialized -= OnBoardInitialized;
+            
             cameraActions.Camera.Disable();
         }
 
@@ -76,7 +89,18 @@ namespace Exhale.Board
             HandleKeyboardRotation(); // Handle Q/E rotation
             ClampCameraPosition();
         }
+        
+        private void OnBoardInitialized(int2 startPosition)
+        {
+            var startWorldPosition = BoardHelper.HexToWorldPosition(startPosition);
+            // ✅ Move the camera smoothly using DoTween
+            transform.DOMove(startWorldPosition, 1.5f)
+                .SetEase(Ease.OutQuad); // Smooth movement with easing
 
+            // ✅ Rotate the camera to look at the target smoothly
+            //transform.DOLookAt(startWorldPosition, 1f);
+        }
+        
         private void HandleKeyboardPanning()
         {
             Vector2 movement = panInputKeyboard.ReadValue<Vector2>();

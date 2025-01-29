@@ -15,5 +15,9 @@ MonoBehaviour:
   data:
     Width: 50
     Height: 50
+    StartPosition:
+      x: 0
+      y: 0
+  startType: 1
   emptyTilePrefab: {fileID: 195783397064062652, guid: 1649ba7e3f31c41a483d36dce5537029,
     type: 3}

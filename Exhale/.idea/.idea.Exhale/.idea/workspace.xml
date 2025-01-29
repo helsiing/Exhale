@@ -5,14 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BoardEventManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BoardEventManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Utils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Utils.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/blue/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/blue/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/green/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/green/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/neutral/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/neutral/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/red/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/red/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/yellow/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/buildings/yellow/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/decoration/nature/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/decoration/nature/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/decoration/props/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/decoration/props/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/base/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/base/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/coast/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/coast/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/coast/waterless/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/coast/waterless/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/rivers/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/rivers/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/rivers/waterless/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/rivers/waterless/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/roads/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/tiles/roads/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/blue/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/blue/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/green/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/green/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/neutral/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/neutral/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/red/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/red/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/yellow/Materials/hexagons_medieval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KayKit/Packs/KayKit - Medieval Hexagon (for Unity)/Models/units/yellow/Materials/hexagons_medieval.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/[HexTile] Empty .prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PhysicsCameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/YieldTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/BoardConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/BoardConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/BoardAuthoring.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/BoardHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/BoardHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +98,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="[SerializeField] private GameObject emptyTilePrefab;         public GameObject EmptyTilePrefab =&gt; emptyTilePrefab;" />
+    </option>
+  </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.31f1\Editor\Unity.exe" />

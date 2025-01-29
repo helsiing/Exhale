@@ -1,3 +1,4 @@
+using ECS.Scripts.Managers;
 using Exhale.ECS.Authoring;
 using Exhale.Scripts.Data;
 using Exhale.Utils;
@@ -19,7 +20,8 @@ namespace Exhale.ECS.Systems
     {
         private BlobAssetReference<Collider> sphereCollider;
         private PieceFactorySystem pieceFactorySystem;
-
+        private Entity boardInitializedEventEntity;
+        
         protected override void OnCreate()
         {
             RequireForUpdate<BoardDataComponent>();
@@ -34,6 +36,9 @@ namespace Exhale.ECS.Systems
             
             // Access the PieceFactorySystem
             pieceFactorySystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PieceFactorySystem>();
+            
+            boardInitializedEventEntity = EntityManager.CreateEntity();
+            EntityManager.AddComponentData(boardInitializedEventEntity, new BoardInitializedEvent { IsInitialized = false });
 
             base.OnCreate();
         }
@@ -43,11 +48,12 @@ namespace Exhale.ECS.Systems
             var ecbSystem =
                 World.GetOrCreateSystemManaged<EndSimulationEntityCommandBufferSystem>();
             var ecb = ecbSystem.CreateCommandBuffer().AsParallelWriter();
-
+            
             CreateBoardJob job = new()
             {
                 Ecb = ecb,
                 SphereCollider = sphereCollider,
+                BoardInitializedEventEntity = boardInitializedEventEntity
             };
 
             Dependency = job.ScheduleParallel(Dependency);
@@ -61,6 +67,15 @@ namespace Exhale.ECS.Systems
             {
                 pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
             }*/
+            
+            BoardInitializedEvent boardEvent = SystemAPI.GetComponent<BoardInitializedEvent>(boardInitializedEventEntity);
+
+            if (!boardEvent.IsInitialized) return; // Skip if the board isn't ready
+            
+            BoardEventManager.TriggerBoardInitialized(boardEvent.StartPosition);
+            EntityManager.SetComponentData(boardInitializedEventEntity, new BoardInitializedEvent { IsInitialized = false });
+
+            Debug.Log("✅ Board Initialized - Unity Event Triggered!");
         }
 
         protected override void OnDestroy()
@@ -78,20 +93,21 @@ namespace Exhale.ECS.Systems
     {
         public EntityCommandBuffer.ParallelWriter Ecb;
         [ReadOnly] public BlobAssetReference<Collider> SphereCollider;
+        public Entity BoardInitializedEventEntity;
 
         [UsedImplicitly]
         public void Execute(Entity entity, [EntityIndexInQuery] int entityIndexInQuery, ref BoardDataComponent board)
         {
-            
-            for (var y = 0; y < board.Height; y++)
+            for (int x = 0; x < board.Width; x++)
             {
-                for (var x = 0; x < board.Width; x++)
+                for (int y = 0; y < board.Height; y++)
                 {
                     if (board.EmptyTTilePrefabEntity == Entity.Null)
                     {
                         continue;
                     }
 
+                    bool isStartTile = x == board.StartPosition.x && y == board.StartPosition.y;
                     Entity hexTileEntity = Ecb.Instantiate(entityIndexInQuery, board.EmptyTTilePrefabEntity);
                     Ecb.AddComponent(entityIndexInQuery, hexTileEntity, 
                         new PhysicsCollider { Value = SphereCollider });
@@ -99,13 +115,22 @@ namespace Exhale.ECS.Systems
                         new TileData
                         {
                             PositionIndex = new int2(x, y),
-                            IsOccupied = false
+                            IsOccupied = false,
+                            IsEnabled = isStartTile
                         });
 
                     Ecb.SetComponent(entityIndexInQuery, hexTileEntity,
                         LocalTransform.FromPosition(BoardHelper.HexToWorldPosition(x, y)));
                 }
             }
+            
+            Ecb.SetComponent(0, BoardInitializedEventEntity, new BoardInitializedEvent
+            {
+                IsInitialized = true,
+                StartPosition = board.StartPosition
+            });
+            Debug.Log($"Board initialized with {board.Width}x{board.Height} tiles and start position at {board.StartPosition}");
         }
+        
     }
 }

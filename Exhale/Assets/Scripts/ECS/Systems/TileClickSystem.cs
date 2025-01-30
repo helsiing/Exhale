@@ -46,6 +46,9 @@ namespace ECS.Systems
                 var tileData = EntityManager.GetComponentData<TileData>(hitEntity);
                 pieceFactorySystem.CreateRandomPiece(tileData.PositionIndex);
 
+                tileData.IsOccupied = true;
+                EntityManager.SetComponentData(hitEntity, tileData);
+                
                 Debug.Log($"Entity hit: {hitEntity}");
             }
         }

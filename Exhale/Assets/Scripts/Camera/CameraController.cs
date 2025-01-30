@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 namespace Exhale.Board
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PhysicsCameraController : MonoBehaviour
+    public class CameraController : MonoBehaviour
     {
         [Header("Panning Settings")]
         [SerializeField] private float panForce = 100f;
@@ -88,13 +88,13 @@ namespace Exhale.Board
             
             HandleKeyboardRotation(); // Handle Q/E rotation
             ClampCameraPosition();
-        }
+        }   
         
         private void OnBoardInitialized(int2 startPosition)
         {
             var startWorldPosition = BoardHelper.HexToWorldPosition(startPosition);
-            // ✅ Move the camera smoothly using DoTween
-            transform.DOMove(startWorldPosition, 1.5f)
+            
+            transform.DOMove(startWorldPosition, .5f)
                 .SetEase(Ease.OutQuad); // Smooth movement with easing
 
             // ✅ Rotate the camera to look at the target smoothly

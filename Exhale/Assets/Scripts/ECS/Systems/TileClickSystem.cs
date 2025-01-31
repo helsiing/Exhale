@@ -2,8 +2,6 @@ using Exhale.ECS.Authoring;
 using Exhale.ECS.Systems;
 using Unity.Entities;
 using Unity.Physics;
-using Unity.Mathematics;
-using Unity.Transforms;
 using UnityEngine;
 
 namespace ECS.Systems

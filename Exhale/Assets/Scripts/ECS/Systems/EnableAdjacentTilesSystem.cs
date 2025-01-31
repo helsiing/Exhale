@@ -3,6 +3,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 
 namespace ECS.Systems
 {
@@ -38,21 +39,17 @@ namespace ECS.Systems
                 NativeArray<int2> adjacentPositions =
                     GetAdjacentTilePositions(tileData.ValueRO.PositionIndex, Allocator.Temp);
 
-                // Query adjacent tiles based on position
                 foreach (var adjPos in adjacentPositions)
                 {
-                    if (tileEntityMap.TryGetValue(adjPos, out Entity adjacentEntity)) // Fast lookup in the hash map
-                    {
-                        var adjacentTileData = state.EntityManager.GetComponentData<TileData>(adjacentEntity);
-
-                        if (!adjacentTileData.IsOccupied && !adjacentTileData.IsEnabled)
-                        {
-                            // Enable tile
-                            adjacentTileData.IsEnabled = true;
-                            ecb.SetComponent(adjacentEntity, adjacentTileData);
-                            ecb.RemoveComponent<Disabled>(adjacentEntity);
-                        }
-                    }
+                    if (!tileEntityMap.TryGetValue(adjPos, out Entity adjacentEntity)) continue; // Fast lookup in the hash map
+                    
+                    var adjacentTileData = state.EntityManager.GetComponentData<TileData>(adjacentEntity);
+                    if (adjacentTileData.IsOccupied || adjacentTileData.IsEnabled) continue;
+                    
+                    Debug.Log($"Enable tile at {adjPos}");
+                    adjacentTileData.IsEnabled = true;
+                    ecb.SetComponent(adjacentEntity, adjacentTileData);
+                    ecb.RemoveComponent<Disabled>(adjacentEntity);
                 }
 
                 adjacentPositions.Dispose();

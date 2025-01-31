@@ -41,9 +41,9 @@ namespace Exhale.ECS.Authoring
                     case BoardStartType.Center:
                         componentData.StartPosition = new int2(componentData.Width / 2, componentData.Height / 2);
                         break;
-                    case BoardStartType.AtPosition:
+                    /*case BoardStartType.AtPosition:
                         componentData.StartPosition = componentData.StartPosition;
-                        break;
+                        break;*/
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

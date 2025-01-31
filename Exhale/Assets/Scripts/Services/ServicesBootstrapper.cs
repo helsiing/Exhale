@@ -15,6 +15,9 @@ namespace Exhale.Scripts.Services
 
             IBoardService boardService = new BoardService(cameraService);
             RegisterServiceInstance(boardService);
+            
+            IInventoryService inventoryService = new InventoryService();
+            RegisterServiceInstance(inventoryService);
         }
     }
 }

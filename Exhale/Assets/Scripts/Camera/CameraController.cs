@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using DG.Tweening;
-using ECS.Scripts.Managers;
+﻿using DG.Tweening;
+using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Scripts.Services;
 using Exhale.Utils;
 using Unity.Mathematics;
 using UnityEngine;
@@ -11,6 +11,8 @@ namespace Exhale.Board
     [RequireComponent(typeof(Rigidbody))]
     public class CameraController : MonoBehaviour
     {
+        [SerializeField] private Transform cameraTransform;
+
         [Header("Panning Settings")]
         [SerializeField] private float panForce = 100f;
         [SerializeField] private float maxPanSpeed = 10f;
@@ -29,33 +31,21 @@ namespace Exhale.Board
         [SerializeField] private float minTiltAngle = 15f;
 
         private Rigidbody rb;
-        [SerializeField] private Transform cameraTransform;
 
         private InputAction panInputKeyboard;
         private InputAction rotateInputMouse;
         private InputAction zoomInputMouse;
         private InputAction panInputMouse;
         private InputAction rotateInputKeyboard; // New action for Q/E rotation
-
         private CameraControlActions cameraActions;
-
         
-        //TODO: refactor this into a service
-        private BoardEventManager boardEventManager;
+        private readonly ServiceReference<ICameraService> cameraService = new ();
+
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
-            rb.useGravity = false;
-            rb.linearDamping = 5f;
-            rb.angularDamping = 5f;
-
             cameraActions = new CameraControlActions();
-        }
-        
-        private void Start()
-        {
-            BoardEventManager.OnBoardInitialized += OnBoardInitialized;
         }
         
         private void OnEnable()
@@ -76,7 +66,6 @@ namespace Exhale.Board
         {
             rotateInputMouse.performed -= RotateCamera;
             zoomInputMouse.performed -= ZoomCamera;
-            BoardEventManager.OnBoardInitialized -= OnBoardInitialized;
             
             cameraActions.Camera.Disable();
         }
@@ -90,15 +79,12 @@ namespace Exhale.Board
             ClampCameraPosition();
         }   
         
-        private void OnBoardInitialized(int2 startPosition)
+        public void CenterAtPosition(int2 position)
         {
-            var startWorldPosition = BoardHelper.HexToWorldPosition(startPosition);
+            var worldPosition = BoardHelper.HexToWorldPosition(position);
             
-            transform.DOMove(startWorldPosition, .5f)
+            transform.DOMove(worldPosition, .5f)
                 .SetEase(Ease.OutQuad); // Smooth movement with easing
-
-            // ✅ Rotate the camera to look at the target smoothly
-            //transform.DOLookAt(startWorldPosition, 1f);
         }
         
         private void HandleKeyboardPanning()

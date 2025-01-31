@@ -270,8 +270,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 503464273}
+  - component: {fileID: 503464274}
   m_Layer: 0
-  m_Name: -- Managers --
+  m_Name: -- Services --
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,6 +294,19 @@ Transform:
   - {fileID: 1082215026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503464274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503464272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2819c75a9d9884bbfc8f0e02f88bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraService: {fileID: 1082215027}
 --- !u!1 &1016210494
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +371,7 @@ GameObject:
   - component: {fileID: 1082215026}
   - component: {fileID: 1082215027}
   m_Layer: 0
-  m_Name: BoardEvents
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,7 +401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082215025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c6793a313c436d93c9688947344213, type: 3}
+  m_Script: {fileID: 11500000, guid: 6286833fca3d47ff8c1e7c64e6934029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1308978775
@@ -618,6 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fb9568f3eb44499fd32211e2215acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 1308978776}
   panForce: 200
   maxPanSpeed: 30
   mousePanSpeed: 5
@@ -627,7 +642,6 @@ MonoBehaviour:
   rotationSpeed: 100
   maxTiltAngle: 50
   minTiltAngle: 0
-  cameraTransform: {fileID: 1308978776}
 --- !u!54 &1489480560
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -637,7 +651,7 @@ Rigidbody:
   m_GameObject: {fileID: 1489480558}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -843,8 +857,8 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 503464273}
   - {fileID: 85877769}
   - {fileID: 1489480561}
-  - {fileID: 503464273}
   - {fileID: 1621535505}
   - {fileID: 1016210496}

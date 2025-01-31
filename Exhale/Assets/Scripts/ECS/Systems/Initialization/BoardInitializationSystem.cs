@@ -1,6 +1,7 @@
-using ECS.Scripts.Managers;
 using Exhale.ECS.Authoring;
 using Exhale.Scripts.Data;
+using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Scripts.Services;
 using Exhale.Utils;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
@@ -11,7 +12,6 @@ using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 using Collider = Unity.Physics.Collider;
-using MeshCollider = UnityEngine.MeshCollider;
 using SphereCollider = Unity.Physics.SphereCollider;
 
 namespace Exhale.ECS.Systems
@@ -21,6 +21,7 @@ namespace Exhale.ECS.Systems
         private BlobAssetReference<Collider> sphereCollider;
         private PieceFactorySystem pieceFactorySystem;
         private Entity boardInitializedEventEntity;
+        private readonly ServiceReference<IBoardService> boardService = new ();
         
         protected override void OnCreate()
         {
@@ -72,7 +73,7 @@ namespace Exhale.ECS.Systems
 
             if (!boardEvent.IsInitialized) return; // Skip if the board isn't ready
             
-            BoardEventManager.TriggerBoardInitialized(boardEvent.StartPosition);
+            boardService.Reference.TriggerBoardInitialized(boardEvent.StartPosition);
             EntityManager.SetComponentData(boardInitializedEventEntity, new BoardInitializedEvent { IsInitialized = false });
 
             Debug.Log("✅ Board Initialized - Unity Event Triggered!");

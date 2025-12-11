@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
 using Toggle = UnityEngine.UIElements.Toggle;
 
-namespace Noid.UCA.Gameplay.ObjectSystem
+namespace Exhale.Scripts.Editor.Dashboards
 {
 	public class HexPieceTemplateDashboard : EditorWindow
 	{

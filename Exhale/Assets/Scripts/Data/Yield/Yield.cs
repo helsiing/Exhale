@@ -11,7 +11,7 @@ namespace Exhale.Scripts.Data
         [SerializeField] private List<YieldData> yields = new();
         public List<YieldData> Yields => yields;
 
-        public override bool ValidateConfig()
+        public override bool ValidateConfig(HexPieceTemplate pieceTemplate)
         {
             return true;
         }

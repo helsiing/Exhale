@@ -3,6 +3,7 @@ using BrunoMikoski.ScriptableObjectCollections;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Exhale.Scripts.Data
 {
@@ -22,8 +23,9 @@ namespace Exhale.Scripts.Data
     
     public class HexPieceTemplate : ScriptableObjectCollectionItem
     {
-        [SerializeField, SerializeReference]
-        private PieceTrait[] Traits;
+        [FormerlySerializedAs("Traits")] [SerializeField, SerializeReference]
+        private PieceTrait[] traits;
+        public PieceTrait[] Traits => traits;
         
         public int GetId()
         {
@@ -44,9 +46,9 @@ namespace Exhale.Scripts.Data
         public bool TryGetTrait<T>(out T trait) where T : PieceTrait
         {
             int index = -1;
-            for(int i = 0; i < Traits.Length; i++)
+            for(int i = 0; i < traits.Length; i++)
             {
-                if (Traits[i].GetType() == typeof(T))
+                if (traits[i].GetType() == typeof(T))
                 {
                     index = i;
                     break;
@@ -58,7 +60,7 @@ namespace Exhale.Scripts.Data
                 return false;
             }
 
-            trait = Traits[index] as T;
+            trait = traits[index] as T;
             return true;
         }
         
@@ -69,9 +71,9 @@ namespace Exhale.Scripts.Data
 
         public bool ValidateConfig()
         {
-            foreach (PieceTrait trait in Traits)
+            foreach (PieceTrait trait in traits)
             {
-                if (!trait.ValidateConfig())
+                if (!trait.ValidateConfig(this))
                 {
                     return false;
                 }

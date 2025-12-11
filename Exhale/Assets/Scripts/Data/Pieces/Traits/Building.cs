@@ -135,23 +135,28 @@ namespace Exhale.Scripts.Data
             return blobAsset;
         }
         
-        public override bool ValidateConfig()
+        public override bool ValidateConfig(HexPieceTemplate pieceTemplate)
         {
-            if (placementRequirementsData.Count == 0)
+            if (pieceTemplate.TryGetTrait(out Building building))
             {
-                Debug.LogError("Building trait has no unlock requirements");
-                return false;
+                if (building.PlacementRequirementsData.Count == 0)
+                {
+                    Debug.LogError("Building trait has no unlock requirements");
+                    return false;
+                }
+
+                if (building.PlacementRequirementsData.Any(requirement => requirement.PositionIndex.Equals(float2.zero)))
+                {
+                    Debug.LogError("Position (0, 0) is protected");
+                    return false;
+                }
+
+                //TODO: Validate cost data
+
+                return true;
             }
 
-            if (placementRequirementsData.Any(requirement => requirement.PositionIndex.Equals(float2.zero)))
-            {
-                Debug.LogError("Position (0, 0) is protected");
-                return false;
-            }
-            
-            //TODO: Validate cost data
-
-            return true;
+            return false;
         }
     }
 }

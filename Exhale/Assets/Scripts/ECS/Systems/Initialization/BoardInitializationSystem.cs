@@ -63,15 +63,16 @@ namespace Exhale.ECS.Systems
 
         protected override void OnUpdate()
         {
-            /*BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
-            for(int i = 0; i < 1; i ++)
-            {
-                pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
-            }*/
-            
             BoardInitializedEvent boardEvent = SystemAPI.GetComponent<BoardInitializedEvent>(boardInitializedEventEntity);
 
             if (!boardEvent.IsInitialized) return; // Skip if the board isn't ready
+            
+            BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
+
+            for(int i = 0; i < 5; i ++)
+            {
+                pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
+            }
             
             boardService.Reference.TriggerBoardInitialized(boardEvent.StartPosition);
             EntityManager.SetComponentData(boardInitializedEventEntity, new BoardInitializedEvent { IsInitialized = false });
@@ -125,7 +126,7 @@ namespace Exhale.ECS.Systems
                     
                     if (!isStartTile)
                     {
-                        Ecb.AddComponent<Disabled>(entityIndexInQuery, hexTileEntity);
+                        //Ecb.AddComponent<Disabled>(entityIndexInQuery, hexTileEntity);
                     }
                 }
             }

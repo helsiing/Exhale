@@ -68,6 +68,15 @@ namespace ECS.Systems
             {
                 return; // The tile is already highlighted
             }
+            
+            if (SystemAPI.HasComponent<TileDataHighlight>(tileEntity))
+            {
+                TileDataHighlight highlightData = SystemAPI.GetComponent<TileDataHighlight>(highlightedTile);
+                if(highlightData.IsHighlighted)
+                {
+                    return; // The tile is already highlighted
+                }
+            }
 
             // Clear the previous highlight
             ClearHighlight(ref state);

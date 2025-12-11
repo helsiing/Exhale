@@ -8,6 +8,6 @@ namespace Exhale.Scripts.Data
     [Serializable]
     public abstract class PieceTrait
     {
-        public abstract bool ValidateConfig();
+        public abstract bool ValidateConfig(HexPieceTemplate pieceTemplate);
     }
 }

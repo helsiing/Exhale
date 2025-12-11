@@ -1,13 +1,11 @@
 using System;
-using Sirenix.OdinInspector;
-using Unity.Entities;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
 
     /// <summary>
-    ///     Trait that indicates the board object that should be instantiated for a piece.
+    ///     Trait that indicates the board prefab that should be instantiated for a piece.
     /// </summary>
     [Serializable]
     public class BoardObject : PieceTrait
@@ -15,9 +13,14 @@ namespace Exhale.Scripts.Data
         [SerializeField] private GameObject prefab;
         public GameObject Prefab => prefab;
 
-        public override bool ValidateConfig()
+        public override bool ValidateConfig(HexPieceTemplate pieceTemplate)
         {
-            return prefab != null;
+            if(pieceTemplate.TryGetTrait(out BoardObject boardObject))
+            {
+                return boardObject.Prefab != null;
+            }
+
+            return false;
         }
     }
 }

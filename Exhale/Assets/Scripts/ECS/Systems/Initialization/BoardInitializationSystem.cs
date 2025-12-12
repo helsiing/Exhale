@@ -4,7 +4,6 @@ using Exhale.Scripts.External.ServiceLocators;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
 using JetBrains.Annotations;
-using Sirenix.OdinInspector;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -33,7 +32,6 @@ namespace Exhale.ECS.Systems
                 Center = float3.zero,
                 Radius = .25f // Adjust to match your tile size
             }, CollisionFilter.Default);
-            
             
             // Access the PieceFactorySystem
             pieceFactorySystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PieceFactorySystem>();
@@ -69,7 +67,7 @@ namespace Exhale.ECS.Systems
             
             BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
 
-            for(int i = 0; i < 5; i ++)
+            for(int i = 0; i < 500; i ++)
             {
                 pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
             }
@@ -94,7 +92,7 @@ namespace Exhale.ECS.Systems
     public partial struct CreateBoardJob : IJobEntity
     {
         public EntityCommandBuffer.ParallelWriter Ecb;
-        [ReadOnly] public BlobAssetReference<Collider> SphereCollider;
+        [Sirenix.OdinInspector.ReadOnly] public BlobAssetReference<Collider> SphereCollider;
         public Entity BoardInitializedEventEntity;
 
         [UsedImplicitly]

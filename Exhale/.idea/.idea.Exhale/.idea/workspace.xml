@@ -5,32 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/GameService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/GameService.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Farm.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Farm.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/DashboardStyles.uss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/DashboardStyles.uss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/DashboardStyles.uss.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/DashboardStyles.uss.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/HexPieceTemplateDashboard.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/HexPieceTemplateDashboard/HexPieceTemplateDashboard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/HexPieceTemplateDashboard/HexPieceTemplateDashboard.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.uxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.uxml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateRow.uxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateRow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Cabin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Cabin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Castle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Castle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Dock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Dock.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Farm.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Farm.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] House.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] House.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Market.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Market.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Buyable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Buyable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Saleable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Saleable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Thumbnail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Thumbnail.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/Yield.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/Yield.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/ServicesBootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/ServicesBootstrapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +51,60 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/ServicesBootstrapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.brunomikoski.scriptableobjectcollection/Scripts/Editor/Extensions/SerializedPropertyExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.brunomikoski.scriptableobjectcollection/Scripts/Runtime/Utils/ObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Editor/EditorEnableState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Editor/ObservableTrackerTreeView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Editor/ObservableTrackerWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Editor/SplitterGUILayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/External/TextMeshPro/TextMeshProExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/External/XRInteractionToolkit/UnityXRBaseInteractableExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/MonoBehaviourExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/ObserveOnExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/PlayerLoopHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/SerializableReactiveProperty.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableAnimatorTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableBeginDragTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableCancelTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableCanvasGroupChangedTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableCollision2DTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableCollisionTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableDeselectTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableDestroyTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableDragTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableDropTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableEnableTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableEndDragTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableEventTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableFixedUpdateTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableInitializePotentialDragTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableJointTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableLateUpdateTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableMouseTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableMoveTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableParticleTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservablePointerClickTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservablePointerDownTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservablePointerEnterTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservablePointerExitTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservablePointerUpTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableRectTransformTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableScrollTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableSelectTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableStateMachineTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableSubmitTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableTransformChangedTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableTrigger2DTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableTriggerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableTriggerExtensions.Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableTriggerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableTriggerTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableUpdateSelectedTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableUpdateTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/Triggers/ObservableVisibleTrigger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/UnityEventExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/UnityFrameProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/UnityProviderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/UnityTimeProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.r3/Runtime/UnityUIComponentExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.lbg.subclassselector/Attributes/SubclassPathAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.lbg.subclassselector/Attributes/SubclassSelectorAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.lbg.subclassselector/Editor/SubclassSelectorAttributeProcessor.cs" root0="SKIP_HIGHLIGHTING" />

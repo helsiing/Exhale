@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Exhale.ECS.Authoring;
 using Exhale.Scripts.Gameplay;
 using LBG;
 using Sirenix.OdinInspector;
@@ -140,26 +141,32 @@ namespace Exhale.Scripts.Data
         
         public override bool ValidateConfig(HexPieceTemplate pieceTemplate)
         {
-            if (pieceTemplate.TryGetTrait(out Building building))
+            if (!pieceTemplate.TryGetTrait(out Building building)) return false;
+            if (building.PlacementRequirementsData.Count == 0)
             {
-                if (building.PlacementRequirementsData.Count == 0)
-                {
-                    Debug.LogError("Building trait has no unlock requirements");
-                    return false;
-                }
-
-                if (building.PlacementRequirementsData.Any(requirement => requirement.PositionIndex.Equals(float2.zero)))
-                {
-                    Debug.LogError("Position (0, 0) is protected");
-                    return false;
-                }
-
-                //TODO: Validate cost data
-
-                return true;
+                Debug.LogError("Building trait has no unlock requirements");
+                return false;
             }
 
+            if (building.PlacementRequirementsData.Any(requirement => requirement.PositionIndex.Equals(float2.zero)))
+            {
+                Debug.LogError("Position (0, 0) is protected");
+                return false;
+            }
+                
+            // validate if prefab has the correct authoring components
+            if (!pieceTemplate.TryGetTrait(out BoardObject boardObject)) return false;
+            GameObject prefab = boardObject.Prefab;
+
+            if (prefab == null || prefab.TryGetComponent(out PieceBuildingAuthoring _) ||
+                prefab.TryGetComponent(out PieceAuthoring _)) return true;
+                
+            Debug.LogError(
+                $"Piece {pieceTemplate.name} with Building trait does not have the correct authoring components on its prefab");
             return false;
+
+            //TODO: Validate cost data
+
         }
     }
 }

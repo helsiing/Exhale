@@ -26,6 +26,7 @@ namespace Exhale.ECS.Authoring
                 if (!pieceTemplate.TryGetTrait(out Building building))
                 {
                     Debug.Log($"Piece {pieceTemplate.name} does not have a Building trait");
+                    return;
                 }
 
                 BuildingComponentData componentData = new()
@@ -38,13 +39,22 @@ namespace Exhale.ECS.Authoring
 
             private BlobAssetReference<BuildingPlacementRequirementsDataBlob> GetPlacementRequirementsBlob(Building building)
             {
-                float2[] positions = building.PlacementRequirementsData
-                    .Select(data => (float2) data.PositionIndex)
-                    .ToArray();
+                float2[] positions = new float2[building.PlacementRequirementsData.Count];
+                for (int i = 0; i < building.PlacementRequirementsData.Count; i++)
+                {
+                    positions[i] = (float2)building.PlacementRequirementsData[i].PositionIndex;
+                }
 
-                Entity[] entities = building.PlacementRequirementsData
-                    .Select(data => GetEntity(data.PieceTemplate.GetPrefab(), TransformUsageFlags.Dynamic))
-                    .ToArray();
+                Entity[] entities = new Entity[building.PlacementRequirementsData.Count];
+                for (var i = 0; i < building.PlacementRequirementsData.Count; i++)
+                {
+                    var data = building.PlacementRequirementsData[i];
+                    var prefab = data.PieceTemplate.GetPrefab();
+                    if (prefab != null)
+                    {
+                        entities[i] = GetEntity(prefab, TransformUsageFlags.Dynamic);
+                    }
+                }
 
                 return Building.CreateBuildingPlacementRequirementDataBlob(positions, entities);
             }

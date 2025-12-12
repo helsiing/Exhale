@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
@@ -9,6 +10,7 @@ namespace Exhale.Scripts.Data
     [Serializable]
     public class Thumbnail : PieceTrait
     {
+        [Title("Thumbnail")]
         [SerializeField] private Sprite sprite;
         public Sprite Sprite => sprite;
 

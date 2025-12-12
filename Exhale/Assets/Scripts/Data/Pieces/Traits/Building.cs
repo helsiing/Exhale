@@ -57,6 +57,7 @@ namespace Exhale.Scripts.Data
     [Serializable]
     public class Building : PieceTrait
     {
+        [Title("Building")]
         [Space(20)]
         [SerializeField] private List<BuildingPlacementRequirementItemData> placementRequirementsData = new();
         public List<BuildingPlacementRequirementItemData> PlacementRequirementsData => placementRequirementsData;

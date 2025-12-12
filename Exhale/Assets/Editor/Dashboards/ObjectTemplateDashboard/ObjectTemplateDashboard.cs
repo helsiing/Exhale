@@ -13,7 +13,7 @@ using Toggle = UnityEngine.UIElements.Toggle;
 
 namespace Exhale.Scripts.Editor.Dashboards
 {
-	public class HexPieceTemplateDashboard : EditorWindow
+	public class ObjectTemplateDashboard : EditorWindow
 	{
 		public VisualTreeAsset RootTreeTemplate;
 		public VisualTreeAsset ObjectRowTemplate;
@@ -27,8 +27,8 @@ namespace Exhale.Scripts.Editor.Dashboards
 		[MenuItem("Exhale/🕵 Dashboards/HexPiece Templates")]
 		public static void ShowWindow()
 		{
-			HexPieceTemplateDashboard wnd = GetWindow<HexPieceTemplateDashboard>();
-			wnd.titleContent = new GUIContent("[Dashboard] HexPiece Templates");
+			ObjectTemplateDashboard wnd = GetWindow<ObjectTemplateDashboard>();
+			wnd.titleContent = new GUIContent("[Dashboard] Object Templates");
 		}
 
 		public void CreateGUI()

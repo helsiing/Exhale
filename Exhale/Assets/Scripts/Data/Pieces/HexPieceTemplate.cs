@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using BrunoMikoski.ScriptableObjectCollections;
+using LBG;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Exhale.Scripts.Data
 {
@@ -23,9 +24,9 @@ namespace Exhale.Scripts.Data
     
     public class HexPieceTemplate : ScriptableObjectCollectionItem
     {
-        [FormerlySerializedAs("Traits")] [SerializeField, SerializeReference]
-        private PieceTrait[] traits;
-        public PieceTrait[] Traits => traits;
+        [SerializeField, SerializeReference, SubclassSelector]
+        private List<PieceTrait> traits;
+        public List<PieceTrait> Traits => traits;
         
         public int GetId()
         {
@@ -39,15 +40,27 @@ namespace Exhale.Scripts.Data
                 return boardObject.Prefab;
             }
 
-            Debug.LogError($"The piece {name} does not have a BoardObject trait");
             return null;
         }
         
         public bool TryGetTrait<T>(out T trait) where T : PieceTrait
         {
             int index = -1;
-            for(int i = 0; i < traits.Length; i++)
+
+            if (traits == null)
             {
+                trait = null;
+                return false;
+            }
+
+            for(int i = 0; i < traits.Count; i++)
+            {
+                if(traits[i] == null)
+                {
+                    trait = null;
+                    return false;
+                }
+                    
                 if (traits[i].GetType() == typeof(T))
                 {
                     index = i;
@@ -71,7 +84,7 @@ namespace Exhale.Scripts.Data
 
         public bool ValidateConfig()
         {
-            foreach (PieceTrait trait in traits)
+            foreach (var trait in traits)
             {
                 if (!trait.ValidateConfig(this))
                 {

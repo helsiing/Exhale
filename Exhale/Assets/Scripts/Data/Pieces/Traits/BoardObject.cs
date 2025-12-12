@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
@@ -10,6 +11,7 @@ namespace Exhale.Scripts.Data
     [Serializable]
     public class BoardObject : PieceTrait
     {
+        [Title("Board Object")]
         [SerializeField] private GameObject prefab;
         public GameObject Prefab => prefab;
 

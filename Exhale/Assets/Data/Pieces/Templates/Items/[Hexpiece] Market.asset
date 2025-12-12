@@ -18,15 +18,24 @@ MonoBehaviour:
   collectionGUID:
     value1: 5478060591070782229
     value2: -6452721688836149371
-  piecePrefab: {fileID: 3946300195300607669, guid: e5564a6b121ed44478be7c34b97fcd75,
-    type: 3}
-  Traits:
-  - rid: 2092703302845464652
+  traits:
+  - rid: 3071582760019427594
+  - rid: 3071582760019427607
+  - rid: 3071582760019427623
   references:
     version: 2
     RefIds:
-    - rid: 2092703302845464652
+    - rid: 3071582760019427594
       type: {class: BoardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
         prefab: {fileID: 3946300195300607669, guid: e5564a6b121ed44478be7c34b97fcd75,
           type: 3}
+    - rid: 3071582760019427607
+      type: {class: Thumbnail, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        sprite: {fileID: 0}
+    - rid: 3071582760019427623
+      type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        placementRequirementsData: []
+        costData: []

@@ -9,15 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc11940d08d4a1495483a114444f18b, type: 3}
-  m_Name: BoardConfig
+  m_Script: {fileID: 11500000, guid: 34aecb48a35f04042982e504f97fd894, type: 3}
+  m_Name: Silver
   m_EditorClassIdentifier: 
-  data:
-    Width: 50
-    Height: 50
-    StartPosition:
-      x: 0
-      y: 0
-  startType: 1
-  emptyTilePrefab: {fileID: 195783397064062652, guid: 1649ba7e3f31c41a483d36dce5537029,
-    type: 3}
+  guid:
+    value1: 4867226534609851212
+    value2: 5797535328372581272
+  collectionGUID:
+    value1: 5686771040444286450
+    value2: -542766035505445246

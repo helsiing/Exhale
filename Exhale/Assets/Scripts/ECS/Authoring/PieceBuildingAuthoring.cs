@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Exhale.Scripts.Data;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;

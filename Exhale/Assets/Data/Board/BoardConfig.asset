@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BoardConfig
   m_EditorClassIdentifier: 
   data:
-    Width: 50
-    Height: 50
+    Width: 25
+    Height: 25
     StartPosition:
       x: 0
       y: 0

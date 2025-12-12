@@ -1,4 +1,5 @@
 using System;
+using LBG;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace Exhale.Scripts.Data
     ///     Trait that indicates the 2D thumbnail sprite for a piece.
     /// </summary>
     [Serializable]
+    [SubclassPath("Visuals", "Thumbnail")]
+
     public class Thumbnail : PieceTrait
     {
         [Title("Thumbnail")]

@@ -42,8 +42,10 @@ namespace ECS.Systems
                 var hitEntity = physicsWorld.Bodies[hit.RigidBodyIndex].Entity;
 
                 var tileData = EntityManager.GetComponentData<TileData>(hitEntity);
+                if(tileData.IsOccupied) return; // Ignore if the tile is already occupied
+                
                 pieceFactorySystem.CreateRandomPiece(tileData.PositionIndex);
-
+                
                 tileData.IsOccupied = true;
                 EntityManager.SetComponentData(hitEntity, tileData);
                 

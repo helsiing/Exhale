@@ -21,12 +21,9 @@ MonoBehaviour:
   traits:
   - rid: 3071582760019427592
   - rid: 3071582760019427605
-  - rid: 3071582760019427621
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 3071582760019427592
       type: {class: BoardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
@@ -36,8 +33,3 @@ MonoBehaviour:
       type: {class: Thumbnail, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
         sprite: {fileID: 0}
-    - rid: 3071582760019427621
-      type: {class: Buyable, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
-      data:
-        basePrice:
-          rid: -2

@@ -1,12 +1,14 @@
 using System;
 using System.Linq;
 using Exhale.Collections;
+using LBG;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
 	[Serializable]
+	[SubclassPath("Economy", "Buyable")]
 	public sealed class Buyable : PieceTrait
 	{
 		[Title("Buyable")]

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Exhale.Scripts.Gameplay;
+using LBG;
 using Sirenix.OdinInspector;
 using Unity.Collections;
 using Unity.Entities;
@@ -55,6 +56,7 @@ namespace Exhale.Scripts.Data
     }
 
     [Serializable]
+    [SubclassPath("Gameplay", "Building")]
     public class Building : PieceTrait
     {
         [Title("Building")]

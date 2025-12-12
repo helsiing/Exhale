@@ -2,49 +2,48 @@
 using Exhale.Scripts.External.ServiceLocators;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
+using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Exhale.Board
 {
-    [RequireComponent(typeof(Rigidbody))]
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private Transform cameraTransform;
+        [SerializeField] private Camera camera;
+        
+        [BoxGroup("Pan")]
+        [SerializeField] private float panSpeed;
+        [BoxGroup("Pan")]
+        [SerializeField] private float mousePanSpeed;
 
-        [Header("Panning Settings")]
-        [SerializeField] private float panForce = 100f;
-        [SerializeField] private float maxPanSpeed = 10f;
+        [BoxGroup("Zoom")]
+        [SerializeField] private float zoomSpeed;
+        [BoxGroup("Zoom")]
+        [SerializeField] private float minFOV = 20f;
+        [BoxGroup("Zoom")]
+        [SerializeField] private float maxFOV = 80f;
 
-        [Header("Mouse Drag Settings")]
-        [SerializeField] private float mousePanSpeed = 0.5f;
-
-        [Header("Zoom Settings")]
-        [SerializeField] private float zoomForce = 300f;
-        [SerializeField] private float minZoom = 5f;
-        [SerializeField] private float maxZoom = 50f;
-
-        [Header("Rotation Settings")]
-        [SerializeField] private float rotationSpeed = 100f; // Speed for Q/E and mouse rotation
+        [BoxGroup("Rotate")]
+        [SerializeField] private float rotationSpeed = 100f; 
+        [BoxGroup("Rotate")]
         [SerializeField] private float maxTiltAngle = 75f;
+        [BoxGroup("Rotate")]
         [SerializeField] private float minTiltAngle = 15f;
-
-        private Rigidbody rb;
-
+        
         private InputAction panInputKeyboard;
         private InputAction rotateInputMouse;
         private InputAction zoomInputMouse;
         private InputAction panInputMouse;
         private InputAction rotateInputKeyboard; // New action for Q/E rotation
         private CameraControlActions cameraActions;
-        
+        private Vector3 mouseVelocity = Vector3.zero;
         private readonly ServiceReference<ICameraService> cameraService = new ();
 
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody>();
             cameraActions = new CameraControlActions();
         }
         
@@ -76,7 +75,7 @@ namespace Exhale.Board
             HandleMousePanning();
             
             HandleKeyboardRotation(); // Handle Q/E rotation
-            ClampCameraPosition();
+            //ClampCameraPosition();
         }   
         
         public void CenterAtPosition(int2 position)
@@ -89,15 +88,15 @@ namespace Exhale.Board
         
         private void HandleKeyboardPanning()
         {
-            Vector2 movement = panInputKeyboard.ReadValue<Vector2>();
+            Vector2 input = panInputKeyboard.ReadValue<Vector2>();
+            if (input.sqrMagnitude <= 0.01f) return;
 
-            if (movement.sqrMagnitude > 0.1f)
-            {
-                Vector3 panDirection = movement.x * GetCameraRight() + movement.y * GetCameraForward();
-                rb.AddForce(panDirection.normalized * panForce, ForceMode.Acceleration);
-            }
+            Vector3 forward = Vector3.ProjectOnPlane(GetCameraForward(), Vector3.up).normalized;
+            Vector3 right   = Vector3.ProjectOnPlane(GetCameraRight(), Vector3.up).normalized;
 
-            rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxPanSpeed);
+            Vector3 targetPos = transform.position + (right * input.x + forward * input.y) * panSpeed * Time.deltaTime;
+
+            transform.position = Vector3.Lerp(transform.position, targetPos, 0.2f);
         }
 
         private void HandleMousePanning()
@@ -106,11 +105,22 @@ namespace Exhale.Board
                 return;
 
             Vector2 mouseDelta = panInputMouse.ReadValue<Vector2>();
-            if (mouseDelta.sqrMagnitude > 0.1f)
-            {
-                Vector3 panDirection = -mouseDelta.x * GetCameraRight() - mouseDelta.y * GetCameraForward();
-                rb.AddForce(panDirection * mousePanSpeed, ForceMode.Acceleration);
-            }
+            if (mouseDelta.sqrMagnitude < 0.1f)
+                return;
+
+            Vector3 forward = Vector3.ProjectOnPlane(GetCameraForward(), Vector3.up).normalized;
+            Vector3 right   = Vector3.ProjectOnPlane(GetCameraRight(), Vector3.up).normalized;
+
+            Vector3 direction = (-mouseDelta.x * right) + (-mouseDelta.y * forward);
+
+            Vector3 targetPos = transform.position + direction * mousePanSpeed * Time.deltaTime;
+
+            transform.position = Vector3.SmoothDamp(
+                transform.position,
+                targetPos,
+                ref mouseVelocity,
+                0.1f      // smooth time — tweak to taste
+            );
         }
 
         private void HandleKeyboardRotation()
@@ -146,31 +156,38 @@ namespace Exhale.Board
 
         private void ZoomCamera(InputAction.CallbackContext context)
         {
-            float zoomDelta = context.ReadValue<Vector2>().y / 10f;
-            Vector3 zoomDirection = cameraTransform.transform.forward * zoomDelta * zoomForce;
-            rb.AddForce(zoomDirection, ForceMode.Acceleration);
+            float scrollDelta = context.ReadValue<Vector2>().y;
+            if (Mathf.Abs(scrollDelta) < 0.1f)
+                return;
+
+            float targetFOV = camera.fieldOfView - scrollDelta * zoomSpeed;
+
+            // Clamp limits
+            targetFOV = Mathf.Clamp(targetFOV, minFOV, maxFOV);
+
+            camera.fieldOfView = targetFOV;
         }
 
-        private void ClampCameraPosition()
+        /*private void ClampCameraPosition()
         {
-            float currentHeight = cameraTransform.transform.localPosition.y;
+            float currentHeight = camera.transform.localPosition.y;
             float clampedHeight = Mathf.Clamp(currentHeight, minZoom, maxZoom);
 
-            Vector3 localPosition = cameraTransform.transform.localPosition;
+            Vector3 localPosition = camera.transform.localPosition;
             localPosition.y = clampedHeight;
-            cameraTransform.transform.localPosition = localPosition;
-        }
+            camera.transform.localPosition = localPosition;
+        }*/
 
         private Vector3 GetCameraForward()
         {
-            Vector3 forward = cameraTransform.transform.forward;
+            Vector3 forward = camera.transform.forward;
             forward.y = 0f;
             return forward.normalized;
         }
 
         private Vector3 GetCameraRight()
         {
-            Vector3 right = cameraTransform.transform.right;
+            Vector3 right = camera.transform.right;
             right.y = 0f;
             return right.normalized;
         }

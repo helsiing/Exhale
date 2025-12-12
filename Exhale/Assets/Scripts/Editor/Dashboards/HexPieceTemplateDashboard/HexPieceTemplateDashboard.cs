@@ -13,7 +13,7 @@ using Toggle = UnityEngine.UIElements.Toggle;
 
 namespace Exhale.Scripts.Editor.Dashboards
 {
-	public class ObjectTemplateDashboard : EditorWindow
+	public class HexPieceTemplateDashboard : EditorWindow
 	{
 		public VisualTreeAsset RootTreeTemplate;
 		public VisualTreeAsset ObjectRowTemplate;
@@ -27,7 +27,7 @@ namespace Exhale.Scripts.Editor.Dashboards
 		[MenuItem("Exhale/🕵 Dashboards/HexPiece Templates")]
 		public static void ShowWindow()
 		{
-			ObjectTemplateDashboard wnd = GetWindow<ObjectTemplateDashboard>();
+			HexPieceTemplateDashboard wnd = GetWindow<HexPieceTemplateDashboard>();
 			wnd.titleContent = new GUIContent("[Dashboard] Object Templates");
 		}
 
@@ -74,12 +74,6 @@ namespace Exhale.Scripts.Editor.Dashboards
 			toolbarMenuNew.menu.AppendAction("Default", _ => CreateNewObjectTemplate(DefaultObjectTemplateConstructors.CreateAssetDefaultItem));*/
 		}
 
-		private void CreateNewObjectTemplate(Action objectTemplateConstructor)
-		{
-			objectTemplateConstructor();
-			Reload();
-		}
-
 		private void SetupFilters()
 		{
 			ToolbarSearchField toolbarSearchField = rootVisualElement.Q("toolbar-search-object-name") as ToolbarSearchField;
@@ -90,32 +84,8 @@ namespace Exhale.Scripts.Editor.Dashboards
 				RefreshList();
 			});
 			
-			
-			/*traitToggleFiltersIds.Add(typeof(Emote), "toggle-emote-trait");
-			traitToggleFiltersIds.Add(typeof(RiderCustomizationTrait), "toggle-rider-customization-items-trait");
-			traitToggleFiltersIds.Add(typeof(UnicornCustomizationTrait), "toggle-unicorn-customization-items-trait");
-			
-			traitToggleFiltersIds.Add(typeof(Rarity), "toggle-rarity-trait");
-			traitToggleFiltersIds.Add(typeof(Indexing), "toggle-indexing-trait");
-			
-			traitToggleFiltersIds.Add(typeof(Networkable), "toggle-networkable-trait");
-			traitToggleFiltersIds.Add(typeof(Interaction), "toggle-interaction-trait");
-			traitToggleFiltersIds.Add(typeof(Consumable), "toggle-consumable-trait");
-			traitToggleFiltersIds.Add(typeof(Giftable), "toggle-giftable-trait");
-			traitToggleFiltersIds.Add(typeof(WorldObject), "toggle-world-object-trait");
+			traitToggleFiltersIds.Add(typeof(BoardObject), "toggle-board-object-trait");
 			traitToggleFiltersIds.Add(typeof(Thumbnail), "toggle-thumbnail-trait");
-			traitToggleFiltersIds.Add(typeof(Buyable), "toggle-buyable-trait");
-			traitToggleFiltersIds.Add(typeof(Saleable), "toggle-saleable-trait");
-			traitToggleFiltersIds.Add(typeof(Bindable), "toggle-bindable-trait");
-			traitToggleFiltersIds.Add(typeof(Inventory), "toggle-inventory-trait");
-			traitToggleFiltersIds.Add(typeof(Feedable), "toggle-feedable-trait");
-			traitToggleFiltersIds.Add(typeof(BondConstellation), "toggle-bond-constellation-trait");
-			
-			traitToggleFiltersIds.Add(typeof(Npc), "toggle-npc-trait");
-			traitToggleFiltersIds.Add(typeof(Talker), "toggle-talker-trait");
-			traitToggleFiltersIds.Add(typeof(Buyer), "toggle-buyer-trait");
-			traitToggleFiltersIds.Add(typeof(Seller), "toggle-seller-trait");
-			traitToggleFiltersIds.Add(typeof(Friendable), "toggle-friendable-trait");
 			
 			foreach (var toggleFiltersId in traitToggleFiltersIds)
 			{
@@ -128,44 +98,6 @@ namespace Exhale.Scripts.Editor.Dashboards
 				});
 				traitToggleFilters.Add(toggleFiltersId.Key, toggleTraitElement);
 			}
-
-			SetupIndexingSubFilters();
-			SetupRaritySubFilters();
-			SetupCustomizationSubFilters();
-			SetupEmotesSubFilters();*/
-		}
-
-		/*private void SetupRaritySubFilters()
-		{
-			VisualElement containerRarityTraitFilterDetails = rootVisualElement.Q<VisualElement>("container-rarity-filter-details");
-			Assert.IsNotNull(containerRarityTraitFilterDetails, $"Visual element container-rarity-filter-details not found");
-			Toggle toggleRarityTrait = rootVisualElement.Q<Toggle>("toggle-rarity-trait");
-			Assert.IsNotNull(toggleRarityTrait, $"Visual element toggle-rarity-trait not found");
-			toggleRarityTrait.RegisterCallback(delegate(ChangeEvent<bool> evt) { containerRarityTraitFilterDetails.SetEnabled(evt.newValue); });
-			containerRarityTraitFilterDetails.SetEnabled(false);
-			
-			EnumField rarityFilter = rootVisualElement.Q<EnumField>("rarity-filter");
-			Assert.IsNotNull(rarityFilter, "Visual element rarity-filter not found");
-			rarityFilter.Init(RarityType.Common);
-			rarityFilter.RegisterCallback<ChangeEvent<Enum>>((evt) => { RefreshList(); });
-			rarityFilter.RegisterCallback(delegate(ChangeEvent<bool> evt) { containerRarityTraitFilterDetails.SetEnabled(evt.newValue); });
-			containerRarityTraitFilterDetails.SetEnabled(false);
-		}*/
-		
-		private static List<string> GetSelectedChoices(List<string> choices, int maskFieldValue)
-		{
-			List<string> selectedChoices = new();
-
-			for (int i = 0; i < choices.Count; i++)
-			{
-				int layer = 1 << i;
-				if ((maskFieldValue & layer) != 0)
-				{
-					selectedChoices.Add(choices[i]);
-				}
-			}
-
-			return selectedChoices;
 		}
 
 		private void RefreshList()

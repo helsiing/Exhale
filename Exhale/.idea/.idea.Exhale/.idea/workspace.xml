@@ -7,31 +7,30 @@
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/BoardConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IServiceObservable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IServiceObservable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IServiceRegistered.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IServiceRegistered.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IServiceUpdate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/IServiceUpdate.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/ServiceLocator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/ServiceLocator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/ServiceReference.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/ServiceReference.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/ServiceReporter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/ServiceReporter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collections.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collections/DictionaryWrapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collections/DictionaryWrapper.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collections/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collections/Editor/DictionaryWrapperEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collections/Editor/DictionaryWrapperEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceBuildingAuthoring.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/BoardHelper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/BoardHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Farm.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/[Hexpiece] Farm.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/DashboardStyles.uss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/DashboardStyles.uss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/DashboardStyles.uss.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/DashboardStyles.uss.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/HexPieceTemplateDashboard.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/HexPieceTemplateDashboard/HexPieceTemplateDashboard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Dashboards/HexPieceTemplateDashboard/HexPieceTemplateDashboard.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateDashboard.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateRow.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Dashboards/ObjectTemplateDashboard/ObjectTemplateRow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Board/Pieces/Buildings/[HexPiece][Building] Archery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/BoardObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Building.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Buyable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Buyable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Ground.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Saleable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Saleable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Thumbnail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/Traits/Thumbnail.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/Yield.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Yield/Yield.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/TileClickSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +44,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/53998cc8255b4f86b924c690bedf582f2ac00/6f/51498ebc/ForceMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/97293d5044dc43e3b0baffe4c836dfc21de200/e8/dac82c01/SerializeReference.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/de80aed0bd3646409e8bfb15c101f005e2000/52/0e9df409/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Noid/UCA/UCA/Assets/Core/Scripts/Gameplay/ObjectSystem/Traits/Economy/Buyable.cs" root0="SKIP_HIGHLIGHTING" />

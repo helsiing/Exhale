@@ -1,4 +1,5 @@
 using System;
+using LBG;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Exhale.Scripts.Data
     ///     Trait that indicates the board prefab that should be instantiated for a piece.
     /// </summary>
     [Serializable]
+    [SubclassPath("Visuals", "Board Object")]
     public class BoardObject : PieceTrait
     {
         [Title("Board Object")]

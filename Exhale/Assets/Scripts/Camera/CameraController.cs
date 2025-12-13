@@ -36,7 +36,7 @@ namespace Exhale.Board
         private InputAction rotateInputMouse;
         private InputAction zoomInputMouse;
         private InputAction panInputMouse;
-        private InputAction rotateInputKeyboard; // New action for Q/E rotation
+        private InputAction rotateInputKeyboard;
         private CameraControlActions cameraActions;
         private Vector3 mouseVelocity = Vector3.zero;
         private readonly ServiceReference<ICameraService> cameraService = new ();
@@ -74,7 +74,7 @@ namespace Exhale.Board
             HandleKeyboardPanning();
             HandleMousePanning();
             
-            HandleKeyboardRotation(); // Handle Q/E rotation
+            HandleKeyboardRotation();
             //ClampCameraPosition();
         }   
         
@@ -119,13 +119,13 @@ namespace Exhale.Board
                 transform.position,
                 targetPos,
                 ref mouseVelocity,
-                0.1f      // smooth time — tweak to taste
+                0.1f 
             );
         }
 
         private void HandleKeyboardRotation()
         {
-            float rotateInput = rotateInputKeyboard.ReadValue<float>(); // Get input from Q and E keys
+            float rotateInput = rotateInputKeyboard.ReadValue<float>();
 
             if (Mathf.Abs(rotateInput) > 0.1f)
             {

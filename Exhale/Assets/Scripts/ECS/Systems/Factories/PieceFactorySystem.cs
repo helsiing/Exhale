@@ -6,6 +6,7 @@ using Exhale.Utils;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine.Pool;
 using Random = UnityEngine.Random;
 
 namespace Exhale.ECS.Systems
@@ -13,12 +14,13 @@ namespace Exhale.ECS.Systems
     public partial class PieceFactorySystem : SystemBase
     {
         private EntityManager entityManager;
-        private List<PieceEntityData> pieceEntities { get; set; } = new List<PieceEntityData>();
+        private List<PieceEntityData> pieceEntities { get; set; }
 
         protected override void OnCreate()
         {
             RequireForUpdate<SpawnPiecesConfig>();
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            pieceEntities = ListPool<PieceEntityData>.Get();
         }
 
         protected override void OnUpdate()
@@ -34,6 +36,12 @@ namespace Exhale.ECS.Systems
                 }
                 
             }).WithoutBurst().Run(); // Use WithoutBurst for simplicity during debugging
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            ListPool<PieceEntityData>.Release(pieceEntities);
         }
 
         public void CreateRandomPiece(int2 positionIndex)

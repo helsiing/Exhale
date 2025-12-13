@@ -9,9 +9,12 @@ namespace Exhale.Scripts.Services
     public interface IGameHandService : IService
     {
         public void InitializeHand();
+        public int GetInitialHandCount();
+        public int GetMaxHandCount();
+        public List<HexPieceTemplate> GetHexTilesInHand();
     }
     
-    public class GameHandHandService : MonoBehaviour, IGameHandService
+    public class GameHandService : MonoBehaviour, IGameHandService
     {
         [SerializeField] private int initialHandCount = 7;
         [SerializeField] private int maxHandCount = 10;
@@ -40,6 +43,21 @@ namespace Exhale.Scripts.Services
                 var randomIndex = Random.Range(0, hexTilesAvailable.Count);
                 hexTilesInHand.Add(hexTilesAvailable[randomIndex]);
             }
+        }
+
+        public int GetInitialHandCount()
+        {
+            return initialHandCount;
+        }
+
+        public int GetMaxHandCount()
+        {
+            return maxHandCount;
+        }
+
+        public List<HexPieceTemplate> GetHexTilesInHand()
+        {
+            return hexTilesInHand;
         }
 
         public void Dispose()

@@ -26,7 +26,13 @@ namespace ECS.Systems
         public void OnUpdate(ref SystemState state)
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+            
+            var camera = Camera.main;
+
+            if (camera == null)
+                return;
+            
+            Ray ray = camera.ScreenPointToRay(mousePosition);
 
             // Access the physics world
             PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();

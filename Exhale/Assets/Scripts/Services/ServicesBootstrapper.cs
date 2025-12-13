@@ -1,13 +1,12 @@
 using Exhale.Scripts.External.ServiceLocators;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Exhale.Scripts.Services
 {
     public class ServicesBootstrapper : ServiceReporter<IService>
     {
         [SerializeField] private CameraService cameraService;
-        [FormerlySerializedAs("gameHandService")] [FormerlySerializedAs("gameService")] [SerializeField] private GameHandHandService gameHandHandService;
+        [SerializeField] private GameHandService gameHandService;
         
         public override void RegisterServices()
         {
@@ -15,7 +14,7 @@ namespace Exhale.Scripts.Services
             
             RegisterServiceInstance<IDataService>(new DataService());
             RegisterServiceInstance<ICameraService>(cameraService);
-            RegisterServiceInstance<IGameHandService>(gameHandHandService);
+            RegisterServiceInstance<IGameHandService>(gameHandService);
             RegisterServiceInstance<IBoardService>(new BoardService(cameraService));
             RegisterServiceInstance<IInventoryService>(new InventoryService());
             

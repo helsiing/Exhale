@@ -11,6 +11,13 @@ using UnityEngine.Splines;
 
 namespace Exhale.GameHand
 {
+    public struct CardHandPose
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+        public int sortingOrder;
+    }
+    
     public class GameHandUI : MonoBehaviour
     {
         [SerializeField] private SplineContainer splineContainer;
@@ -87,12 +94,21 @@ namespace Exhale.GameHand
                 handCards[i].transform.DOMove(position, 0.25f);
                 handCards[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
                 
-                
                 // Update sorting order
                 var spriteRenderers = handCards[i].GetComponentsInChildren<SpriteRenderer>();
                 foreach (var spriteRenderer in spriteRenderers)
                 {
                     spriteRenderer.sortingOrder = i; // or cardCount - i for reverse
+                }
+                
+                if(handCards[i].TryGetComponent(out CardHoverUI cardHoverUI))
+                {
+                    cardHoverUI.SetHandPose(new CardHandPose
+                    {
+                        position = position,
+                        rotation = rotation,
+                        sortingOrder = i
+                    });
                 }
             }
         }

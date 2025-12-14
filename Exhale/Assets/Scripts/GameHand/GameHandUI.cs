@@ -73,7 +73,12 @@ namespace Exhale.GameHand
             {
                 float p = firstCardPosition + i * cardSpacing;
                 Vector3 position = spline.EvaluatePosition(p);
+                Vector3 forward = spline.EvaluateTangent(p);
+                Vector3 up = spline.EvaluateUpVector(p);
+                Quaternion rotation = Quaternion.LookRotation(-up, Vector3.Cross(-up, forward).normalized);
+                
                 handCards[i].transform.DOMove(position, 0.25f);
+                handCards[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
             }
         }
 

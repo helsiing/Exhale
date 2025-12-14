@@ -61,59 +61,59 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: -5
-        y: -20
+        x: -40
+        y: 0
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -0.53851646
+        z: -4.031129
       TangentOut:
         x: 0
         y: 0
-        z: 0.53851646
+        z: 4.031129
       Rotation:
         value:
-          x: 0.6943521
-          y: 0.13369776
-          z: 0.69434386
-          w: -0.13374065
+          x: -0.53010243
+          y: 0.4679652
+          z: -0.46796492
+          w: 0.53010255
     - Position:
         x: 0
-        y: -18
+        y: 5
         z: 0
       TangentIn:
         x: 0
         y: 0
-        z: -3.31
+        z: -27.3
       TangentOut:
         x: 0
         y: 0
-        z: 3.31
+        z: 27.3
       Rotation:
         value:
-          x: 0.18301268
-          y: 0.68301266
-          z: 0.18301268
-          w: 0.6830128
+          x: 0.50000155
+          y: -0.49999845
+          z: 0.50000155
+          w: -0.49999845
     - Position:
-        x: 5
-        y: -20
+        x: 40
+        y: 0
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -0.53851646
+        z: -4.031129
       TangentOut:
         x: 0
         y: 0
-        z: 0.53851646
+        z: 4.031129
       Rotation:
         value:
-          x: -0.27533656
-          y: 0.6512985
-          z: -0.49752983
-          w: 0.50245804
+          x: -0.46796492
+          y: 0.53010255
+          z: -0.53010243
+          w: 0.4679652
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -210,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 5446576645029193458}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.55, y: 17.48, z: 0}
+  m_LocalPosition: {x: -70.4, y: 40.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -243,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 5885569116683799832}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 60}
+  m_LocalPosition: {x: 0, y: 25, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -22,6 +22,7 @@ MonoBehaviour:
   - rid: 3071582760019427600
   - rid: 3071582760019427612
   - rid: 3071582760019427617
+  - rid: 3071582819787210833
   references:
     version: 2
     RefIds:
@@ -38,3 +39,8 @@ MonoBehaviour:
       type: {class: Ground, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
         canBuildOn: 0
+    - rid: 3071582819787210833
+      type: {class: CardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        prefab: {fileID: 3671346762252382974, guid: eec149055f16c429494191a2db6a6dbf,
+          type: 3}

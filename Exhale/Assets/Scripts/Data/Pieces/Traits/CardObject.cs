@@ -12,7 +12,7 @@ namespace Exhale.Scripts.Data
     [SubclassPath("Visuals", "Card Object")]
     public class CardObject : PieceTrait
     {
-        [Title("Board Object")]
+        [Title("Card Object")]
         [SerializeField] private GameObject prefab;
         public GameObject Prefab => prefab;
 

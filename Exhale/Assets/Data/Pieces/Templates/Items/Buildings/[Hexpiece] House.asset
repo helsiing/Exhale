@@ -43,4 +43,5 @@ MonoBehaviour:
     - rid: 3071582805557772360
       type: {class: CardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
-        prefab: {fileID: 0}
+        prefab: {fileID: 7735278447280998577, guid: 1a14518402b274ee689faefc69ee8958,
+          type: 3}

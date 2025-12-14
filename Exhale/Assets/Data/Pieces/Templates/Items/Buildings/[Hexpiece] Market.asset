@@ -22,6 +22,7 @@ MonoBehaviour:
   - rid: 3071582760019427594
   - rid: 3071582760019427607
   - rid: 3071582760019427623
+  - rid: 3071582819787210831
   references:
     version: 2
     RefIds:
@@ -39,3 +40,8 @@ MonoBehaviour:
       data:
         placementRequirementsData: []
         costData: []
+    - rid: 3071582819787210831
+      type: {class: CardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        prefab: {fileID: 7735278447280998577, guid: 4812833b1a674401daf1605841756f6c,
+          type: 3}

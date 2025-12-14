@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Exhale.Scripts.Data;
 using Exhale.Scripts.External.ServiceLocators;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
@@ -13,10 +13,10 @@ namespace Exhale.GameHand
 {
     public class GameHandUI : MonoBehaviour
     {
-        [SerializeField] private GameObject handCardPrefab;
         [SerializeField] private SplineContainer splineContainer;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private Transform cardsContainer;
+        [SerializeField] private float delay = 0.2f;   
         
         private List<GameObject> handCards;
         private ServiceReference<IGameHandService> gameHandService = new ();
@@ -43,19 +43,26 @@ namespace Exhale.GameHand
 
         private IEnumerator DrawInitialHandCoroutine()
         {
-            var hand = gameHandService.Reference.GetHexTilesInHand();
-            float delay = 0.2f; 
-            for (int i = 0; i < hand.Count; i++)
+            var hand = gameHandService.Reference.GetHand();
+            foreach (var handCard in hand)
             {
-                DrawCard();
-                yield return new WaitForSeconds(delay);
+                if(handCard.TryGetTrait(out CardObject cardObject))
+                {
+                    DrawCard(cardObject.Prefab);
+                    yield return new WaitForSeconds(delay);
+                }
+                else
+                {
+                    Debug.LogError($"Card {handCard.name} does not have a CardObject trait.");
+                }
             }
         }
 
-        private void DrawCard()
+        private void DrawCard(GameObject cardPrefab)
         {
             if(handCards.Count >= gameHandService.Reference.GetInitialHandCount()) return;  
-             GameObject card = Instantiate(handCardPrefab, spawnPoint.position, spawnPoint.rotation, cardsContainer);
+            
+            GameObject card = Instantiate(cardPrefab, spawnPoint.position, spawnPoint.rotation, cardsContainer);
             handCards.Add(card);
             UpdateCardsPosition();
         }

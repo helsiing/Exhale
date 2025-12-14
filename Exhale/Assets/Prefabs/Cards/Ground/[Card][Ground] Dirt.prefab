@@ -58,11 +58,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2646791038516177506, guid: 3568032032a0a4685b8a6700321a728c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 52935c2ced8aa644a8bbbdb7831ba8f6,
+        type: 3}
     - target: {fileID: 6938803852656106824, guid: 3568032032a0a4685b8a6700321a728c,
         type: 3}
       propertyPath: m_Name
-      value: '[Card] Ground Variant'
+      value: '[Card][Ground] Dirt'
       objectReference: {fileID: 0}
+    - target: {fileID: 7716552283180786363, guid: 3568032032a0a4685b8a6700321a728c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 52935c2ced8aa644a8bbbdb7831ba8f6,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

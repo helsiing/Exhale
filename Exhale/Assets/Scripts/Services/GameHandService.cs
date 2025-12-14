@@ -11,7 +11,7 @@ namespace Exhale.Scripts.Services
         public void InitializeHand();
         public int GetInitialHandCount();
         public int GetMaxHandCount();
-        public List<HexPieceTemplate> GetHexTilesInHand();
+        public List<HexPieceTemplate> GetHand();
     }
     
     public class GameHandService : MonoBehaviour, IGameHandService
@@ -55,7 +55,7 @@ namespace Exhale.Scripts.Services
             return maxHandCount;
         }
 
-        public List<HexPieceTemplate> GetHexTilesInHand()
+        public List<HexPieceTemplate> GetHand()
         {
             return hexTilesInHand;
         }

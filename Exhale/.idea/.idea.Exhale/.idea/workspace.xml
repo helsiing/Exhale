@@ -5,25 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/PrefabThumbnailGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/PrefabThumbnailGenerator.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Archery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Archery.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Cabin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Cabin.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Castle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Castle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Dock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Dock.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Farm.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Farm.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] House.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] House.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Market.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card][Building] Market.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Dirt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Dirt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Grass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Grass.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Sand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Sand.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Stone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Water.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Ground/[Card][Ground] Water.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/[Card] Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/[Card] Base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/GameHandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/GameHandService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TOM_WOOD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TOM_WOOD/Pixel Landscape Library.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TOM_WOOD/Pixel Landscape Library/Demo Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TOM_WOOD/Pixel Landscape Library/Demo Scene.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

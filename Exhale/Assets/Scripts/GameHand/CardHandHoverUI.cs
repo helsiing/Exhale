@@ -1,16 +1,15 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
 namespace Exhale.GameHand
 {
-    public class CardHoverUI : MonoBehaviour
+    //TOODO: Refactor to use EventTriggers for better performance and flexibility
+    public class CardHandHoverUI : MonoBehaviour
     {
-        [Header("Hover Settings")]
-        [SerializeField] private float hoverScale;
-        [SerializeField] private float hoverHeight;
-        [SerializeField] private float animationTime;
-        [SerializeField] private int hoverSortingBoost;
+        [SerializeField] private float hoverScale = 1.2f;
+        [SerializeField] private float hoverHeight = 0.5f;
+        [SerializeField] private float animationTime = 0.2f;
+        [SerializeField] private int hoverSortingBoost = 100;
 
         private CardHandPose handPose;
         private bool isHovered;
@@ -23,6 +22,7 @@ namespace Exhale.GameHand
         private void Awake()
         {
             initialScale = transform.localScale;
+
         }
 
         public void SetHandPose(CardHandPose pose)

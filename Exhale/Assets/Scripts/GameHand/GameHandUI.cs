@@ -100,16 +100,14 @@ namespace Exhale.GameHand
                 {
                     spriteRenderer.sortingOrder = i; // or cardCount - i for reverse
                 }
-                
-                if(handCards[i].TryGetComponent(out CardHoverUI cardHoverUI))
+
+                var cardHandHoverUI = handCards[i].GetOrAddComponent<CardHandHoverUI>();
+                cardHandHoverUI.SetHandPose(new CardHandPose
                 {
-                    cardHoverUI.SetHandPose(new CardHandPose
-                    {
-                        position = position,
-                        rotation = rotation,
-                        sortingOrder = i
-                    });
-                }
+                    position = position,
+                    rotation = rotation,
+                    sortingOrder = i
+                });
             }
         }
 

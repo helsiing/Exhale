@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7903887646524800109}
   m_Layer: 8
-  m_Name: '[Card] Visuals'
+  m_Name: '[Card] Base'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

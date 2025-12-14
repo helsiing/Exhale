@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Cards/051.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Cards/051.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Cards/[Card] Frame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Cards/[Card] Frame.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card] Building.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/Buildings/[Card] Building.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/[Card] Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/[Card] Base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/-- Hand --.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/-- Hand --.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Exhale.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -85,7 +85,12 @@ namespace Exhale.Scripts.Editor.Dashboards
 			});
 			
 			traitToggleFiltersIds.Add(typeof(BoardObject), "toggle-board-object-trait");
+			traitToggleFiltersIds.Add(typeof(CardObject), "toggle-card-object-trait");
 			traitToggleFiltersIds.Add(typeof(Thumbnail), "toggle-thumbnail-trait");
+			traitToggleFiltersIds.Add(typeof(Buyable), "toggle-buyable-trait");
+			traitToggleFiltersIds.Add(typeof(Saleable), "toggle-saleable-trait");
+			traitToggleFiltersIds.Add(typeof(Ground), "toggle-ground-trait");
+			traitToggleFiltersIds.Add(typeof(Building), "toggle-building-trait");
 			
 			foreach (var toggleFiltersId in traitToggleFiltersIds)
 			{

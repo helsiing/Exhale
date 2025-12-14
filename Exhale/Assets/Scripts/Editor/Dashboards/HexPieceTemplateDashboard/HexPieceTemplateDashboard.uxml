@@ -10,7 +10,16 @@
                 <ui:VisualElement name="box-filters-content" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; overflow: hidden; align-items: stretch; justify-content: center; align-self: flex-end; flex-shrink: 1; width: 100%;">
                     <ui:Foldout text="Visuals" name="container-visuals" value="false" class="foldout-traits-filter">
                         <ui:Toggle label="World object" name="toggle-board-object-trait" class="toggle-trait-filter" style="flex-direction: row-reverse;" />
+                        <ui:Toggle label="Card object" name="toggle-card-object-trait" class="toggle-trait-filter" style="flex-direction: row-reverse;" />
                         <ui:Toggle label="Thumbnail" name="toggle-thumbnail-trait" class="toggle-trait-filter" style="flex-direction: row-reverse;" />
+                    </ui:Foldout>
+                    <ui:Foldout text="Gameplay" name="container-gameplay" value="false" class="foldout-traits-filter">
+                        <ui:Toggle label="Ground" name="toggle-ground-trait" class="toggle-trait-filter" style="flex-direction: row-reverse;" />
+                        <ui:Toggle label="Building" name="toggle-building-trait" class="toggle-trait-filter" style="flex-direction: row-reverse;" />
+                    </ui:Foldout>
+                    <ui:Foldout text="Economy" name="container-economy" value="false" class="foldout-traits-filter">
+                        <ui:Toggle label="Buyable" name="toggle-buyable-trait" class="toggle-trait-filter" style="flex-direction: row-reverse;" />
+                        <ui:Toggle label="Saleable" name="toggle-saleable-trait" class="toggle-trait-filter" style="flex-direction: row-reverse;" />
                     </ui:Foldout>
                 </ui:VisualElement>
                 <ui:GroupBox name="box-analysis" text="Analysis" class="box-editor-noid" style="width: auto; margin-top: 5px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: column; flex-grow: 1; flex-shrink: 1; height: 10%; flex-wrap: nowrap;">

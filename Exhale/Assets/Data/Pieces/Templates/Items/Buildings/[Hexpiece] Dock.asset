@@ -34,7 +34,7 @@ MonoBehaviour:
     - rid: 3071582760019427604
       type: {class: Thumbnail, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
-        sprite: {fileID: 0}
+        sprite: {fileID: 21300000, guid: 9dac9667773984be4a14d3e025a9ab66, type: 3}
     - rid: 3071582760019427620
       type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:

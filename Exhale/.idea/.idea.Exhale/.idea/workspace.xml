@@ -5,36 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe9ec96-606a-4554-8adc-f48a4cbf32bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/StateMachine.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/StateMachine/State.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/StateMachine/State.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/StateMachine/StateMachine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/StateMachine/StateMachine.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/StateMachine/TransitionSequencer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/StateMachine/TransitionSequencer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/BoardPosition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/BoardPosition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/PieceTemplateData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/PieceTemplateData.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exhale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cards/[Card] Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cards/[Card] Base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/CardHoverUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameHand/CardHandHoverUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/CardHoverUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameHand/CardHandHoverUI.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Archery.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Archery.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Cabin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Cabin.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Castle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Castle.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Dock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Dock.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Farm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Farm.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] House.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] House.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Market.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Building] Market.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Dirt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Dirt.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Grass.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Sand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Sand.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Stone.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Stone.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Water.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thumbnails/[HexPiece][Ground] Water.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Pieces/Templates/Items/Buildings/[HexPiece] Archery.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IServiceObservable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IServiceObservable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IServiceRegistered.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IServiceRegistered.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IServiceUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/IServiceUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/ServiceLocator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/ServiceReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/ServiceReference.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/ServiceReporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ServiceLocator/Scripts/ServiceReporter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SceneDependencyCache/f481c92618e02f7648491d938099e516.sceneWithBuildSettings" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SceneDependencyCache/f481c92618e02f7648491d938099e516.sceneWithBuildSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Pieces/HexPieceTemplate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Authoring/PieceAuthoring.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Factories/PieceFactorySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Initialization/BoardInitializationSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/CardHandHoverUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/CardHandHoverBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/CardHandHoverUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/CardHandHoverBehavior.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/GameHandView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameHand/GameHandUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/GameHandView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/BoardService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/BoardService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/CameraService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/CameraService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/DataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/GameHandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/GameHandService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/InventoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/InventoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/ServicesBootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/ServicesBootstrapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,30 +108,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/ECS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "cards",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/tiagopascoal/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/tiagopascoal/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
-      &quot;/Users/tiagopascoal/Library/Application Support/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/tiagopascoal/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/Users/tiagopascoal/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/Users/tiagopascoal/Library/Application Support/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="[SerializeField] private GameObject emptyTilePrefab;         public GameObject EmptyTilePrefab =&gt; emptyTilePrefab;" />

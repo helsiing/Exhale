@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Data;
-using Exhale.Scripts.External.ServiceLocators;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Splines;
 
-namespace Exhale.GameHand
+namespace Exhale.Cards.UI
 {
     public struct CardHandPose
     {
@@ -18,7 +18,7 @@ namespace Exhale.GameHand
         public int sortingOrder;
     }
     
-    public class GameHandUI : MonoBehaviour
+    public class GameHandView : MonoBehaviour
     {
         [SerializeField] private SplineContainer splineContainer;
         [SerializeField] private Transform spawnPoint;
@@ -101,7 +101,7 @@ namespace Exhale.GameHand
                     spriteRenderer.sortingOrder = i; // or cardCount - i for reverse
                 }
 
-                var cardHandHoverUI = handCards[i].GetOrAddComponent<CardHandHoverUI>();
+                var cardHandHoverUI = handCards[i].GetOrAddComponent<CardHandHoverBehavior>();
                 cardHandHoverUI.SetHandPose(new CardHandPose
                 {
                     position = position,

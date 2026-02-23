@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Exhale.Scripts.Data;
-using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Plugins.ServiceLocators;
 using UnityEngine;
 using UnityEngine.Pool;
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace Exhale.Scripts.External.ServiceLocators
+namespace Exhale.Plugins.ServiceLocators
 {
 	/// <summary>
 	/// Specifies that something can receive callbacks for when a service is registered or unregistered.

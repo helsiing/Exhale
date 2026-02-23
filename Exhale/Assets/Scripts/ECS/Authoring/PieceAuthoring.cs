@@ -1,3 +1,4 @@
+using Exhale.Scripts.Components;
 using Exhale.Scripts.Data;
 using Unity.Entities;
 using Unity.Transforms;

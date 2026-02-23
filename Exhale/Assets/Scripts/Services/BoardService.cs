@@ -1,4 +1,4 @@
-﻿using Exhale.Scripts.External.ServiceLocators;
+﻿using Exhale.Plugins.ServiceLocators;
 using Unity.Mathematics;
 
 namespace Exhale.Scripts.Services

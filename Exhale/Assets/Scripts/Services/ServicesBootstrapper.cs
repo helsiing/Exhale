@@ -1,4 +1,4 @@
-using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Plugins.ServiceLocators;
 using UnityEngine;
 
 namespace Exhale.Scripts.Services

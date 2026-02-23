@@ -1,5 +1,5 @@
 ﻿using DG.Tweening;
-using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
 using Sirenix.OdinInspector;

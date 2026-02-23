@@ -1,6 +1,6 @@
 using Exhale.ECS.Authoring;
+using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Data;
-using Exhale.Scripts.External.ServiceLocators;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
 using JetBrains.Annotations;

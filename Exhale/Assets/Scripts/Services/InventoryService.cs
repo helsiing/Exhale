@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Gameplay;
 
 namespace Exhale.Scripts.Services

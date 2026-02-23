@@ -1,31 +1,18 @@
-using System;
 using System.Collections.Generic;
 using BrunoMikoski.ScriptableObjectCollections;
 using LBG;
-using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
     #region ECS
-    [Serializable] 
-    public struct PieceTemplateData : IComponentData
-    {
-        public int PieceId;
-    } 
-    
-    [Serializable] 
-    public struct BoardPosition : IComponentData
-    {
-        public int2 PositionIndex;
-    } 
+
     #endregion
     
     public class HexPieceTemplate : ScriptableObjectCollectionItem
     {
         [SerializeField, SerializeReference, SubclassSelector]
-        private List<PieceTrait> traits;
+        private List<PieceTrait> traits = new();
         public List<PieceTrait> Traits => traits;
         
         public int GetId()

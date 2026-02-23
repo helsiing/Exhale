@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Exhale.Scripts.External.ServiceLocators
+namespace Exhale.Plugins.ServiceLocators
 {
 	/// <summary>
 	/// Registers services to the service locator.

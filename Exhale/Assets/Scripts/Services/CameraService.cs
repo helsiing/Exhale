@@ -1,5 +1,5 @@
 ﻿using Exhale.Board;
-using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Plugins.ServiceLocators;
 using Unity.Mathematics;
 using UnityEngine;
 

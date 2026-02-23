@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Exhale.ECS.Authoring;
-using Exhale.Scripts.Data;
+using Exhale.ECS.Components;
 using Exhale.Utils;
 using Unity.Entities;
 using Unity.Mathematics;

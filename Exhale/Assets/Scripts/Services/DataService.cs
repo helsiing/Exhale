@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Exhale.Scripts.Data;
-using Exhale.Scripts.External.ServiceLocators;
+using Exhale.Plugins.ServiceLocators;
 
 namespace Exhale.Scripts.Services
 {

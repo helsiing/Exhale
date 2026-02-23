@@ -21,7 +21,6 @@ MonoBehaviour:
   traits:
   - rid: 3071582760019427595
   - rid: 3071582760019427608
-  - rid: 3071582760019427721
   - rid: 3071582819787210826
   references:
     version: 2
@@ -35,11 +34,6 @@ MonoBehaviour:
       type: {class: Thumbnail, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
         sprite: {fileID: 21300000, guid: 269dbcf9f5fd04416b05d30e682a9dee, type: 3}
-    - rid: 3071582760019427721
-      type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
-      data:
-        placementRequirementsData: []
-        costData: []
     - rid: 3071582819787210826
       type: {class: CardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:

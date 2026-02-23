@@ -1,4 +1,4 @@
-namespace Exhale.Scripts.External.ServiceLocators
+namespace Exhale.Plugins.ServiceLocators
 {
 	/// <summary>
 	/// Signifies that it wants a callback when it's registered as a service.

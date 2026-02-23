@@ -1,4 +1,4 @@
-namespace Exhale.Scripts.External.ServiceLocators
+namespace Exhale.Plugins.ServiceLocators
 {
 	/// <summary>
 	/// Service Interface.

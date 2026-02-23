@@ -1,10 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Exhale.GameHand
+namespace Exhale.Cards.UI
 {
     //TOODO: Refactor to use EventTriggers for better performance and flexibility
-    public class CardHandHoverUI : MonoBehaviour
+    public class CardHandHoverBehavior : MonoBehaviour
     {
         [SerializeField] private float hoverScale = 1.2f;
         [SerializeField] private float hoverHeight = 0.5f;
@@ -44,7 +44,7 @@ namespace Exhale.GameHand
 
         private void OnMouseExit()
         {
-            Unhover();
+            UnHover();
         }
 
         private void Hover()
@@ -63,7 +63,7 @@ namespace Exhale.GameHand
             SetSortingOrder(handPose.sortingOrder + hoverSortingBoost);
         }
 
-        private void Unhover()
+        private void UnHover()
         {
             if (!isHovered) return;
             isHovered = false;

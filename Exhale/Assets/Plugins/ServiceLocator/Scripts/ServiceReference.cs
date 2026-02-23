@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Exhale.Scripts.External.ServiceLocators
+namespace Exhale.Plugins.ServiceLocators
 {
 	/// <summary>
 	/// Service reference wrapper object. Automatically gets an instance of the service from the service locator when

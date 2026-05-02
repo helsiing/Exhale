@@ -1,4 +1,5 @@
 using Exhale.ECS.Authoring;
+using Exhale.ECS.Components;
 using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Data;
 using Exhale.Scripts.Services;
@@ -18,7 +19,6 @@ namespace Exhale.ECS.Systems
     public partial class BoardInitializationSystem : SystemBase
     {
         private BlobAssetReference<Collider> sphereCollider;
-        private PieceFactorySystem pieceFactorySystem;
         private Entity boardInitializedEventEntity;
         private readonly ServiceReference<IBoardService> boardService = new ();
         
@@ -32,9 +32,6 @@ namespace Exhale.ECS.Systems
                 Center = float3.zero,
                 Radius = .25f // Adjust to match your tile size
             }, CollisionFilter.Default);
-            
-            // Access the PieceFactorySystem
-            pieceFactorySystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PieceFactorySystem>();
             
             boardInitializedEventEntity = EntityManager.CreateEntity();
             EntityManager.AddComponentData(boardInitializedEventEntity, new BoardInitializedEvent { IsInitialized = false });
@@ -67,9 +64,17 @@ namespace Exhale.ECS.Systems
             
             BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
 
-            for(int i = 0; i < 500; i ++)
+            for (int i = 0; i < 500; i++)
             {
-                pieceFactorySystem.CreateRandomPiece(new int2(UnityEngine.Random.Range(0, boardDataComponent.Width), UnityEngine.Random.Range(0, boardDataComponent.Height)));
+                Entity requestEntity = EntityManager.CreateEntity();
+                EntityManager.AddComponentData(requestEntity, new PieceCreationRequest
+                {
+                    PositionIndex = new int2(
+                        UnityEngine.Random.Range(0, boardDataComponent.Width),
+                        UnityEngine.Random.Range(0, boardDataComponent.Height)
+                    ),
+                    PieceId = -1
+                });
             }
             
             boardService.Reference.TriggerBoardInitialized(boardEvent.StartPosition);

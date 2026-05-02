@@ -1,56 +1,63 @@
 using Exhale.ECS.Authoring;
-using Exhale.ECS.Systems;
+using Exhale.ECS.Components;
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Physics;
-using UnityEngine;
+using Unity.Physics.Systems;
+using RaycastHit = Unity.Physics.RaycastHit;
 
 namespace ECS.Systems
 {
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    public partial class TileClickSystem : SystemBase
+    [BurstCompile]
+    [UpdateAfter(typeof(TileHighlightSystem))]
+    public partial struct TileClickSystem : ISystem
     {
-        private PieceFactorySystem pieceFactorySystem;
-
-        protected override void OnCreate()
+        public void OnCreate(ref SystemState state)
         {
-            // Ensure the system only runs when the PhysicsWorldSingleton exists
-            RequireForUpdate<PhysicsWorldSingleton>();
-            pieceFactorySystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PieceFactorySystem>();
+            state.RequireForUpdate<PhysicsWorldSingleton>();
+            state.RequireForUpdate<PointerInputData>();
         }
 
-        protected override void OnUpdate()
+        [BurstCompile]
+        public void OnUpdate(ref SystemState state)
         {
-            // Check if the user has clicked the left mouse button
-            if (!Input.GetMouseButtonDown(0)) return;
+            PointerInputData inputData = SystemAPI.GetSingleton<PointerInputData>();
+            if (!inputData.IsValid || !inputData.IsClickDown)
+                return;
 
-            // Retrieve the PhysicsWorldSingleton for raycasting
-            var physicsWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>().PhysicsWorld;
+            PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
 
-            // Get the mouse click position and generate a ray
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            var rayInput = new RaycastInput
+            RaycastInput rayInput = new()
             {
-                Start = ray.origin,
-                End = ray.origin + ray.direction * 1000f,
+                Start  = inputData.RayOrigin,
+                End    = inputData.RayOrigin + inputData.RayDirection * 1000f,
                 Filter = CollisionFilter.Default
             };
 
-            // Perform the raycast
-            if (physicsWorld.CollisionWorld.CastRay(rayInput, out var hit))
-            {
-                // Get the entity that was hit
-                var hitEntity = physicsWorld.Bodies[hit.RigidBodyIndex].Entity;
+            if (!physicsWorldSingleton.PhysicsWorld.CollisionWorld.CastRay(rayInput, out RaycastHit hit))
+                return;
 
-                var tileData = EntityManager.GetComponentData<TileData>(hitEntity);
-                if(tileData.IsOccupied) return; // Ignore if the tile is already occupied
-                
-                pieceFactorySystem.CreateRandomPiece(tileData.PositionIndex);
-                
-                tileData.IsOccupied = true;
-                EntityManager.SetComponentData(hitEntity, tileData);
-                
-                Debug.Log($"Entity hit: {hitEntity}");
-            }
+            Entity hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
+
+            if (!SystemAPI.HasComponent<TileData>(hitEntity))
+                return;
+
+            TileData tileData = SystemAPI.GetComponent<TileData>(hitEntity);
+            if (tileData.IsOccupied)
+                return;
+
+            var ecb = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
+                .CreateCommandBuffer(state.WorldUnmanaged);
+
+            Entity requestEntity = ecb.CreateEntity();
+            ecb.AddComponent(requestEntity, new PieceCreationRequest
+            {
+                PositionIndex = tileData.PositionIndex,
+                PieceId       = -1
+            });
+
+            tileData.IsOccupied = true;
+            SystemAPI.SetComponent(hitEntity, tileData);
         }
     }
 }

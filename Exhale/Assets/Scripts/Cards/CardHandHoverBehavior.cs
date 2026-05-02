@@ -12,7 +12,13 @@ namespace Exhale.Cards.UI
         [SerializeField] private int hoverSortingBoost = 100;
 
         private CardHandPose handPose;
+        // Tracks a pending pose update that arrived while the card was hovered.
+        // Applied when the card un-hovers so it returns to the correct layout slot.
+        private CardHandPose pendingPose;
+        private bool hasPendingPose;
+
         private bool isHovered;
+        private bool isAnimating;
         private Vector3 initialScale;
 
         private Tween moveTween;
@@ -22,23 +28,39 @@ namespace Exhale.Cards.UI
         private void Awake()
         {
             initialScale = transform.localScale;
-
         }
 
         public void SetHandPose(CardHandPose pose)
         {
-            if (isHovered) return;
+            if (isHovered)
+            {
+                // Card is hovered: store the new target pose for when it un-hovers
+                // so the card returns to the correct updated layout position.
+                pendingPose = pose;
+                hasPendingPose = true;
+                return;
+            }
 
+            ApplyPose(pose);
+        }
+
+        private void ApplyPose(CardHandPose pose)
+        {
             handPose = pose;
+            hasPendingPose = false;
+            isAnimating = true;
 
-            transform.DOMove(pose.position, animationTime);
-            transform.DORotateQuaternion(pose.rotation, animationTime);
+            KillTweens();
+            moveTween = transform.DOMove(pose.position, animationTime)
+                .OnComplete(() => isAnimating = false);
+            rotateTween = transform.DORotateQuaternion(pose.rotation, animationTime);
 
             SetSortingOrder(pose.sortingOrder);
         }
 
         private void OnMouseEnter()
         {
+            if (isAnimating) return;
             Hover();
         }
 
@@ -57,7 +79,7 @@ namespace Exhale.Cards.UI
             Vector3 hoverPos = handPose.position + Vector3.up * hoverHeight;
 
             moveTween = transform.DOMove(hoverPos, animationTime);
-            //rotateTween = transform.DORotate(Vector3.zero, animationTime);
+            rotateTween = transform.DORotateQuaternion(Quaternion.identity, animationTime);
             scaleTween = transform.DOScale(initialScale * hoverScale, animationTime);
 
             SetSortingOrder(handPose.sortingOrder + hoverSortingBoost);
@@ -68,11 +90,18 @@ namespace Exhale.Cards.UI
             if (!isHovered) return;
             isHovered = false;
 
-            KillTweens();
-
-            moveTween = transform.DOMove(handPose.position, animationTime);
-            //rotateTween = transform.DORotateQuaternion(handPose.rotation, animationTime);
-            scaleTween = transform.DOScale(initialScale, animationTime);
+            // If the layout updated while we were hovered, snap to the new pose.
+            if (hasPendingPose)
+            {
+                ApplyPose(pendingPose);
+            }
+            else
+            {
+                KillTweens();
+                moveTween = transform.DOMove(handPose.position, animationTime);
+                rotateTween = transform.DORotateQuaternion(handPose.rotation, animationTime);
+                scaleTween = transform.DOScale(initialScale, animationTime);
+            }
 
             SetSortingOrder(handPose.sortingOrder);
         }

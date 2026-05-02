@@ -1,5 +1,7 @@
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Exhale.Utils
 {
@@ -12,10 +14,12 @@ namespace Exhale.Utils
                 return existing;
 
 #if UNITY_EDITOR
-            return Undo.AddComponent<T>(gameObject);
-#else
-			return gameObject.AddComponent<T>();
+            // Undo.AddComponent is only safe outside of play mode (edit-time prefab/scene editing).
+            // At runtime (including editor play mode) use the standard AddComponent path.
+            if (!Application.isPlaying)
+                return Undo.AddComponent<T>(gameObject);
 #endif
+            return gameObject.AddComponent<T>();
         }
 
         public static string GetPathToParent(this GameObject obj, GameObject parent, bool trimWhiteSpace = false)

@@ -134,7 +134,6 @@ namespace Exhale.ECS.Systems
                 IsInitialized = true,
                 StartPosition = board.StartPosition
             });
-            Debug.Log($"Board initialized with {board.Width}x{board.Height} tiles and start position at {board.StartPosition}");
         }
         
     }

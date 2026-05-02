@@ -3,7 +3,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace ECS.Systems
 {
@@ -46,7 +45,6 @@ namespace ECS.Systems
                     var adjacentTileData = state.EntityManager.GetComponentData<TileData>(adjacentEntity);
                     if (adjacentTileData.IsOccupied || adjacentTileData.IsEnabled) continue;
                     
-                    Debug.Log($"Enable tile at {adjPos}");
                     adjacentTileData.IsEnabled = true;
                     ecb.SetComponent(adjacentEntity, adjacentTileData);
                     ecb.RemoveComponent<Disabled>(adjacentEntity);

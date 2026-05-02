@@ -1,12 +1,10 @@
 using Exhale.ECS.Authoring;
+using Exhale.ECS.Components;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Physics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using Ray = UnityEngine.Ray;
 using RaycastHit = Unity.Physics.RaycastHit;
 
 namespace ECS.Systems
@@ -20,19 +18,16 @@ namespace ECS.Systems
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<PhysicsWorldSingleton>();
-            highlightedTile = Entity.Null; // No tile highlighted initially
+            state.RequireForUpdate<PointerInputData>();
+            highlightedTile = Entity.Null;
         }
 
+        [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            
-            var camera = Camera.main;
-
-            if (camera == null)
+            PointerInputData inputData = SystemAPI.GetSingleton<PointerInputData>();
+            if (!inputData.IsValid)
                 return;
-            
-            Ray ray = camera.ScreenPointToRay(mousePosition);
 
             // Access the physics world
             PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
@@ -41,8 +36,8 @@ namespace ECS.Systems
             // Perform raycast
             RaycastInput rayInput = new()
             {
-                Start = ray.origin,
-                End = ray.origin + ray.direction * 1000f,
+                Start = inputData.RayOrigin,
+                End   = inputData.RayOrigin + inputData.RayDirection * 1000f,
                 Filter = new CollisionFilter
                 {
                     BelongsTo = ~0u, // Collides with everything
@@ -68,6 +63,7 @@ namespace ECS.Systems
             }
         }
 
+        [BurstCompile]
         private void HighlightTile(ref SystemState state, Entity tileEntity)
         {
             if (tileEntity == highlightedTile)
@@ -105,6 +101,7 @@ namespace ECS.Systems
             }
         }
 
+        [BurstCompile]
         private void ClearHighlight(ref SystemState state)
         {
             if (highlightedTile != Entity.Null)

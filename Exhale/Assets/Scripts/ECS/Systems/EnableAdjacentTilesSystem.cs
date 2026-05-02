@@ -10,41 +10,45 @@ namespace ECS.Systems
     public partial struct EnableAdjacentTilesSystem : ISystem
     {
         private NativeHashMap<int2, Entity> tileEntityMap;
+        private EntityQuery changedTilesQuery;
 
+        // OnCreate is intentionally NOT [BurstCompile] — AddChangedVersionFilter is a managed call.
         public void OnCreate(ref SystemState state)
         {
-            tileEntityMap = new NativeHashMap<int2, Entity>(1024, Allocator.Persistent); // Adjust capacity as needed
+            tileEntityMap = new NativeHashMap<int2, Entity>(1024, Allocator.Persistent);
+
+            // Only run when TileData has actually been written to (e.g. IsOccupied changed).
+            changedTilesQuery = SystemAPI.QueryBuilder().WithAll<TileData>().Build();
+            changedTilesQuery.AddChangedVersionFilter(ComponentType.ReadOnly<TileData>());
+            state.RequireForUpdate(changedTilesQuery);
         }
 
+        [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
             var ecb = new EntityCommandBuffer(Allocator.TempJob);
 
-            // Clear the map and rebuild it each frame
+            // Rebuild map of disabled tiles keyed by board position
             tileEntityMap.Clear();
-
-            // Populate the HashMap with tile positions and their corresponding entities
             foreach (var (tileData, entity) in SystemAPI.Query<RefRO<TileData>>().WithAll<Disabled>().WithEntityAccess())
-            {
                 tileEntityMap[tileData.ValueRO.PositionIndex] = entity;
-            }
 
-            // Query all occupied tiles (pieces placed)
-            foreach (var (tileData, entity) in SystemAPI.Query<RefRW<TileData>>().WithEntityAccess())
+            // For every occupied tile, enable any disabled neighbours that are not yet enabled
+            foreach (var tileData in SystemAPI.Query<RefRO<TileData>>())
             {
-                if (!tileData.ValueRO.IsOccupied) continue; // Ignore empty tiles
+                if (!tileData.ValueRO.IsOccupied) continue;
 
-                // Get adjacent tile positions
-                NativeArray<int2> adjacentPositions =
-                    GetAdjacentTilePositions(tileData.ValueRO.PositionIndex, Allocator.Temp);
+                int2 pos = tileData.ValueRO.PositionIndex;
+                GetAdjacentPositions(in pos, Allocator.Temp, out NativeArray<int2> adjacentPositions);
 
                 foreach (var adjPos in adjacentPositions)
                 {
-                    if (!tileEntityMap.TryGetValue(adjPos, out Entity adjacentEntity)) continue; // Fast lookup in the hash map
-                    
-                    var adjacentTileData = state.EntityManager.GetComponentData<TileData>(adjacentEntity);
+                    if (!tileEntityMap.TryGetValue(adjPos, out Entity adjacentEntity)) continue;
+
+                    // SystemAPI.GetComponent is safe to call on disabled entities
+                    var adjacentTileData = SystemAPI.GetComponent<TileData>(adjacentEntity);
                     if (adjacentTileData.IsOccupied || adjacentTileData.IsEnabled) continue;
-                    
+
                     adjacentTileData.IsEnabled = true;
                     ecb.SetComponent(adjacentEntity, adjacentTileData);
                     ecb.RemoveComponent<Disabled>(adjacentEntity);
@@ -57,23 +61,25 @@ namespace ECS.Systems
             ecb.Dispose();
         }
 
+        [BurstCompile]
         public void OnDestroy(ref SystemState state)
         {
             if (tileEntityMap.IsCreated)
                 tileEntityMap.Dispose();
         }
 
-        private NativeArray<int2> GetAdjacentTilePositions(int2 position, Allocator allocator)
+        // NativeArray is built element-by-element — managed array literals (new int2[]{...})
+        // are not allowed in Burst-compiled code.
+        [BurstCompile]
+        private static void GetAdjacentPositions(in int2 p, Allocator allocator, out NativeArray<int2> result)
         {
-            return new NativeArray<int2>(new int2[]
-            {
-                new int2(position.x + 1, position.y),
-                new int2(position.x - 1, position.y),
-                new int2(position.x, position.y + 1),
-                new int2(position.x, position.y - 1),
-                new int2(position.x + 1, position.y - 1),
-                new int2(position.x - 1, position.y + 1)
-            }, allocator);
+            result = new NativeArray<int2>(6, allocator, NativeArrayOptions.UninitializedMemory);
+            result[0] = new int2(p.x + 1, p.y);
+            result[1] = new int2(p.x - 1, p.y);
+            result[2] = new int2(p.x,     p.y + 1);
+            result[3] = new int2(p.x,     p.y - 1);
+            result[4] = new int2(p.x + 1, p.y - 1);
+            result[5] = new int2(p.x - 1, p.y + 1);
         }
     }
 }

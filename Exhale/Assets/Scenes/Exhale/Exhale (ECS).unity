@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 402693697}
   - component: {fileID: 402693698}
+  - component: {fileID: 402693699}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -164,6 +165,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardConfig: {fileID: 11400000, guid: c133cef94bd363f4bbc6a8cb6113dc9e, type: 2}
+--- !u!114 &402693699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402693696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd4a622fb2ef4f66a05cccff959d730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Exhale.ECS.Authoring.TileHighlightConfigAuthoring
+  armedColor: {r: 1, g: 0.65, b: 0.1, a: 1}
+  previewColor: {r: 0.55, g: 0.75, b: 1, a: 1}
 --- !u!1 &932538165
 GameObject:
   m_ObjectHideFlags: 0

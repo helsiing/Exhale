@@ -11,13 +11,13 @@ namespace Exhale.Scripts.Services
         public override void RegisterServices()
         {
             base.RegisterServices();
-            
+
             RegisterServiceInstance<IDataService>(new DataService());
             RegisterServiceInstance<ICameraService>(cameraService);
             RegisterServiceInstance<IGameHandService>(gameHandService);
             RegisterServiceInstance<IBoardService>(new BoardService(cameraService));
             RegisterServiceInstance<IInventoryService>(new InventoryService());
-            
+            RegisterServiceInstance<IPlacementService>(new PlacementService());
         }
     }
 }

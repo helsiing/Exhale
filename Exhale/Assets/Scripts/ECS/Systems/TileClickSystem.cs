@@ -1,63 +1,62 @@
+using System.Collections.Generic;
 using Exhale.ECS.Authoring;
 using Exhale.ECS.Components;
-using Unity.Burst;
+using Exhale.Plugins.ServiceLocators;
+using Exhale.Scripts.Data;
+using Exhale.Scripts.Services;
 using Unity.Entities;
-using Unity.Physics;
-using Unity.Physics.Systems;
-using RaycastHit = Unity.Physics.RaycastHit;
+using Unity.Mathematics;
 
 namespace ECS.Systems
 {
-    [BurstCompile]
-    [UpdateAfter(typeof(TileHighlightSystem))]
-    public partial struct TileClickSystem : ISystem
+    // Renamed from TileClickSystem. No longer responds to mouse clicks directly —
+    // piece spawning is now triggered by IPlacementService.OnCardLanded so the full
+    // tile-first placement flow (arm → card launch → land) drives creation.
+    public partial class PiecePlacementSystem : SystemBase
     {
-        public void OnCreate(ref SystemState state)
+        private readonly ServiceReference<IPlacementService> placementService = new();
+        private readonly Queue<(HexPieceTemplate card, int2 pos)> pending = new();
+        private bool subscribed;
+
+        protected override void OnUpdate()
         {
-            state.RequireForUpdate<PhysicsWorldSingleton>();
-            state.RequireForUpdate<PointerInputData>();
+            // Subscribe lazily — services are registered in MonoBehaviour.Awake which
+            // may run after the ECS world is created.
+            if (!subscribed && placementService.Reference != null)
+            {
+                placementService.Reference.OnCardLanded += OnCardLanded;
+                subscribed = true;
+            }
+
+            while (pending.Count > 0)
+            {
+                var (card, pos) = pending.Dequeue();
+
+                // Mark the tile occupied so EnableAdjacentTilesSystem unlocks neighbours.
+                foreach (var tileData in SystemAPI.Query<RefRW<TileData>>())
+                {
+                    if (!tileData.ValueRO.PositionIndex.Equals(pos)) continue;
+                    tileData.ValueRW.IsOccupied = true;
+                    break;
+                }
+
+                var request = EntityManager.CreateEntity();
+                EntityManager.AddComponentData(request, new PieceCreationRequest
+                {
+                    PositionIndex = pos,
+                    PieceId       = card.GetId()
+                });
+            }
         }
 
-        [BurstCompile]
-        public void OnUpdate(ref SystemState state)
+        protected override void OnDestroy()
         {
-            PointerInputData inputData = SystemAPI.GetSingleton<PointerInputData>();
-            if (!inputData.IsValid || !inputData.IsClickDown)
-                return;
-
-            PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
-
-            RaycastInput rayInput = new()
-            {
-                Start  = inputData.RayOrigin,
-                End    = inputData.RayOrigin + inputData.RayDirection * 1000f,
-                Filter = CollisionFilter.Default
-            };
-
-            if (!physicsWorldSingleton.PhysicsWorld.CollisionWorld.CastRay(rayInput, out RaycastHit hit))
-                return;
-
-            Entity hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
-
-            if (!SystemAPI.HasComponent<TileData>(hitEntity))
-                return;
-
-            TileData tileData = SystemAPI.GetComponent<TileData>(hitEntity);
-            if (tileData.IsOccupied)
-                return;
-
-            var ecb = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
-                .CreateCommandBuffer(state.WorldUnmanaged);
-
-            Entity requestEntity = ecb.CreateEntity();
-            ecb.AddComponent(requestEntity, new PieceCreationRequest
-            {
-                PositionIndex = tileData.PositionIndex,
-                PieceId       = -1
-            });
-
-            tileData.IsOccupied = true;
-            SystemAPI.SetComponent(hitEntity, tileData);
+            if (subscribed && placementService.Reference != null)
+                placementService.Reference.OnCardLanded -= OnCardLanded;
         }
+
+        // Called on the main thread from PlacementService.NotifyCardLanded().
+        private void OnCardLanded(HexPieceTemplate card, int2 pos) =>
+            pending.Enqueue((card, pos));
     }
 }

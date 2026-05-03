@@ -128,9 +128,7 @@ namespace Exhale.ECS.Systems
                         LocalTransform.FromPosition(BoardHelper.HexToWorldPosition(x, y)));
                     
                     if (!isStartTile)
-                    {
-                        //Ecb.AddComponent<Disabled>(entityIndexInQuery, hexTileEntity);
-                    }
+                        Ecb.AddComponent<Disabled>(entityIndexInQuery, hexTileEntity);
                 }
             }
             

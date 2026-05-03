@@ -16,6 +16,8 @@ namespace Exhale.ECS.Authoring
     public struct TileDataHighlight : IComponentData
     {
         public bool IsHighlighted;
+        public bool IsArmed;
+        public bool IsAdjacencyPreview;
     }
     
     public class BoardAuthoring : MonoBehaviour

@@ -6,16 +6,22 @@ namespace Exhale.Cards.UI
     //TOODO: Refactor to use EventTriggers for better performance and flexibility
     public class CardHandHoverBehavior : MonoBehaviour
     {
-        [SerializeField] private float hoverScale = 1.2f;
-        [SerializeField] private float hoverHeight = 0.5f;
-        [SerializeField] private float animationTime = 0.2f;
-        [SerializeField] private int hoverSortingBoost = 100;
+        [Header("Hover Feel")]
+        [SerializeField] [Range(1f, 2f)]   private float hoverScale       = 1.2f;
+        [SerializeField] [Range(0f, 2f)]   private float hoverHeight      = 0.5f;
+        [SerializeField] [Range(0.05f, 1f)] private float animationTime   = 0.2f;
+        [SerializeField] [Range(0, 200)]   private int   hoverSortingBoost = 100;
 
         private CardHandPose handPose;
         // Tracks a pending pose update that arrived while the card was hovered.
         // Applied when the card un-hovers so it returns to the correct layout slot.
         private CardHandPose pendingPose;
         private bool hasPendingPose;
+
+        // Additive lean rotation supplied by CardHandLeanController.
+        // Composed as (leanDelta * splineRotation) so it layers on top of the pose
+        // without interfering with hover which resets to Quaternion.identity.
+        private Quaternion leanDelta = Quaternion.identity;
 
         private bool isHovered;
         private bool isAnimating;
@@ -44,6 +50,14 @@ namespace Exhale.Cards.UI
             ApplyPose(pose);
         }
 
+        public void SetLeanDelta(Quaternion delta)
+        {
+            leanDelta = delta;
+            if (isHovered) return; // lean will be applied on the next UnHover
+            rotateTween?.Kill();
+            rotateTween = transform.DORotateQuaternion(leanDelta * handPose.rotation, animationTime);
+        }
+
         private void ApplyPose(CardHandPose pose)
         {
             handPose = pose;
@@ -53,18 +67,18 @@ namespace Exhale.Cards.UI
             KillTweens();
             moveTween = transform.DOMove(pose.position, animationTime)
                 .OnComplete(() => isAnimating = false);
-            rotateTween = transform.DORotateQuaternion(pose.rotation, animationTime);
+            rotateTween = transform.DORotateQuaternion(leanDelta * pose.rotation, animationTime);
 
             SetSortingOrder(pose.sortingOrder);
         }
 
-        private void OnMouseEnter()
+        public void TriggerHover()
         {
             if (isAnimating) return;
             Hover();
         }
 
-        private void OnMouseExit()
+        public void TriggerUnhover()
         {
             UnHover();
         }
@@ -99,7 +113,7 @@ namespace Exhale.Cards.UI
             {
                 KillTweens();
                 moveTween = transform.DOMove(handPose.position, animationTime);
-                rotateTween = transform.DORotateQuaternion(handPose.rotation, animationTime);
+                rotateTween = transform.DORotateQuaternion(leanDelta * handPose.rotation, animationTime);
                 scaleTween = transform.DOScale(initialScale, animationTime);
             }
 

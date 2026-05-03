@@ -26,6 +26,8 @@ namespace Exhale.Cards.UI
         [SerializeField] private float delay = 0.2f;   
         
         private List<GameObject> handCards;
+        public IReadOnlyList<GameObject> HandCards => handCards;
+
         private ServiceReference<IGameHandService> gameHandService = new ();
         
         private void Awake()
@@ -55,7 +57,7 @@ namespace Exhale.Cards.UI
             {
                 if(handCard.TryGetTrait(out CardObject cardObject))
                 {
-                    DrawCard(cardObject.Prefab);
+                    DrawCard(handCard, cardObject.Prefab);
                     yield return new WaitForSeconds(delay);
                 }
                 else
@@ -65,15 +67,35 @@ namespace Exhale.Cards.UI
             }
         }
 
-        private void DrawCard(GameObject cardPrefab)
+        private void DrawCard(HexPieceTemplate template, GameObject cardPrefab)
         {
-            if(handCards.Count >= gameHandService.Reference.GetInitialHandCount()) return;  
-            
-            GameObject card = Instantiate(cardPrefab, spawnPoint.position, spawnPoint.rotation, cardsContainer);
-            handCards.Add(card);
+            if(handCards.Count >= gameHandService.Reference.GetInitialHandCount()) return;
+
+            // LeanPivot sits between cardsContainer and the card visual. Its localRotation
+            // is the dedicated layer for CardHandLeanController; CardHandHoverBehavior lives
+            // on the pivot so position/scale tweens operate on the same transform, leaving
+            // the card's own transform free for any future per-card local animation.
+            var leanPivot = new GameObject("LeanPivot");
+            leanPivot.transform.SetParent(cardsContainer, false);
+            leanPivot.transform.position = spawnPoint.position;
+            leanPivot.transform.rotation = spawnPoint.rotation;
+
+            var card = Instantiate(cardPrefab, leanPivot.transform);
+            card.transform.localPosition = Vector3.zero;
+            card.transform.localRotation = Quaternion.identity;
+            card.GetOrAddComponent<CardMouseEventForwarder>();
+            card.GetOrAddComponent<CardView>().Initialize(template);
+
+            handCards.Add(leanPivot);
             UpdateCardsPosition();
         }
         
+        public void RemoveCard(GameObject leanPivot)
+        {
+            handCards.Remove(leanPivot);
+            UpdateCardsPosition();
+        }
+
         private void UpdateCardsPosition()
         {
             int cardCount = handCards.Count;

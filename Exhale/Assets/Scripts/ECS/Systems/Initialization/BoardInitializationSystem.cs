@@ -62,21 +62,6 @@ namespace Exhale.ECS.Systems
 
             if (!boardEvent.IsInitialized) return; // Skip if the board isn't ready
             
-            BoardDataComponent boardDataComponent = SystemAPI.GetSingleton<BoardDataComponent>();
-
-            for (int i = 0; i < 500; i++)
-            {
-                Entity requestEntity = EntityManager.CreateEntity();
-                EntityManager.AddComponentData(requestEntity, new PieceCreationRequest
-                {
-                    PositionIndex = new int2(
-                        UnityEngine.Random.Range(0, boardDataComponent.Width),
-                        UnityEngine.Random.Range(0, boardDataComponent.Height)
-                    ),
-                    PieceId = -1
-                });
-            }
-            
             boardService.Reference.TriggerBoardInitialized(boardEvent.StartPosition);
             EntityManager.SetComponentData(boardInitializedEventEntity, new BoardInitializedEvent { IsInitialized = false });
 

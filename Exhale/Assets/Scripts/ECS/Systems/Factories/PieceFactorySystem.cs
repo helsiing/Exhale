@@ -5,6 +5,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Exhale.ECS.Systems
@@ -32,7 +33,11 @@ namespace Exhale.ECS.Systems
                 }
             }
 
-            if (pieceEntities.IsEmpty) return;
+            if (pieceEntities.IsEmpty)
+            {
+                Debug.LogWarning("[PieceFactorySystem] pieceEntities catalog is empty — SpawnPiecesConfig or PieceEntityData buffer may be missing from the subscene.");
+                return;
+            }
 
             // Collect all pending requests before making any structural changes.
             // EntityManager.Instantiate/AddComponentData inside the loop would cause
@@ -72,6 +77,7 @@ namespace Exhale.ECS.Systems
 
         public void CreatePiece(int pieceId, int2 positionIndex)
         {
+            Debug.Log($"[PieceFactorySystem] CreatePiece id={pieceId} pos={positionIndex}. Catalog has {pieceEntities.Length} entries: [{string.Join(", ", System.Linq.Enumerable.Select(pieceEntities.AsArray().ToArray(), e => e.PieceId))}]");
             for (int i = 0; i < pieceEntities.Length; i++)
             {
                 if (pieceEntities[i].PieceId != pieceId) continue;
@@ -79,8 +85,10 @@ namespace Exhale.ECS.Systems
                 Entity pieceEntity = EntityManager.Instantiate(pieceEntities[i].PrefabEntity);
                 EntityManager.AddComponentData(pieceEntity, new BoardPosition { PositionIndex = positionIndex });
                 EntityManager.AddComponentData(pieceEntity, LocalTransform.FromPosition(BoardHelper.HexToWorldPosition(positionIndex)));
+                Debug.Log($"[PieceFactorySystem] Spawned piece entity at {positionIndex}");
                 return;
             }
+            Debug.LogWarning($"[PieceFactorySystem] No piece found for pieceId={pieceId}");
         }
     }
 }

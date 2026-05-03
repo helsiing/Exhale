@@ -6,6 +6,7 @@ using Exhale.Scripts.Data;
 using Exhale.Scripts.Services;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 
 namespace ECS.Systems
 {
@@ -31,14 +32,17 @@ namespace ECS.Systems
             while (pending.Count > 0)
             {
                 var (card, pos) = pending.Dequeue();
+                Debug.Log($"[PiecePlacementSystem] Processing placement: card={card.name} id={card.GetId()} pos={pos}");
 
-                // Mark the tile occupied so EnableAdjacentTilesSystem unlocks neighbours.
+                bool tileFound = false;
                 foreach (var tileData in SystemAPI.Query<RefRW<TileData>>())
                 {
                     if (!tileData.ValueRO.PositionIndex.Equals(pos)) continue;
                     tileData.ValueRW.IsOccupied = true;
+                    tileFound = true;
                     break;
                 }
+                Debug.Log($"[PiecePlacementSystem] Tile found and marked occupied: {tileFound}");
 
                 var request = EntityManager.CreateEntity();
                 EntityManager.AddComponentData(request, new PieceCreationRequest
@@ -46,6 +50,7 @@ namespace ECS.Systems
                     PositionIndex = pos,
                     PieceId       = card.GetId()
                 });
+                Debug.Log($"[PiecePlacementSystem] PieceCreationRequest created for pieceId={card.GetId()}");
             }
         }
 

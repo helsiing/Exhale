@@ -5,10 +5,6 @@ using UnityEngine;
 
 namespace Exhale.Scripts.Data
 {
-    #region ECS
-
-    #endregion
-    
     public class HexPieceTemplate : ScriptableObjectCollectionItem
     {
         [SerializeField, SerializeReference, SubclassSelector]
@@ -17,7 +13,11 @@ namespace Exhale.Scripts.Data
         
         public int GetId()
         {
-            return GUID.GetHashCode();
+            // HashCode.Combine uses a randomized seed per AppDomain, which breaks
+            // the baker↔runtime contract (they run in different domains). XOR-fold
+            // the raw GUID longs to int instead — fully deterministic across reloads.
+            var (v1, v2) = GUID.GetRawValues();
+            return (int)(v1 ^ (v1 >> 32)) ^ (int)(v2 ^ (v2 >> 32));
         }
         
         public GameObject GetPrefab()

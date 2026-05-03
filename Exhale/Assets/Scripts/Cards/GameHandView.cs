@@ -5,6 +5,7 @@ using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Data;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Splines;
@@ -28,19 +29,25 @@ namespace Exhale.Cards.UI
         private List<GameObject> handCards;
         public IReadOnlyList<GameObject> HandCards => handCards;
 
-        private ServiceReference<IGameHandService> gameHandService = new ();
-        
+        private ServiceReference<IGameHandService> gameHandService = new();
+        private readonly ServiceReference<IPlacementService> placementService = new();
+
         private void Awake()
         {
             handCards = ListPool<GameObject>.Get();
         }
 
-        private void Update()
+        private void Start()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                DrawInitialHand();
-            }
+            if (placementService.Reference != null)
+                placementService.Reference.OnCardLanded += OnCardLanded;
+            StartCoroutine(AutoDrawInitialHand());
+        }
+
+        private IEnumerator AutoDrawInitialHand()
+        {
+            yield return null; // wait one frame so GameHandService.Start() has populated the hand
+            DrawInitialHand();
         }
 
         private void DrawInitialHand()
@@ -48,6 +55,14 @@ namespace Exhale.Cards.UI
             cardsContainer.gameObject.DestroyChildObjects();
             handCards.Clear();
             StartCoroutine(DrawInitialHandCoroutine());
+        }
+
+        private void OnCardLanded(HexPieceTemplate _, int2 __)
+        {
+            var nextCard = gameHandService.Reference?.DrawNextCard();
+            if (nextCard == null) return;
+            if (nextCard.TryGetTrait(out CardObject cardObject))
+                DrawCard(nextCard, cardObject.Prefab);
         }
 
         private IEnumerator DrawInitialHandCoroutine()
@@ -135,6 +150,8 @@ namespace Exhale.Cards.UI
 
         private void OnDestroy()
         {
+            if (placementService.Reference != null)
+                placementService.Reference.OnCardLanded -= OnCardLanded;
             ListPool<GameObject>.Release(handCards);
         }
     }

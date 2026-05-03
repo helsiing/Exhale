@@ -65,19 +65,19 @@ MonoBehaviour:
         y: 0
         z: 0
       TangentIn:
-        x: -0
-        y: -0
-        z: -4.031129
+        x: 0
+        y: 0
+        z: 0
       TangentOut:
         x: 0
         y: 0
-        z: 4.031129
+        z: 0
       Rotation:
         value:
-          x: -0.53010243
-          y: 0.4679652
-          z: -0.46796492
-          w: 0.53010255
+          x: 0.5
+          y: -0.5
+          z: 0.5
+          w: -0.5
     - Position:
         x: 0
         y: 5
@@ -92,10 +92,10 @@ MonoBehaviour:
         z: 27.3
       Rotation:
         value:
-          x: 0.50000155
-          y: -0.49999845
-          z: 0.50000155
-          w: -0.49999845
+          x: -0.5
+          y: 0.5
+          z: -0.5
+          w: 0.5
     - Position:
         x: 40
         y: 0
@@ -110,12 +110,12 @@ MonoBehaviour:
         z: 4.031129
       Rotation:
         value:
-          x: -0.46796492
-          y: 0.53010255
-          z: -0.53010243
-          w: 0.4679652
+          x: 0.4679652
+          y: -0.53010243
+          z: 0.53010255
+          w: -0.46796492
     m_MetaData:
-    - Mode: 0
+    - Mode: 1
       Tension: 0.5
     - Mode: 2
       Tension: 0.5
@@ -142,6 +142,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3462853024782302164}
   - component: {fileID: 263078901215509900}
+  - component: {fileID: 5824758768091430808}
+  - component: {fileID: 6347400107284088955}
+  - component: {fileID: 8953383808807988620}
+  - component: {fileID: 9092857401497746444}
+  - component: {fileID: 850649032485455793}
+  - component: {fileID: 4436814686110960977}
   m_Layer: 8
   m_Name: -- Hand --
   m_TagString: Untagged
@@ -184,6 +190,180 @@ MonoBehaviour:
   spawnPoint: {fileID: 7807643899481738793}
   cardsContainer: {fileID: 6014004553456319853}
   delay: 0.2
+--- !u!114 &5824758768091430808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897141279335940160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c276c0b800f419b91eca543414c3ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.CardHandLeanController
+  leanAngle: 10
+  animationTime: 0.3
+--- !u!114 &6347400107284088955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897141279335940160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4048ae55ed14c4676be33a1270b14b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.CardHandFilter
+--- !u!114 &8953383808807988620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897141279335940160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae97d68cd0ca4e87be27f579b29dd38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.CardLaunchAnimator
+  duration: 0.25
+  arcHeight: 2
+  landingHeight: 0.15
+  shakeStrength: 0.1
+  shakeDuration: 0.15
+--- !u!114 &9092857401497746444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897141279335940160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c276c0b800f419b91eca543414c3ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.CardHandLeanController
+  leanAngle: 10
+  animationTime: 0.3
+--- !u!82 &850649032485455793
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897141279335940160}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4436814686110960977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897141279335940160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de783f34e0634670a7c938d863349cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.PlacementAudioController
+  tileArmedClip: {fileID: 0}
+  cardLaunchedClip: {fileID: 0}
+  cardLandedClip: {fileID: 0}
+  cancelledClip: {fileID: 0}
+  tileArmedVolume: 0.7
+  cardLaunchedVolume: 1
+  cardLandedVolume: 1
+  cancelledVolume: 0.5
 --- !u!1 &5446576645029193458
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 5446576645029193458}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -70.4, y: 40.4, z: 0}
+  m_LocalPosition: {x: 70.4, y: 40.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -335,7 +515,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -343,6 +522,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &7572774211079018218
 GameObject:
   m_ObjectHideFlags: 0

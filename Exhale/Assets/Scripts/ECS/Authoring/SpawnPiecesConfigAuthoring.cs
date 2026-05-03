@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Exhale.Scripts.Data;
 using Unity.Entities;
 using UnityEngine;
@@ -41,16 +40,16 @@ namespace Exhale.ECS.Authoring
                 Entity entity = GetEntity(TransformUsageFlags.None);
                 
                 DynamicBuffer<PieceEntityData> buffer = AddBuffer<PieceEntityData>(entity);
-                foreach (GameObject prefab in authoring.pieceTemplateCollection.Select(pieceTemplate => pieceTemplate.GetPrefab()))
+                foreach (var pieceTemplate in authoring.pieceTemplateCollection)
                 {
-                    if (prefab != null && prefab.TryGetComponent(out PieceAuthoring pieceAuthoring))
+                    var prefab = pieceTemplate.GetPrefab();
+                    if (prefab == null) continue;
+
+                    buffer.Add(new PieceEntityData
                     {
-                        buffer.Add(new PieceEntityData
-                        {
-                            PieceId = pieceAuthoring.PieceTemplate.GetId(),
-                            PrefabEntity = GetEntity(prefab, TransformUsageFlags.Dynamic)
-                        });
-                    }
+                        PieceId      = pieceTemplate.GetId(),
+                        PrefabEntity = GetEntity(prefab, TransformUsageFlags.Dynamic)
+                    });
                 }
                 
                 AddComponent(entity, new SpawnPiecesConfig());

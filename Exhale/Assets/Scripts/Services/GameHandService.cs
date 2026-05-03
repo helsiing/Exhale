@@ -12,6 +12,7 @@ namespace Exhale.Scripts.Services
         public int GetInitialHandCount();
         public int GetMaxHandCount();
         public List<HexPieceTemplate> GetHand();
+        public HexPieceTemplate DrawNextCard();
     }
     
     public class GameHandService : MonoBehaviour, IGameHandService
@@ -58,6 +59,12 @@ namespace Exhale.Scripts.Services
         public List<HexPieceTemplate> GetHand()
         {
             return hexTilesInHand;
+        }
+
+        public HexPieceTemplate DrawNextCard()
+        {
+            if (hexTilesAvailable == null || hexTilesAvailable.Count == 0) return null;
+            return hexTilesAvailable[Random.Range(0, hexTilesAvailable.Count)];
         }
 
         public void Dispose()

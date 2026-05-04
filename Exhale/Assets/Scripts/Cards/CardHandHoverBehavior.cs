@@ -24,6 +24,7 @@ namespace Exhale.Cards.UI
         private Quaternion leanDelta = Quaternion.identity;
 
         private bool isHovered;
+        private bool isSelected;
         private bool isAnimating;
         private Vector3 initialScale;
 
@@ -72,6 +73,15 @@ namespace Exhale.Cards.UI
             SetSortingOrder(pose.sortingOrder);
         }
 
+        public void SetSelected(bool selected)
+        {
+            isSelected = selected;
+            if (selected && !isHovered)
+                Hover();
+            else if (!selected)
+                UnHover();
+        }
+
         public void TriggerHover()
         {
             if (isAnimating) return;
@@ -80,6 +90,8 @@ namespace Exhale.Cards.UI
 
         public void TriggerUnhover()
         {
+            // Keep the card elevated while it is selected.
+            if (isSelected) return;
             UnHover();
         }
 

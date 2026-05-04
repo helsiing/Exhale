@@ -1,6 +1,6 @@
 using Exhale.Plugins.ServiceLocators;
+using Exhale.Scripts.Data;
 using Exhale.Scripts.Services;
-using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -17,33 +17,39 @@ namespace Exhale.Cards.UI
         private void Start()
         {
             if (placementService.Reference == null) return;
-            placementService.Reference.OnTileArmed    += OnTileArmed;
-            placementService.Reference.OnTileDisarmed += OnTileDisarmed;
+            placementService.Reference.OnCardSelected      += OnCardSelected;
+            placementService.Reference.OnCardDeselected    += OnCardDeselected;
+            placementService.Reference.OnCardLaunchStarted += OnCardLaunchStarted;
         }
 
         private void OnDestroy()
         {
-            if (placementService.Reference == null) return;
-            placementService.Reference.OnTileArmed    -= OnTileArmed;
-            placementService.Reference.OnTileDisarmed -= OnTileDisarmed;
+            if (!placementService.HasCachedReference) return;
+            placementService.CachedReference.OnCardSelected      -= OnCardSelected;
+            placementService.CachedReference.OnCardDeselected    -= OnCardDeselected;
+            placementService.CachedReference.OnCardLaunchStarted -= OnCardLaunchStarted;
         }
 
-        private void OnTileArmed(int2 pos, Entity _)
+        private void OnCardSelected(HexPieceTemplate selectedCard)
         {
-            var service = placementService.Reference;
             foreach (var leanPivot in handView.HandCards)
             {
                 var cardView = leanPivot.GetComponentInChildren<CardView>();
                 if (cardView == null) continue;
 
-                var state = service.IsCardValidForTile(cardView.Template, pos)
+                // Dim every card that isn't the one being played.
+                // The selected card's own highlight is handled by CardView.SetSelected.
+                var validity = cardView.Template == selectedCard
                     ? CardValidityState.Valid
                     : CardValidityState.Invalid;
-                cardView.SetValidity(state);
+                cardView.SetValidity(validity);
             }
         }
 
-        private void OnTileDisarmed()
+        private void OnCardDeselected() => ResetAllValidity();
+        private void OnCardLaunchStarted(HexPieceTemplate _, int2 __) => ResetAllValidity();
+
+        private void ResetAllValidity()
         {
             foreach (var leanPivot in handView.HandCards)
                 leanPivot.GetComponentInChildren<CardView>()?.SetValidity(CardValidityState.Valid);

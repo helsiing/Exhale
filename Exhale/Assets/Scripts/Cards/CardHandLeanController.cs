@@ -1,7 +1,7 @@
 using Exhale.Plugins.ServiceLocators;
+using Exhale.Scripts.Data;
 using Exhale.Scripts.Services;
 using Exhale.Utils;
-using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -22,20 +22,22 @@ namespace Exhale.Cards.UI
         private void Start()
         {
             if (placementService.Reference == null) return;
-            placementService.Reference.OnTileArmed   += OnTileArmed;
-            placementService.Reference.OnTileDisarmed += OnTileDisarmed;
+            placementService.Reference.OnCardLaunchStarted += OnCardLaunchStarted;
+            placementService.Reference.OnCardDeselected    += ResetLean;
+            placementService.Reference.OnCardLanded        += OnCardLanded;
         }
 
         private void OnDestroy()
         {
-            if (placementService.Reference == null) return;
-            placementService.Reference.OnTileArmed   -= OnTileArmed;
-            placementService.Reference.OnTileDisarmed -= OnTileDisarmed;
+            if (!placementService.HasCachedReference) return;
+            placementService.CachedReference.OnCardLaunchStarted -= OnCardLaunchStarted;
+            placementService.CachedReference.OnCardDeselected    -= ResetLean;
+            placementService.CachedReference.OnCardLanded        -= OnCardLanded;
         }
 
-        private void OnTileArmed(int2 pos, Entity _)
+        private void OnCardLaunchStarted(HexPieceTemplate _, int2 tilePos)
         {
-            Vector3 tileWorldPos = BoardHelper.HexToWorldPosition(pos);
+            Vector3 tileWorldPos = BoardHelper.HexToWorldPosition(tilePos);
             foreach (var leanPivot in handView.HandCards)
             {
                 var hover = leanPivot.GetComponent<CardHandHoverBehavior>();
@@ -44,7 +46,9 @@ namespace Exhale.Cards.UI
             }
         }
 
-        private void OnTileDisarmed()
+        private void OnCardLanded(HexPieceTemplate _, int2 __) => ResetLean();
+
+        private void ResetLean()
         {
             foreach (var leanPivot in handView.HandCards)
                 leanPivot.GetComponent<CardHandHoverBehavior>()?.SetLeanDelta(Quaternion.identity);

@@ -27,22 +27,23 @@ namespace ECS.Systems
         {
             PointerInputData inputData = SystemAPI.GetSingleton<PointerInputData>();
             if (!inputData.IsValid)
+            {
+                ClearHighlight(ref state);
                 return;
+            }
 
-            // Access the physics world
             PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
             CollisionWorld collisionWorld = physicsWorldSingleton.PhysicsWorld.CollisionWorld;
 
-            // Perform raycast
             RaycastInput rayInput = new()
             {
-                Start = inputData.RayOrigin,
-                End   = inputData.RayOrigin + inputData.RayDirection * 1000f,
+                Start  = inputData.RayOrigin,
+                End    = inputData.RayOrigin + inputData.RayDirection * 1000f,
                 Filter = new CollisionFilter
                 {
-                    BelongsTo = ~0u, // Collides with everything
-                    CollidesWith = ~0u, // Detect all collision layers
-                    GroupIndex = 0
+                    BelongsTo    = ~0u,
+                    CollidesWith = ~0u,
+                    GroupIndex   = 0
                 }
             };
 
@@ -51,14 +52,12 @@ namespace ECS.Systems
                 Entity hitEntity = physicsWorldSingleton.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
 
                 if (SystemAPI.HasComponent<TileData>(hitEntity))
-                {
-                    // Highlight the hovered tile
                     HighlightTile(ref state, hitEntity);
-                }
+                else
+                    ClearHighlight(ref state);
             }
             else
             {
-                // Clear the highlight if no tile is hovered
                 ClearHighlight(ref state);
             }
         }
@@ -66,30 +65,25 @@ namespace ECS.Systems
         [BurstCompile]
         private void HighlightTile(ref SystemState state, Entity tileEntity)
         {
-            if (tileEntity == highlightedTile)
+            // Only scale-highlight tiles that ValidTileHighlightSystem has marked as valid for
+            // the selected card. When no card is selected there are no tagged tiles, so hover
+            // is intentionally inert — avoids misleading feedback in the Idle state.
+            if (!SystemAPI.HasComponent<TileValidForPlacementTag>(tileEntity))
             {
-                return; // The tile is already highlighted
-            }
-            
-            if (SystemAPI.HasComponent<TileDataHighlight>(tileEntity))
-            {
-                TileDataHighlight highlightData = SystemAPI.GetComponent<TileDataHighlight>(highlightedTile);
-                if(highlightData.IsHighlighted)
-                {
-                    return; // The tile is already highlighted
-                }
+                ClearHighlight(ref state);
+                return;
             }
 
-            // Clear the previous highlight
+            if (tileEntity == highlightedTile) return;
+
             ClearHighlight(ref state);
 
-            // Apply the highlight to the new tile
             highlightedTile = tileEntity;
 
             if (SystemAPI.HasComponent<LocalTransform>(tileEntity))
             {
                 LocalTransform transform = SystemAPI.GetComponent<LocalTransform>(tileEntity);
-                transform.Scale *= 1.1f; // Slightly scale up the tile
+                transform.Scale *= 1.1f;
                 SystemAPI.SetComponent(tileEntity, transform);
             }
 
@@ -104,24 +98,23 @@ namespace ECS.Systems
         [BurstCompile]
         private void ClearHighlight(ref SystemState state)
         {
-            if (highlightedTile != Entity.Null)
+            if (highlightedTile == Entity.Null) return;
+
+            if (SystemAPI.HasComponent<LocalTransform>(highlightedTile))
             {
-                if (SystemAPI.HasComponent<LocalTransform>(highlightedTile))
-                {
-                    LocalTransform transform = SystemAPI.GetComponent<LocalTransform>(highlightedTile);
-                    transform.Scale /= 1.1f; // Restore the original scale
-                    SystemAPI.SetComponent(highlightedTile, transform);
-                }
-
-                if (SystemAPI.HasComponent<TileDataHighlight>(highlightedTile))
-                {
-                    TileDataHighlight highlight = SystemAPI.GetComponent<TileDataHighlight>(highlightedTile);
-                    highlight.IsHighlighted = false;
-                    SystemAPI.SetComponent(highlightedTile, highlight);
-                }
-
-                highlightedTile = Entity.Null;
+                LocalTransform transform = SystemAPI.GetComponent<LocalTransform>(highlightedTile);
+                transform.Scale /= 1.1f;
+                SystemAPI.SetComponent(highlightedTile, transform);
             }
+
+            if (SystemAPI.HasComponent<TileDataHighlight>(highlightedTile))
+            {
+                TileDataHighlight highlight = SystemAPI.GetComponent<TileDataHighlight>(highlightedTile);
+                highlight.IsHighlighted = false;
+                SystemAPI.SetComponent(highlightedTile, highlight);
+            }
+
+            highlightedTile = Entity.Null;
         }
     }
 }

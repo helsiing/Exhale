@@ -7,5 +7,6 @@ namespace Exhale.ECS.Components
     {
         public float4 ArmedColor;
         public float4 PreviewColor;
+        public float4 ValidPlacementColor;
     }
 }

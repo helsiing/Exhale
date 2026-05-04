@@ -3,27 +3,24 @@ using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Data;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace Exhale.Scripts.Services
 {
-    public enum PlacementState { Idle, TileHovered, TileArmed, CardLaunching, Resolving }
+    public enum PlacementState { Idle, CardSelected, CardLaunching, Resolving }
 
     public interface IPlacementService : IService
     {
         PlacementState State { get; }
-        int2 ArmedTilePosition { get; }
+        HexPieceTemplate SelectedCard { get; }
+        int2 ConfirmedTilePosition { get; }
 
-        event Action<int2> OnTileHovered;
-        event Action<int2, Entity> OnTileArmed;
-        event Action OnTileDisarmed;
+        event Action<HexPieceTemplate> OnCardSelected;
+        event Action OnCardDeselected;
         event Action<HexPieceTemplate, int2> OnCardLaunchStarted;
         event Action<HexPieceTemplate, int2> OnCardLanded;
 
-        void NotifyHover(int2 pos);
-        void NotifyHoverEnd();
-        bool TryArmTile(int2 pos, Entity tileEntity);
-        bool TryLaunchCard(HexPieceTemplate card);
+        bool TrySelectCard(HexPieceTemplate card);
+        bool TryConfirmTile(int2 pos, Entity tileEntity);
         void Cancel();
         bool IsCardValidForTile(HexPieceTemplate card, int2 tilePos);
         void NotifyCardLanded();
@@ -32,55 +29,48 @@ namespace Exhale.Scripts.Services
     public class PlacementService : IPlacementService
     {
         public PlacementState State { get; private set; } = PlacementState.Idle;
-        public int2 ArmedTilePosition { get; private set; }
+        public HexPieceTemplate SelectedCard { get; private set; }
+        public int2 ConfirmedTilePosition { get; private set; }
 
-        private Entity armedTileEntity;
         private HexPieceTemplate launchingCard;
 
-        public event Action<int2> OnTileHovered;
-        public event Action<int2, Entity> OnTileArmed;
-        public event Action OnTileDisarmed;
+        public event Action<HexPieceTemplate> OnCardSelected;
+        public event Action OnCardDeselected;
         public event Action<HexPieceTemplate, int2> OnCardLaunchStarted;
         public event Action<HexPieceTemplate, int2> OnCardLanded;
 
-        public void NotifyHover(int2 pos)
+        public bool TrySelectCard(HexPieceTemplate card)
         {
-            if (State != PlacementState.Idle && State != PlacementState.TileHovered) return;
-            State = PlacementState.TileHovered;
-            OnTileHovered?.Invoke(pos);
-        }
-
-        public void NotifyHoverEnd()
-        {
-            if (State != PlacementState.TileHovered) return;
-            State = PlacementState.Idle;
-        }
-
-        public bool TryArmTile(int2 pos, Entity tileEntity)
-        {
-            if (State == PlacementState.CardLaunching || State == PlacementState.Resolving)
+            if (State is PlacementState.CardLaunching or PlacementState.Resolving)
                 return false;
 
-            if (State == PlacementState.TileArmed)
-                OnTileDisarmed?.Invoke();
+            // Toggle: clicking the already-selected card deselects it.
+            if (State == PlacementState.CardSelected && SelectedCard == card)
+            {
+                Deselect();
+                return true;
+            }
 
-            ArmedTilePosition = pos;
-            armedTileEntity = tileEntity;
-            State = PlacementState.TileArmed;
-            OnTileArmed?.Invoke(pos, tileEntity);
-            Debug.Log($"[PlacementService] Tile armed at {pos}");
+            // Swap: a different card was clicked while one was already selected.
+            if (State == PlacementState.CardSelected)
+                Deselect();
+
+            SelectedCard = card;
+            State = PlacementState.CardSelected;
+            OnCardSelected?.Invoke(card);
             return true;
         }
 
-        public bool TryLaunchCard(HexPieceTemplate card)
+        public bool TryConfirmTile(int2 pos, Entity tileEntity)
         {
-            if (State != PlacementState.TileArmed) return false;
-            if (card == null || !IsCardValidForTile(card, ArmedTilePosition)) return false;
+            if (State != PlacementState.CardSelected) return false;
+            if (SelectedCard == null || !IsCardValidForTile(SelectedCard, pos)) return false;
 
-            launchingCard = card;
+            ConfirmedTilePosition = pos;
+            launchingCard = SelectedCard;
+            SelectedCard = null;
             State = PlacementState.CardLaunching;
-            OnCardLaunchStarted?.Invoke(card, ArmedTilePosition);
-            Debug.Log($"[PlacementService] Card launching: {card.name} → {ArmedTilePosition}");
+            OnCardLaunchStarted?.Invoke(launchingCard, pos);
             return true;
         }
 
@@ -89,15 +79,12 @@ namespace Exhale.Scripts.Services
             if (State is PlacementState.CardLaunching or PlacementState.Resolving or PlacementState.Idle)
                 return;
 
-            State = PlacementState.Idle;
-            OnTileDisarmed?.Invoke();
-            Debug.Log("[PlacementService] Cancelled.");
+            Deselect();
         }
 
         public bool IsCardValidForTile(HexPieceTemplate card, int2 tilePos)
         {
-            // Placeholder: any card that can go on the board is valid.
-            // Step 8 (CardHandFilter) will add terrain/cost constraints.
+            // Placeholder — terrain/cost constraints will be added here.
             return card != null && card.HasTrait<BoardObject>();
         }
 
@@ -106,7 +93,7 @@ namespace Exhale.Scripts.Services
             if (State != PlacementState.CardLaunching) return;
 
             var card = launchingCard;
-            var pos = ArmedTilePosition;
+            var pos  = ConfirmedTilePosition;
             launchingCard = null;
             State = PlacementState.Resolving;
             OnCardLanded?.Invoke(card, pos);
@@ -114,5 +101,12 @@ namespace Exhale.Scripts.Services
         }
 
         public void Dispose() { }
+
+        private void Deselect()
+        {
+            SelectedCard = null;
+            State = PlacementState.Idle;
+            OnCardDeselected?.Invoke();
+        }
     }
 }

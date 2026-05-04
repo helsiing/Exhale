@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace ECS.Systems
 {
-    [UpdateAfter(typeof(TileArmingSystem))]
+    [UpdateAfter(typeof(TileConfirmSystem))]
     [UpdateBefore(typeof(PiecePlacementSystem))]
     public partial class CancelInputSystem : SystemBase
     {

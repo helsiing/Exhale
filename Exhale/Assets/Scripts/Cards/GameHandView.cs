@@ -57,11 +57,11 @@ namespace Exhale.Cards.UI
             StartCoroutine(DrawInitialHandCoroutine());
         }
 
-        private void OnCardLanded(HexPieceTemplate _, int2 __)
+        private void OnCardLanded(HandCard _, int2 __)
         {
             var nextCard = gameHandService.Reference?.DrawNextCard();
             if (nextCard == null) return;
-            if (nextCard.TryGetTrait(out CardObject cardObject))
+            if (nextCard.Template.TryGetTrait(out CardObject cardObject))
                 DrawCard(nextCard, cardObject.Prefab);
         }
 
@@ -70,19 +70,19 @@ namespace Exhale.Cards.UI
             var hand = gameHandService.Reference.GetHand();
             foreach (var handCard in hand)
             {
-                if(handCard.TryGetTrait(out CardObject cardObject))
+                if(handCard.Template.TryGetTrait(out CardObject cardObject))
                 {
                     DrawCard(handCard, cardObject.Prefab);
                     yield return new WaitForSeconds(delay);
                 }
                 else
                 {
-                    Debug.LogError($"Card {handCard.name} does not have a CardObject trait.");
+                    Debug.LogError($"Card {handCard.Template.name} does not have a CardObject trait.");
                 }
             }
         }
 
-        private void DrawCard(HexPieceTemplate template, GameObject cardPrefab)
+        private void DrawCard(HandCard handCard, GameObject cardPrefab)
         {
             if(handCards.Count >= gameHandService.Reference.GetInitialHandCount()) return;
 
@@ -99,7 +99,7 @@ namespace Exhale.Cards.UI
             card.transform.localPosition = Vector3.zero;
             card.transform.localRotation = Quaternion.identity;
             card.GetOrAddComponent<CardMouseEventForwarder>();
-            card.GetOrAddComponent<CardView>().Initialize(template);
+            card.GetOrAddComponent<CardView>().Initialize(handCard);
 
             handCards.Add(leanPivot);
             UpdateCardsPosition();

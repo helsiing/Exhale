@@ -11,26 +11,26 @@ namespace Exhale.Scripts.Services
         public void InitializeHand();
         public int GetInitialHandCount();
         public int GetMaxHandCount();
-        public List<HexPieceTemplate> GetHand();
-        public HexPieceTemplate DrawNextCard();
+        public List<HandCard> GetHand();
+        public HandCard DrawNextCard();
     }
-    
+
     public class GameHandService : MonoBehaviour, IGameHandService
     {
         [SerializeField] private int initialHandCount = 7;
         [SerializeField] private int maxHandCount = 10;
 
         private readonly ServiceReference<IDataService> dataService = new ();
-        private List<HexPieceTemplate> hexTilesInHand;
+        private List<HandCard> hexTilesInHand;
         private List<HexPieceTemplate> hexTilesAvailable;
-        
-        
+
+
         private void Awake()
         {
-            hexTilesInHand = ListPool<HexPieceTemplate>.Get();
+            hexTilesInHand = ListPool<HandCard>.Get();
             hexTilesAvailable = ListPool<HexPieceTemplate>.Get();
         }
-        
+
         private void Start()
         {
             InitializeHand();
@@ -42,7 +42,7 @@ namespace Exhale.Scripts.Services
             for (var i = 0; i < initialHandCount; i++)
             {
                 var randomIndex = Random.Range(0, hexTilesAvailable.Count);
-                hexTilesInHand.Add(hexTilesAvailable[randomIndex]);
+                hexTilesInHand.Add(new HandCard(hexTilesAvailable[randomIndex]));
             }
         }
 
@@ -56,20 +56,20 @@ namespace Exhale.Scripts.Services
             return maxHandCount;
         }
 
-        public List<HexPieceTemplate> GetHand()
+        public List<HandCard> GetHand()
         {
             return hexTilesInHand;
         }
 
-        public HexPieceTemplate DrawNextCard()
+        public HandCard DrawNextCard()
         {
             if (hexTilesAvailable == null || hexTilesAvailable.Count == 0) return null;
-            return hexTilesAvailable[Random.Range(0, hexTilesAvailable.Count)];
+            return new HandCard(hexTilesAvailable[Random.Range(0, hexTilesAvailable.Count)]);
         }
 
         public void Dispose()
         {
-            ListPool<HexPieceTemplate>.Release(hexTilesInHand);
+            ListPool<HandCard>.Release(hexTilesInHand);
             ListPool<HexPieceTemplate>.Release(hexTilesAvailable);
         }
     }

@@ -19,16 +19,17 @@ namespace Exhale.Cards.UI
         [SerializeField] private Color selectedColor = new Color(1f, 0.85f, 0.3f);
         [SerializeField] [Range(0.05f, 1f)] private float selectionAnimTime = 0.15f;
 
-        public HexPieceTemplate Template { get; private set; }
+        public HandCard HandCard { get; private set; }
+        public HexPieceTemplate Template => HandCard?.Template;
         public CardValidityState Validity { get; private set; } = CardValidityState.Valid;
         public bool IsSelected { get; private set; }
 
         private bool isClickSource;
         private readonly ServiceReference<IPlacementService> placementService = new();
 
-        public void Initialize(HexPieceTemplate template)
+        public void Initialize(HandCard handCard)
         {
-            Template = template;
+            HandCard = handCard;
         }
 
         private void Start()
@@ -79,12 +80,12 @@ namespace Exhale.Cards.UI
         private void OnMouseDown()
         {
             isClickSource = true;
-            placementService.Reference?.TrySelectCard(Template);
+            placementService.Reference?.TrySelectCard(HandCard);
             isClickSource = false;
         }
 
-        private void OnServiceCardSelected(HexPieceTemplate _) => SetSelected(isClickSource);
-        private void OnServiceCardDeselected()                    => SetSelected(false);
-        private void OnServiceCardLaunchStarted(HexPieceTemplate _, int2 __) => SetSelected(false);
+        private void OnServiceCardSelected(HandCard _) => SetSelected(isClickSource);
+        private void OnServiceCardDeselected()          => SetSelected(false);
+        private void OnServiceCardLaunchStarted(HandCard _, int2 __) => SetSelected(false);
     }
 }

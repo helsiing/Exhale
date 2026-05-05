@@ -35,7 +35,7 @@ namespace Exhale.Cards.UI
             placementService.CachedReference.OnCardLanded        -= OnCardLanded;
         }
 
-        private void OnCardLaunchStarted(HexPieceTemplate _, int2 tilePos)
+        private void OnCardLaunchStarted(HandCard _, int2 tilePos)
         {
             Vector3 tileWorldPos = BoardHelper.HexToWorldPosition(tilePos);
             foreach (var leanPivot in handView.HandCards)
@@ -46,7 +46,7 @@ namespace Exhale.Cards.UI
             }
         }
 
-        private void OnCardLanded(HexPieceTemplate _, int2 __) => ResetLean();
+        private void OnCardLanded(HandCard _, int2 __) => ResetLean();
 
         private void ResetLean()
         {

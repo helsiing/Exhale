@@ -142,7 +142,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3462853024782302164}
   - component: {fileID: 263078901215509900}
-  - component: {fileID: 5824758768091430808}
   - component: {fileID: 6347400107284088955}
   - component: {fileID: 8953383808807988620}
   - component: {fileID: 9092857401497746444}
@@ -190,20 +189,6 @@ MonoBehaviour:
   spawnPoint: {fileID: 7807643899481738793}
   cardsContainer: {fileID: 6014004553456319853}
   delay: 0.2
---- !u!114 &5824758768091430808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897141279335940160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c276c0b800f419b91eca543414c3ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.CardHandLeanController
-  leanAngle: 10
-  animationTime: 0.3
 --- !u!114 &6347400107284088955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,9 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae97d68cd0ca4e87be27f579b29dd38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.CardLaunchAnimator
-  duration: 0.25
-  arcHeight: 2
-  landingHeight: 0.15
+  duration: 2
+  arcHeight: 0
+  landingHeight: 0
   shakeStrength: 0.1
   shakeDuration: 0.15
 --- !u!114 &9092857401497746444
@@ -356,11 +341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de783f34e0634670a7c938d863349cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Exhale.Cards.UI.PlacementAudioController
-  tileArmedClip: {fileID: 0}
+  cardSelectedClip: {fileID: 0}
   cardLaunchedClip: {fileID: 0}
   cardLandedClip: {fileID: 0}
   cancelledClip: {fileID: 0}
-  tileArmedVolume: 0.7
+  cardSelectedVolume: 0.7
   cardLaunchedVolume: 1
   cardLandedVolume: 1
   cancelledVolume: 0.5

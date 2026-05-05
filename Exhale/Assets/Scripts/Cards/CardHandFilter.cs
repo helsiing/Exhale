@@ -30,7 +30,7 @@ namespace Exhale.Cards.UI
             placementService.CachedReference.OnCardLaunchStarted -= OnCardLaunchStarted;
         }
 
-        private void OnCardSelected(HexPieceTemplate selectedCard)
+        private void OnCardSelected(HandCard selectedCard)
         {
             foreach (var leanPivot in handView.HandCards)
             {
@@ -39,7 +39,7 @@ namespace Exhale.Cards.UI
 
                 // Dim every card that isn't the one being played.
                 // The selected card's own highlight is handled by CardView.SetSelected.
-                var validity = cardView.Template == selectedCard
+                var validity = cardView.HandCard == selectedCard
                     ? CardValidityState.Valid
                     : CardValidityState.Invalid;
                 cardView.SetValidity(validity);
@@ -47,7 +47,7 @@ namespace Exhale.Cards.UI
         }
 
         private void OnCardDeselected() => ResetAllValidity();
-        private void OnCardLaunchStarted(HexPieceTemplate _, int2 __) => ResetAllValidity();
+        private void OnCardLaunchStarted(HandCard _, int2 __) => ResetAllValidity();
 
         private void ResetAllValidity()
         {

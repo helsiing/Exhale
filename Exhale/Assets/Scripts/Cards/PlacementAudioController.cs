@@ -45,10 +45,10 @@ namespace Exhale.Cards.UI
             placementService.CachedReference.OnCardLanded        -= OnCardLanded;
         }
 
-        private void OnCardSelected(HexPieceTemplate _)               => Play(cardSelectedClip,  cardSelectedVolume);
-        private void OnCardDeselected()                                => Play(cancelledClip,      cancelledVolume);
-        private void OnCardLaunchStarted(HexPieceTemplate _, int2 __) => Play(cardLaunchedClip,  cardLaunchedVolume);
-        private void OnCardLanded(HexPieceTemplate _, int2 __)        => Play(cardLandedClip,    cardLandedVolume);
+        private void OnCardSelected(HandCard _)               => Play(cardSelectedClip,  cardSelectedVolume);
+        private void OnCardDeselected()                       => Play(cancelledClip,      cancelledVolume);
+        private void OnCardLaunchStarted(HandCard _, int2 __) => Play(cardLaunchedClip,  cardLaunchedVolume);
+        private void OnCardLanded(HandCard _, int2 __)        => Play(cardLandedClip,    cardLandedVolume);
 
         private void Play(AudioClip clip, float volume)
         {

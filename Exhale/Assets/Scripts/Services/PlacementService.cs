@@ -1,5 +1,4 @@
 using System;
-using Exhale.Plugins.ServiceLocators;
 using Exhale.Scripts.Data;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -8,38 +7,20 @@ namespace Exhale.Scripts.Services
 {
     public enum PlacementState { Idle, CardSelected, CardLaunching, Resolving }
 
-    public interface IPlacementService : IService
-    {
-        PlacementState State { get; }
-        HexPieceTemplate SelectedCard { get; }
-        int2 ConfirmedTilePosition { get; }
-
-        event Action<HexPieceTemplate> OnCardSelected;
-        event Action OnCardDeselected;
-        event Action<HexPieceTemplate, int2> OnCardLaunchStarted;
-        event Action<HexPieceTemplate, int2> OnCardLanded;
-
-        bool TrySelectCard(HexPieceTemplate card);
-        bool TryConfirmTile(int2 pos, Entity tileEntity);
-        void Cancel();
-        bool IsCardValidForTile(HexPieceTemplate card, int2 tilePos);
-        void NotifyCardLanded();
-    }
-
     public class PlacementService : IPlacementService
     {
         public PlacementState State { get; private set; } = PlacementState.Idle;
-        public HexPieceTemplate SelectedCard { get; private set; }
+        public HandCard SelectedCard { get; private set; }
         public int2 ConfirmedTilePosition { get; private set; }
 
-        private HexPieceTemplate launchingCard;
+        private HandCard launchingCard;
 
-        public event Action<HexPieceTemplate> OnCardSelected;
+        public event Action<HandCard> OnCardSelected;
         public event Action OnCardDeselected;
-        public event Action<HexPieceTemplate, int2> OnCardLaunchStarted;
-        public event Action<HexPieceTemplate, int2> OnCardLanded;
+        public event Action<HandCard, int2> OnCardLaunchStarted;
+        public event Action<HandCard, int2> OnCardLanded;
 
-        public bool TrySelectCard(HexPieceTemplate card)
+        public bool TrySelectCard(HandCard card)
         {
             if (State is PlacementState.CardLaunching or PlacementState.Resolving)
                 return false;
@@ -82,10 +63,10 @@ namespace Exhale.Scripts.Services
             Deselect();
         }
 
-        public bool IsCardValidForTile(HexPieceTemplate card, int2 tilePos)
+        public bool IsCardValidForTile(HandCard card, int2 tilePos)
         {
             // Placeholder — terrain/cost constraints will be added here.
-            return card != null && card.HasTrait<BoardObject>();
+            return card?.Template.HasTrait<BoardObject>() == true;
         }
 
         public void NotifyCardLanded()

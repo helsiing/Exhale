@@ -37,9 +37,9 @@ namespace Exhale.Cards.UI
             placementService.Reference.OnCardLaunchStarted -= OnCardLaunchStarted;
         }
 
-        private void OnCardLaunchStarted(HexPieceTemplate card, int2 tilePos)
+        private void OnCardLaunchStarted(HandCard handCard, int2 tilePos)
         {
-            var leanPivot = FindLeanPivotForCard(card);
+            var leanPivot = FindLeanPivotForCard(handCard);
             if (leanPivot == null)
             {
                 placementService.Reference?.NotifyCardLanded();
@@ -65,12 +65,12 @@ namespace Exhale.Cards.UI
             });
         }
 
-        private GameObject FindLeanPivotForCard(HexPieceTemplate card)
+        private GameObject FindLeanPivotForCard(HandCard handCard)
         {
             foreach (var leanPivot in handView.HandCards)
             {
                 var cardView = leanPivot.GetComponentInChildren<CardView>();
-                if (cardView != null && cardView.Template == card)
+                if (cardView != null && cardView.HandCard == handCard)
                     return leanPivot;
             }
             return null;

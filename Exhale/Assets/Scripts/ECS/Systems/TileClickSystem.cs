@@ -16,7 +16,7 @@ namespace ECS.Systems
     public partial class PiecePlacementSystem : SystemBase
     {
         private readonly ServiceReference<IPlacementService> placementService = new();
-        private readonly Queue<(HexPieceTemplate card, int2 pos)> pending = new();
+        private readonly Queue<(HandCard card, int2 pos)> pending = new();
         private bool subscribed;
 
         protected override void OnUpdate()
@@ -32,7 +32,7 @@ namespace ECS.Systems
             while (pending.Count > 0)
             {
                 var (card, pos) = pending.Dequeue();
-                Debug.Log($"[PiecePlacementSystem] Processing placement: card={card.name} id={card.GetId()} pos={pos}");
+                Debug.Log($"[PiecePlacementSystem] Processing placement: card={card.Template.name} id={card.Template.GetId()} pos={pos}");
 
                 bool tileFound = false;
                 foreach (var tileData in SystemAPI.Query<RefRW<TileData>>())
@@ -48,9 +48,9 @@ namespace ECS.Systems
                 EntityManager.AddComponentData(request, new PieceCreationRequest
                 {
                     PositionIndex = pos,
-                    PieceId       = card.GetId()
+                    PieceId       = card.Template.GetId()
                 });
-                Debug.Log($"[PiecePlacementSystem] PieceCreationRequest created for pieceId={card.GetId()}");
+                Debug.Log($"[PiecePlacementSystem] PieceCreationRequest created for pieceId={card.Template.GetId()}");
             }
         }
 
@@ -61,7 +61,7 @@ namespace ECS.Systems
         }
 
         // Called on the main thread from PlacementService.NotifyCardLanded().
-        private void OnCardLanded(HexPieceTemplate card, int2 pos) =>
+        private void OnCardLanded(HandCard card, int2 pos) =>
             pending.Enqueue((card, pos));
     }
 }

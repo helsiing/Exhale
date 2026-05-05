@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using Data.Yield;
+using Exhale.Scripts.Gameplay;
 using LBG;
 using UnityEngine;
 
@@ -10,8 +9,11 @@ namespace Exhale.Scripts.Data
     [SubclassPath("Gameplay", "Yield")]
     public class Yield : PieceTrait
     {
-        [SerializeField] private List<YieldData> yields = new();
-        public List<YieldData> Yields => yields;
+        [SerializeField] private YieldTemplate yieldTemplate;
+
+        [SerializeField] private int amount;
+        public YieldTemplate YieldTemplate => yieldTemplate;
+        public int Amount => amount;
 
         public override bool ValidateConfig(HexPieceTemplate pieceTemplate)
         {

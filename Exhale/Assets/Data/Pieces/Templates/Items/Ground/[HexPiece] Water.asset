@@ -38,7 +38,10 @@ MonoBehaviour:
     - rid: 3071582760019427617
       type: {class: Ground, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
-        canBuildOn: 0
+        yield:
+          yieldTemplate: {fileID: 11400000, guid: 30843e6c429d18e4f9a78c6a2fe368a1,
+            type: 2}
+          amount: 1
     - rid: 3071582819787210833
       type: {class: CardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:

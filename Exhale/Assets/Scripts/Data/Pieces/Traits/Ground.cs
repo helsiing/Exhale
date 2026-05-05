@@ -11,8 +11,8 @@ namespace Exhale.Scripts.Data
     {
         [Title("Ground")]
         [SerializeField]
-        private bool canBuildOn;
-        public bool CanBuildOn => canBuildOn;
+        private Yield yield;
+        public Yield Yield => yield;
         public override bool ValidateConfig(HexPieceTemplate pieceTemplate)
         {
             return true;

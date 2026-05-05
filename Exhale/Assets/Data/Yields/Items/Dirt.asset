@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34aecb48a35f04042982e504f97fd894, type: 3}
-  m_Name: Silver
-  m_EditorClassIdentifier: 
+  m_Name: Dirt
+  m_EditorClassIdentifier: Assembly-CSharp::Exhale.Scripts.Gameplay.YieldTemplate
   guid:
-    value1: 4867226534609851212
-    value2: 5797535328372581272
+    value1: 5629541181892989570
+    value2: -4913624011843075689
   collectionGUID:
     value1: 5686771040444286450
     value2: -542766035505445246

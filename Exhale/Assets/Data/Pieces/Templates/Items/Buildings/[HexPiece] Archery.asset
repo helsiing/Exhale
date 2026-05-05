@@ -22,6 +22,7 @@ MonoBehaviour:
   - rid: 3071582760019427595
   - rid: 3071582760019427608
   - rid: 3071582819787210826
+  - rid: 4383198838696968269
   references:
     version: 2
     RefIds:
@@ -39,3 +40,14 @@ MonoBehaviour:
       data:
         prefab: {fileID: 7735278447280998577, guid: e1c13b2b0e5bc4dd7bafbfb4d07662c6,
           type: 3}
+    - rid: 4383198838696968269
+      type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
+      data:
+        placementRequirementsData:
+        - positionIndex: {x: 1, y: 1}
+          pieceTemplate: {fileID: 11400000, guid: 301e30fa5fa348946bc99f04f6ba6d3c,
+            type: 2}
+        - positionIndex: {x: 1, y: 0}
+          pieceTemplate: {fileID: 11400000, guid: 2c42a5f7ab88483439668906c60780bc,
+            type: 2}
+        costData: []

@@ -38,7 +38,13 @@ MonoBehaviour:
     - rid: 3071582760019427622
       type: {class: Building, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}
       data:
-        placementRequirementsData: []
+        placementRequirementsData:
+        - positionIndex: {x: 1, y: 1}
+          pieceTemplate: {fileID: 11400000, guid: 301e30fa5fa348946bc99f04f6ba6d3c,
+            type: 2}
+        - positionIndex: {x: 1, y: 0}
+          pieceTemplate: {fileID: 11400000, guid: 2c42a5f7ab88483439668906c60780bc,
+            type: 2}
         costData: []
     - rid: 3071582805557772360
       type: {class: CardObject, ns: Exhale.Scripts.Data, asm: Assembly-CSharp}

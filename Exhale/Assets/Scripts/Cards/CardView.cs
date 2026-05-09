@@ -16,7 +16,6 @@ namespace Exhale.Cards.UI
         [SerializeField] [Range(0.05f, 1f)] private float validityAnimTime = 0.2f;
 
         [Header("Selection Feedback")]
-        [SerializeField] private Color selectedColor = new Color(1f, 0.85f, 0.3f);
         [SerializeField] [Range(0.05f, 1f)] private float selectionAnimTime = 0.15f;
 
         public HandCard HandCard { get; private set; }
@@ -54,25 +53,21 @@ namespace Exhale.Cards.UI
             if (Validity == validity) return;
             Validity = validity;
 
-            // Don't override the selection tint with validity colour while selected.
             if (IsSelected) return;
 
-            var targetColor = validity == CardValidityState.Valid
-                ? Color.white
-                : new Color(1f, 1f, 1f, invalidAlpha);
-
             foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                sr.DOColor(targetColor, validityAnimTime);
+            {
+                if(Validity == CardValidityState.Invalid)
+                    sr.DOFade(invalidAlpha, validityAnimTime);
+                else
+                    sr.DOFade(1, validityAnimTime);
+            }
         }
 
-        public void SetSelected(bool selected)
+        private void SetSelected(bool selected)
         {
             if (IsSelected == selected) return;
             IsSelected = selected;
-
-            var targetColor = selected ? selectedColor : Color.white;
-            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                sr.DOColor(targetColor, selectionAnimTime);
 
             GetComponentInParent<CardHandHoverBehavior>()?.SetSelected(selected);
         }

@@ -58,10 +58,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7698035436094892014, guid: 882df92a9d814457ca54cbddbea4a3df,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698035436094892014, guid: 882df92a9d814457ca54cbddbea4a3df,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698035436094892014, guid: 882df92a9d814457ca54cbddbea4a3df,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8034484331556479463, guid: 882df92a9d814457ca54cbddbea4a3df,
         type: 3}
       propertyPath: m_Name
-      value: '[Card] Base Variant'
+      value: '[Card] Ground'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

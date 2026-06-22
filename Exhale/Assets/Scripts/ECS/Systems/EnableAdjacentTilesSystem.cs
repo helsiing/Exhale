@@ -1,4 +1,5 @@
 using Exhale.ECS.Authoring;
+using Exhale.Utils;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -68,18 +69,15 @@ namespace ECS.Systems
                 tileEntityMap.Dispose();
         }
 
+        // Odd-r offset-layout neighbours (parity-aware) — see BoardHelper.GetHexNeighbor.
         // NativeArray is built element-by-element — managed array literals (new int2[]{...})
         // are not allowed in Burst-compiled code.
         [BurstCompile]
         private static void GetAdjacentPositions(in int2 p, Allocator allocator, out NativeArray<int2> result)
         {
-            result = new NativeArray<int2>(6, allocator, NativeArrayOptions.UninitializedMemory);
-            result[0] = new int2(p.x + 1, p.y);
-            result[1] = new int2(p.x - 1, p.y);
-            result[2] = new int2(p.x,     p.y + 1);
-            result[3] = new int2(p.x,     p.y - 1);
-            result[4] = new int2(p.x + 1, p.y - 1);
-            result[5] = new int2(p.x - 1, p.y + 1);
+            result = new NativeArray<int2>(BoardHelper.HexNeighborCount, allocator, NativeArrayOptions.UninitializedMemory);
+            for (int d = 0; d < BoardHelper.HexNeighborCount; d++)
+                result[d] = BoardHelper.GetHexNeighbor(p, d);
         }
     }
 }

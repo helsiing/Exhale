@@ -39,6 +39,7 @@ namespace ECS.Systems
                 {
                     if (!tileData.ValueRO.PositionIndex.Equals(pos)) continue;
                     tileData.ValueRW.IsOccupied = true;
+                    tileData.ValueRW.OccupyingPieceId = card.Template.GetId();
                     tileFound = true;
                     break;
                 }

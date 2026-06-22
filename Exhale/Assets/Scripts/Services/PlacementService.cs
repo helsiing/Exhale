@@ -12,6 +12,7 @@ namespace Exhale.Scripts.Services
         public PlacementState State { get; private set; } = PlacementState.Idle;
         public HandCard SelectedCard { get; private set; }
         public int2 ConfirmedTilePosition { get; private set; }
+        public int2? HoveredValidTilePosition { get; private set; }
 
         private HandCard launchingCard;
 
@@ -81,10 +82,16 @@ namespace Exhale.Scripts.Services
             State = PlacementState.Idle;
         }
 
+        public void NotifyTileHovered(int2? tilePos)
+        {
+            HoveredValidTilePosition = State == PlacementState.CardSelected ? tilePos : null;
+        }
+
         public void Dispose() { }
 
         private void Deselect()
         {
+            HoveredValidTilePosition = null;
             SelectedCard = null;
             State = PlacementState.Idle;
             OnCardDeselected?.Invoke();

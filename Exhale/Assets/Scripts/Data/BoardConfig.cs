@@ -13,6 +13,9 @@ namespace Exhale.Scripts.Data
         public int Height;
         public int2 StartPosition;
         [NonSerialized] public Entity EmptyTTilePrefabEntity;
+        // Baked from BoardConfig.PrePlacedGroundCount. Number of randomly scattered ground
+        // tiles placed at boot. 0 = none.
+        [NonSerialized] public int PrePlacedGroundCount;
     }
     
     public enum BoardStartType
@@ -40,5 +43,11 @@ namespace Exhale.Scripts.Data
         
         [SerializeField] private GameObject emptyTilePrefab;
         public GameObject EmptyTilePrefab => emptyTilePrefab;
+
+        [Tooltip("How many ground tiles to scatter randomly across the board at boot, each " +
+                 "assigned a random Ground-trait piece. They need not be adjacent; blank " +
+                 "spaces are expected. Clamped to the number of tiles on the board. 0 = none.")]
+        [SerializeField] private int prePlacedGroundCount = 36;
+        public int PrePlacedGroundCount => prePlacedGroundCount;
     }
 }

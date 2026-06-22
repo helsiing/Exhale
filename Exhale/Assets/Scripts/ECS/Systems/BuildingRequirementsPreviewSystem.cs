@@ -2,26 +2,29 @@ using System.Collections.Generic;
 using Exhale.ECS.Authoring;
 using Exhale.ECS.Components;
 using Exhale.Plugins.ServiceLocators;
+using Exhale.Scripts.Data;
 using Exhale.Scripts.Services;
-using Exhale.Utils;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
-using Unity.Physics.Systems;
 using Unity.Rendering;
+using UnityEngine;
 using RaycastHit = Unity.Physics.RaycastHit;
 
 namespace ECS.Systems
 {
-    [UpdateAfter(typeof(TileHighlightSystem))]
+    [UpdateAfter(typeof(TileConfirmSystem))]
     [UpdateBefore(typeof(PiecePlacementSystem))]
-    public partial class TileConfirmSystem : SystemBase
+    public partial class BuildingRequirementsPreviewSystem : SystemBase
     {
-        private static readonly float4 DefaultPreviewColor = new(0.55f, 0.75f, 1.00f, 1f);
+        private static readonly float4 DefaultSatisfiedColor = new(0.30f, 0.85f, 0.75f, .25f);
+        private static readonly float4 DefaultMissingColor   = new(0.95f, 0.25f, 0.25f, .25f);
 
         private readonly ServiceReference<IPlacementService> placementService = new();
-        private readonly List<Entity> adjacencyPreviewRoots = new();
-        private readonly Dictionary<int2, Entity> disabledTilesByPosition = new();
+
+        // Root entities whose rendering children received a color override this frame.
+        private readonly List<Entity> previewRoots = new();
         private readonly List<Entity> renderingTargetBuffer = new();
         private Entity hoveredTileForPreview = Entity.Null;
 
@@ -36,20 +39,26 @@ namespace ECS.Systems
             var service = placementService.Reference;
             if (service == null) return;
 
-            if (adjacencyPreviewRoots.Count > 0 && service.State != PlacementState.CardSelected)
+            if (previewRoots.Count > 0 && service.State != PlacementState.CardSelected)
             {
-                ClearAdjacencyPreview();
+                ClearRequirementsPreview();
                 hoveredTileForPreview = Entity.Null;
-                service.NotifyTileHovered(null);
                 return;
             }
 
             if (service.State != PlacementState.CardSelected) return;
 
+            var card = service.SelectedCard;
+            if (card == null) return;
+
+            if (!card.Template.TryGetTrait<Building>(out var buildingTrait)) return;
+            var requirements = buildingTrait.PlacementRequirementsData;
+            if (requirements == null || requirements.Count == 0) return;
+
             var inputData = SystemAPI.GetSingleton<PointerInputData>();
             if (!inputData.IsValid)
             {
-                ClearPreviewIfNeeded(service);
+                ClearPreviewIfNeeded();
                 return;
             }
 
@@ -63,90 +72,91 @@ namespace ECS.Systems
 
             if (!physics.PhysicsWorld.CollisionWorld.CastRay(rayInput, out RaycastHit hit))
             {
-                ClearPreviewIfNeeded(service);
+                ClearPreviewIfNeeded();
                 return;
             }
 
             Entity hitEntity = physics.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
             if (!SystemAPI.HasComponent<TileData>(hitEntity))
             {
-                ClearPreviewIfNeeded(service);
+                ClearPreviewIfNeeded();
                 return;
             }
 
-            if (inputData.IsClickDown)
+            var hitTileData = SystemAPI.GetComponent<TileData>(hitEntity);
+            if (!hitTileData.IsEnabled || hitTileData.IsOccupied)
             {
-                if (!SystemAPI.HasComponent<TileValidForPlacementTag>(hitEntity)) return;
-
-                var tileData = SystemAPI.GetComponent<TileData>(hitEntity);
-                ClearAdjacencyPreview();
-                hoveredTileForPreview = Entity.Null;
-                service.NotifyTileHovered(null);
-                service.TryConfirmTile(tileData.PositionIndex, hitEntity);
-                return;
-            }
-
-            if (!SystemAPI.HasComponent<TileValidForPlacementTag>(hitEntity))
-            {
-                ClearPreviewIfNeeded(service);
+                ClearPreviewIfNeeded();
                 return;
             }
 
             if (hitEntity == hoveredTileForPreview) return;
 
-            ClearAdjacencyPreview();
+            ClearRequirementsPreview();
             hoveredTileForPreview = hitEntity;
 
-            float4 previewColor = DefaultPreviewColor;
+            float4 satisfiedColor = DefaultSatisfiedColor;
+            float4 missingColor   = DefaultMissingColor;
             if (SystemAPI.HasSingleton<TileHighlightConfigData>())
-                previewColor = SystemAPI.GetSingleton<TileHighlightConfigData>().PreviewColor;
-
-            var hoveredTileData = SystemAPI.GetComponent<TileData>(hitEntity);
-            service.NotifyTileHovered(hoveredTileData.PositionIndex);
-
-            BuildDisabledTileMap();
-
-            foreach (var neighborPos in GetAdjacentPositions(hoveredTileData.PositionIndex))
             {
-                if (!disabledTilesByPosition.TryGetValue(neighborPos, out Entity neighborEntity)) continue;
-
-                EntityManager.AddComponent<TileAdjacencyPreviewTag>(neighborEntity);
-                SetHighlightAdjacencyPreview(neighborEntity, true);
-                SetColorOverride(neighborEntity, previewColor);
-                adjacencyPreviewRoots.Add(neighborEntity);
+                var cfg = SystemAPI.GetSingleton<TileHighlightConfigData>();
+                satisfiedColor = cfg.RequirementSatisfiedColor;
+                missingColor   = cfg.RequirementMissingColor;
             }
+
+            // Build maps for O(n) lookup: position → tile entity and position → piece entity.
+            var tileEntityMap  = new NativeHashMap<int2, Entity>(64, Allocator.Temp);
+            var tileOccupyMap  = new NativeHashMap<int2, int>(64, Allocator.Temp);
+            var pieceEntityMap = new NativeHashMap<int2, Entity>(32, Allocator.Temp);
+
+            foreach (var (td, e) in SystemAPI.Query<RefRO<TileData>>().WithEntityAccess())
+            {
+                tileEntityMap.TryAdd(td.ValueRO.PositionIndex, e);
+                tileOccupyMap.TryAdd(td.ValueRO.PositionIndex, td.ValueRO.OccupyingPieceId);
+            }
+
+            foreach (var (bp, e) in SystemAPI.Query<RefRO<BoardPosition>>().WithEntityAccess())
+                pieceEntityMap.TryAdd(bp.ValueRO.PositionIndex, e);
+
+            foreach (var req in requirements)
+            {
+                var targetPos = hitTileData.PositionIndex + (int2)math.round((float2)(Vector2)req.PositionIndex);
+
+                if (!tileEntityMap.TryGetValue(targetPos, out Entity tileEntity)) continue;
+
+                tileOccupyMap.TryGetValue(targetPos, out int occupyingId);
+                bool satisfied = occupyingId == req.PieceTemplate.GetId();
+                float4 color = satisfied ? satisfiedColor : missingColor;
+
+                // Tint the tile entity (visible around the edges of any placed piece).
+                SetColorOverride(tileEntity, color);
+                previewRoots.Add(tileEntity);
+
+                // Also tint the placed piece entity at this position for clearer feedback.
+                if (pieceEntityMap.TryGetValue(targetPos, out Entity pieceEntity))
+                {
+                    SetColorOverride(pieceEntity, color);
+                    previewRoots.Add(pieceEntity);
+                }
+            }
+
+            tileEntityMap.Dispose();
+            tileOccupyMap.Dispose();
+            pieceEntityMap.Dispose();
         }
 
-        private void ClearPreviewIfNeeded(IPlacementService service)
+        private void ClearPreviewIfNeeded()
         {
             if (hoveredTileForPreview == Entity.Null) return;
-            ClearAdjacencyPreview();
+            ClearRequirementsPreview();
             hoveredTileForPreview = Entity.Null;
-            service.NotifyTileHovered(null);
         }
 
-        private void ClearAdjacencyPreview()
+        private void ClearRequirementsPreview()
         {
-            foreach (var root in adjacencyPreviewRoots)
-            {
-                if (EntityManager.HasComponent<TileAdjacencyPreviewTag>(root))
-                    EntityManager.RemoveComponent<TileAdjacencyPreviewTag>(root);
-                SetHighlightAdjacencyPreview(root, false);
+            foreach (var root in previewRoots)
                 ClearColorOverride(root);
-            }
-            adjacencyPreviewRoots.Clear();
-        }
-
-        private void BuildDisabledTileMap()
-        {
-            disabledTilesByPosition.Clear();
-            foreach (var (tileData, entity) in SystemAPI
-                .Query<RefRO<TileData>>()
-                .WithAll<Disabled>()
-                .WithEntityAccess())
-            {
-                disabledTilesByPosition[tileData.ValueRO.PositionIndex] = entity;
-            }
+            previewRoots.Clear();
         }
 
         private void SetColorOverride(Entity rootEntity, float4 color)
@@ -186,23 +196,6 @@ namespace ECS.Systems
             }
             if (results.Count == 0)
                 results.Add(rootEntity);
-        }
-
-        private void SetHighlightAdjacencyPreview(Entity entity, bool value)
-        {
-            if (!EntityManager.HasComponent<TileDataHighlight>(entity)) return;
-            var h = EntityManager.GetComponentData<TileDataHighlight>(entity);
-            h.IsAdjacencyPreview = value;
-            EntityManager.SetComponentData(entity, h);
-        }
-
-        // Odd-r offset-layout neighbours (parity-aware) — see BoardHelper.GetHexNeighbor.
-        private static int2[] GetAdjacentPositions(int2 p)
-        {
-            var result = new int2[BoardHelper.HexNeighborCount];
-            for (int d = 0; d < BoardHelper.HexNeighborCount; d++)
-                result[d] = BoardHelper.GetHexNeighbor(p, d);
-            return result;
         }
     }
 }

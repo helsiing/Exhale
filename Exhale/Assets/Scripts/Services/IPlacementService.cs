@@ -11,6 +11,7 @@ namespace Exhale.Scripts.Services
         PlacementState State { get; }
         HandCard SelectedCard { get; }
         int2 ConfirmedTilePosition { get; }
+        int2? HoveredValidTilePosition { get; }
 
         event Action<HandCard> OnCardSelected;
         event Action OnCardDeselected;
@@ -22,5 +23,6 @@ namespace Exhale.Scripts.Services
         void Cancel();
         bool IsCardValidForTile(HandCard card, int2 tilePos);
         void NotifyCardLanded();
+        void NotifyTileHovered(int2? tilePos);
     }
 }

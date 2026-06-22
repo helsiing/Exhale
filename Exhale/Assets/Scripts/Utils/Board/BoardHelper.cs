@@ -21,5 +21,27 @@ namespace Exhale.Utils
         {
             return new int2(width / 2, height / 2);
         }
+
+        // Number of hex neighbours. Pair with GetHexNeighbor(p, 0..5).
+        public const int HexNeighborCount = 6;
+
+        // Neighbour of tile `p` in one of the 6 directions, for the odd-r offset layout used
+        // by HexToWorldPosition (odd rows are shifted +x/2). The two diagonal columns depend
+        // on row parity — using fixed axial offsets puts one neighbour in the wrong cell.
+        // Burst-friendly: pure int2 math, no allocations or managed types.
+        public static int2 GetHexNeighbor(int2 p, int direction)
+        {
+            bool odd = (p.y & 1) == 1;
+            switch (direction)
+            {
+                case 0: return new int2(p.x + 1, p.y);                  // E
+                case 1: return new int2(p.x - 1, p.y);                  // W
+                case 2: return new int2(p.x + (odd ? 1 : 0), p.y - 1);  // NE
+                case 3: return new int2(p.x + (odd ? 0 : -1), p.y - 1); // NW
+                case 4: return new int2(p.x + (odd ? 1 : 0), p.y + 1);  // SE
+                case 5: return new int2(p.x + (odd ? 0 : -1), p.y + 1); // SW
+                default: return p;
+            }
+        }
     }
 }

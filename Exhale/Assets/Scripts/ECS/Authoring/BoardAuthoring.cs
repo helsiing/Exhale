@@ -11,6 +11,7 @@ namespace Exhale.ECS.Authoring
         public int2 PositionIndex; // Position in hexagonal grid (use axial or offset coordinates)
         public bool IsOccupied;
         public bool IsEnabled;
+        public int  OccupyingPieceId; // 0 = none; set to template.GetId() when a piece lands here
     }
     
     public struct TileDataHighlight : IComponentData
@@ -33,6 +34,9 @@ namespace Exhale.ECS.Authoring
                 var componentData = authoring.boardConfig.Data;
                 componentData.EmptyTTilePrefabEntity = GetEntity(authoring.boardConfig.EmptyTilePrefab,
                     TransformUsageFlags.Dynamic);
+
+                // Number of random ground tiles PrePlaceGroundSystem scatters at boot.
+                componentData.PrePlacedGroundCount = authoring.boardConfig.PrePlacedGroundCount;
                 
                 switch (authoring.boardConfig.StartType)
                 {

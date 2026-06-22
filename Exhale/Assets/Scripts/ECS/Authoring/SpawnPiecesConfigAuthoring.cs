@@ -29,7 +29,14 @@ namespace Exhale.ECS.Authoring
     public struct SpawnPiecesConfig : IComponentData
     {
     }
-    
+
+    // Subset of the catalog: piece ids whose template has a Ground trait. Used by
+    // PrePlaceGroundSystem to pick a random ground type per scattered tile.
+    public struct GroundPieceId : IBufferElementData
+    {
+        public int Value;
+    }
+
     public class SpawnPiecesConfigAuthoring : MonoBehaviour
     {
         [SerializeField] private HexPieceTemplateCollection pieceTemplateCollection;
@@ -40,6 +47,7 @@ namespace Exhale.ECS.Authoring
                 Entity entity = GetEntity(TransformUsageFlags.None);
                 
                 DynamicBuffer<PieceEntityData> buffer = AddBuffer<PieceEntityData>(entity);
+                DynamicBuffer<GroundPieceId> groundBuffer = AddBuffer<GroundPieceId>(entity);
                 foreach (var pieceTemplate in authoring.pieceTemplateCollection)
                 {
                     var prefab = pieceTemplate.GetPrefab();
@@ -50,8 +58,11 @@ namespace Exhale.ECS.Authoring
                         PieceId      = pieceTemplate.GetId(),
                         PrefabEntity = GetEntity(prefab, TransformUsageFlags.Dynamic)
                     });
+
+                    if (pieceTemplate.HasTrait<Ground>())
+                        groundBuffer.Add(new GroundPieceId { Value = pieceTemplate.GetId() });
                 }
-                
+
                 AddComponent(entity, new SpawnPiecesConfig());
             }
         }
